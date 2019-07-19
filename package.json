@@ -28,9 +28,11 @@
     "redux": "^4.0.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "uuid": "^3.3.2",
+    "uuid-v4": "^0.1.0",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5",
+    "webpack-cli": "^3.3.5"
+  },
+  "devDependencies": {
     "webpack-dev-server": "^3.7.2"
   }
 }

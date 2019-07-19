@@ -1,26 +1,26 @@
-import uuid from 'uuid';
+import uuid from 'uuid-v4';
 
 export const addActivity = (
   {
     name = 'Just stuff',
+    room = 'Anywhere',
     teacher = 'Anonymous',
-    day,
     classNo,
-    room = 'Anywhere'
+    day
   } = {}
 ) => ({
   type: 'ADD_ACTIVITY',
   activity: {
     id: uuid(),
     name,
+    room,
     teacher,
-    day,
     classNo,
-    room
+    day
   }
 })
 
-export const removeActivity = ({id} = {}) => ({
+export const removeActivity = (id) => ({
   type: 'REMOVE_ACTIVITY',
   id
 });

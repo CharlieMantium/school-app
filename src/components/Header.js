@@ -1,11 +1,12 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from '../constants/routes';
 
 const Header = () => (
   <header>
     <h1>School App</h1>
-    <NavLink to="/" activeClassName="is-active" exact={true}>Activity Plan</NavLink>
-    <NavLink to="/create" activeClassName="is-active">Add Activity</NavLink>
+    <NavLink to={ACTIVITY_PLAN_ROUTE} activeClassName="is-active" exact>Activity Plan</NavLink>
+    <NavLink to={CREATE_ACTIVITY_ROUTE} activeClassName="is-active">Add Activity</NavLink>
   </header>
 );
 
