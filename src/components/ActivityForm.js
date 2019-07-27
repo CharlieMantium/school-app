@@ -95,4 +95,4 @@ export default class ActivityForm extends React.Component {
       </div>
     )
   }
-}
+};
