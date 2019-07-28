@@ -21,3 +21,12 @@ const mapDispatchToProps = ({
 });
 
 export default connect(null, mapDispatchToProps)(AddActivityPage);
+
+//TODO: Talk with Lukasz about comment:
+// const mapDispatchToProps = {
+//   onAddActivity: addActivity`
+// }
+
+// export default connect(null, mapDispatchh...`
+// and then use as an action `onAddActivity` in component (with props destructured)
+// (or name it as you wish, but similar to original action).

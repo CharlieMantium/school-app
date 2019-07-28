@@ -30,3 +30,6 @@ export default (state = activitiesReducerDefaultState, action) => {
       return state;
   }
 };
+
+//TODO: Imo state shuould be an object
+// Probably you will have more fields here in this object.

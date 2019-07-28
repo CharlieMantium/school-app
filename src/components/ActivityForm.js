@@ -10,6 +10,7 @@ export default class ActivityForm extends React.Component {
       room: props.activity ? props.activity.room : '',
       teacher: props.activity ? props.activity.teacher : '',
       error: ''
+      //TODO: when you will use prop-types you will be able to improve this place ;)
     };
   };
 

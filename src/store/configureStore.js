@@ -12,3 +12,17 @@ export default () => {
   );
   return store;
 };
+
+//TODO: Also, but not in this PR (separate one) I recommend you to restucture the store 
+//files to have:
+//  store/activities/actions.js
+//  store/activities/reducer.js
+//  store/activities/filters.js
+
+//TODO: I see that selectors folder has been created. I don't see reason for 
+//  that.store/activities/actions.js
+//	store/activities/reducer.js
+//	store/activities/filters.js
+//	store/activities/selectors.js.
+
+//TODO:	BTW -> filters could be in selectors, but don't do taht in this PR

@@ -12,3 +12,7 @@ export default (activities, {text}) => {
     return textMatchName || textMatchDay || textMatchTeacher || textMatchRoom;
   });
 };
+
+//TODO: try to create a function, which gets name/day/teacher/ etc 
+// and text and returns what it should returns.
+// Target of this selector is not clear for me. Can you elaborate?
