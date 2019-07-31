@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ActivityForm from './ActivityForm';
 import { editActivity, removeActivity } from '../actions/activities';
@@ -19,6 +20,12 @@ const EditActivityPage = (props) => (
     }}>Remove</button>
   </div>
 );
+
+EditActivityPage.propTypes = {
+  activity: PropTypes.object,
+  dispatch: PropTypes.func,
+  history: PropTypes.object
+};
 
 const mapStateToProps = (state, props) => ({
   activity: state.activities.find((activity) => activity.id === props.match.params.id)

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import AcivityForm from './ActivityForm';
 import { addActivity } from '../actions/activities';
@@ -15,6 +16,11 @@ const AddActivityPage = ({onAddActivity, history}) => (
     />
   </div>
 );
+
+AddActivityPage.propTypes = {
+  onAddActivity: PropTypes.func,
+  history: PropTypes.object
+};
 
 const mapDispatchToProps = ({
   onAddActivity: addActivity

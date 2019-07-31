@@ -19,7 +19,7 @@ export default () => {
 //  store/activities/reducer.js
 //  store/activities/filters.js
 
-//TODO: I see that selectors folder has been created. I don't see reason for 
+//TODO: I see that selectors folder has been created. I don't see reason for
 //  that.store/activities/actions.js
 //	store/activities/reducer.js
 //	store/activities/filters.js

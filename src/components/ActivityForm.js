@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class ActivityForm extends React.Component {
   constructor(props) {
@@ -10,9 +11,9 @@ export default class ActivityForm extends React.Component {
       room: props.activity ? props.activity.room : '',
       teacher: props.activity ? props.activity.teacher : '',
       error: ''
-      //TODO: when you will use prop-types you will be able to improve this place ;)
+      //TODO: when you will use prop-types you will be able to improve this place ;)
     };
-  };
+  }
 
   onNameChange = e => this.setState({name: e.target.value});
 
@@ -24,7 +25,7 @@ export default class ActivityForm extends React.Component {
     const classNo = e.target.value;
     if (!classNo || classNo.match(/^[1-9]\d*$/)) {
       this.setState({classNo});
-    };
+    }
   };
 
   onDayChange = (e) => this.setState({day: e.target.value});
@@ -43,7 +44,7 @@ export default class ActivityForm extends React.Component {
         room,
         teacher
       });
-    };
+    }
   };
 
   render() {
@@ -94,6 +95,11 @@ export default class ActivityForm extends React.Component {
           <button>Add Activity</button>
         </form>
       </div>
-    )
+    );
   }
+}
+
+ActivityForm.propTypes = {
+  activity: PropTypes.object,
+  onSubmit: PropTypes.func
 };

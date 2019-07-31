@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ActivitiesListItem from './ActivitiesListItem';
 import selectActivities from '../store/activities/selectors/activities';
@@ -11,6 +12,10 @@ const ActivitiesList = ({ activities }) => (
     ))}
   </div>
 );
+
+ActivitiesList.propTypes = {
+  activities: PropTypes.array
+};
 
 const mapStateToProps = (state) => ({
   activities: selectActivities(state.activities, state.filters)
