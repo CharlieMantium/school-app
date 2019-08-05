@@ -11,25 +11,17 @@ module.exports = {
   module: {
     rules: [
       {
-        use: [
-          'babel-loader',
-          'eslint-loader'
-        ],
+        use: ['babel-loader', 'eslint-loader'],
         test: /\.js$/,
         exclude: /node_modules/
-      }, {
+      },
+      {
         test: /\.s?css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
-  plugins: [
-    new StyleLintPlugin()
-  ],
+  plugins: [new StyleLintPlugin()],
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public'),

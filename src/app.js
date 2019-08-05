@@ -1,21 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import AppRouter from "./router/AppRouter";
-import configureStore from "./store/configureStore";
-import { addActivity } from "./actions/activities";
-import "normalize.css/normalize.css";
-import "./styles/styles.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import AppRouter from './router/AppRouter';
+import configureStore from './store/configureStore';
+import { addActivity } from './actions/activities';
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
 
 const store = configureStore();
 
 //TODO: dummy data to be removed
-store.dispatch(
-  addActivity({ name: "matma", day: "2", classNo: "3", room: "gym" })
-);
-store.dispatch(
-  addActivity({ name: "polski", day: "4", classNo: "1", teacher: "Malski" })
-);
+store.dispatch(addActivity({ name: 'matma', day: '2', classNo: '3', room: 'gym' }));
+store.dispatch(addActivity({ name: 'polski', day: '4', classNo: '1', teacher: 'Malski' }));
 
 const jsx = (
   <Provider store={store}>
@@ -23,7 +19,7 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(jsx, document.getElementById("app-root"));
+ReactDOM.render(jsx, document.getElementById('app-root'));
 
 //TODO: add prettier
 

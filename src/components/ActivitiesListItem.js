@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { EDIT_ACTIVITY_ROUTE } from '../constants/routes';
 
-const ActivitiesListItem = ({name, day, classNo, teacher, id}) => (
+const ActivitiesListItem = ({ name, day, classNo, teacher, id }) => (
   <div>
     <Link to={EDIT_ACTIVITY_ROUTE(id)}>
       <h3>{name}</h3>

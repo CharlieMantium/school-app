@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from 'redux';
+import { createStore, combineReducers } from 'redux';
 import activitiesReducer from '../reducers/activities';
 import filtersReducer from '../reducers/filters';
 
@@ -13,7 +13,7 @@ export default () => {
   return store;
 };
 
-//TODO: Also, but not in this PR (separate one) I recommend you to restucture the store 
+//TODO: Also, but not in this PR (separate one) I recommend you to restucture the store
 //files to have:
 //  store/activities/actions.js
 //  store/activities/reducer.js

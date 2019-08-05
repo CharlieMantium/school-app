@@ -1,4 +1,4 @@
-export default (activities, {text}) => {
+export default (activities, { text }) => {
   return activities.filter(({ name, day, teacher, room }) => {
     const lowerCaseText = text.toLowerCase();
     const lowerCaseName = name.toLowerCase();
@@ -13,6 +13,6 @@ export default (activities, {text}) => {
   });
 };
 
-//TODO: try to create a function, which gets name/day/teacher/ etc 
+//TODO: try to create a function, which gets name/day/teacher/ etc
 // and text and returns what it should returns.
 // Target of this selector is not clear for me. Can you elaborate?

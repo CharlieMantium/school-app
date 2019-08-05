@@ -15,28 +15,28 @@ export default class ActivityForm extends React.Component {
     };
   }
 
-  onNameChange = e => this.setState({name: e.target.value});
+  onNameChange = e => this.setState({ name: e.target.value });
 
-  onTeacherChange = e => this.setState({teacher: e.target.value});
+  onTeacherChange = e => this.setState({ teacher: e.target.value });
 
-  onRoomChange = e => this.setState({room: e.target.value});
+  onRoomChange = e => this.setState({ room: e.target.value });
 
-  onClassNoChange = (e) => {
+  onClassNoChange = e => {
     const classNo = e.target.value;
     if (!classNo || classNo.match(/^[1-9]\d*$/)) {
-      this.setState({classNo});
+      this.setState({ classNo });
     }
   };
 
-  onDayChange = (e) => this.setState({day: e.target.value});
+  onDayChange = e => this.setState({ day: e.target.value });
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     e.preventDefault();
     const { name, day, classNo, room, teacher } = this.state;
     if (!name || !day || !classNo) {
-      this.setState({error: 'Please provide Activity Name, Day and Class Number!'});
+      this.setState({ error: 'Please provide Activity Name, Day and Class Number!' });
     } else {
-      this.setState({error: ''});
+      this.setState({ error: '' });
       this.props.onSubmit({
         classNo,
         day,
@@ -66,24 +66,15 @@ export default class ActivityForm extends React.Component {
             value={teacher}
             onChange={this.onTeacherChange}
           />
-          <input
-            type="text"
-            placeholder="Room"
-            value={room}
-            onChange={this.onRoomChange}
-          />
+          <input type="text" placeholder="Room" value={room} onChange={this.onRoomChange} />
           <input
             type="number"
             placeholder="Class Number"
             value={classNo}
             onChange={this.onClassNoChange}
           />
-          <select
-            value={day}
-            onChange={this.onDayChange}
-            required={true}
-          >
-            <option value=''>Pick a day</option>
+          <select value={day} onChange={this.onDayChange} required={true}>
+            <option value="">Pick a day</option>
             <option value={1}>Monday</option>
             <option value={2}>Tuesday</option>
             <option value={3}>Wednesday</option>
