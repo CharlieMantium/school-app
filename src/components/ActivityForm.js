@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import activityPropTypeShape from '../prop-types/activity';
 
 export default class ActivityForm extends React.Component {
+  static propTypes = {
+    activity: PropTypes.shape(activityPropTypeShape),
+    onSubmit: PropTypes.func
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +17,9 @@ export default class ActivityForm extends React.Component {
       teacher: props.activity ? props.activity.teacher : '',
       error: ''
       //TODO: when you will use prop-types you will be able to improve this place ;)
+      //TODO: I think, that now (looking at previous comments, maybe you will be able to
+      //improve). If not, because activity will be able to be undefined, in separate PR
+      //you should check lodash package and get method ;)
     };
   }
 
@@ -35,6 +43,8 @@ export default class ActivityForm extends React.Component {
     const { name, day, classNo, room, teacher } = this.state;
     if (!name || !day || !classNo) {
       this.setState({ error: 'Please provide Activity Name, Day and Class Number!' });
+      //TODO: What if I provide Activity Name and Day, but not Class Number?
+      //For user it will be confusing ;) but this is to handle by separate PR!
     } else {
       this.setState({ error: '' });
       this.props.onSubmit({
@@ -89,8 +99,3 @@ export default class ActivityForm extends React.Component {
     );
   }
 }
-
-ActivityForm.propTypes = {
-  activity: PropTypes.object,
-  onSubmit: PropTypes.func
-};

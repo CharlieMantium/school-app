@@ -13,6 +13,10 @@ const ActivitiesList = ({ activities }) => (
   </div>
 );
 
+ActivitiesList.defaultProps = {
+  activities: []
+};
+
 ActivitiesList.propTypes = {
   activities: PropTypes.array
 };

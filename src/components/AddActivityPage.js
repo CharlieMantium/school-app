@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AcivityForm from './ActivityForm';
 import { addActivity } from '../actions/activities';
 import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
+import historyPushPropTypeShape from '../prop-types/historyPush';
 
 const AddActivityPage = ({ onAddActivity, history }) => (
   <div>
@@ -18,8 +19,8 @@ const AddActivityPage = ({ onAddActivity, history }) => (
 );
 
 AddActivityPage.propTypes = {
-  onAddActivity: PropTypes.func,
-  history: PropTypes.object
+  onAddActivity: PropTypes.func.isRequired,
+  history: PropTypes.shape(historyPushPropTypeShape)
 };
 
 const mapDispatchToProps = {

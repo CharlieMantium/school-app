@@ -21,13 +21,8 @@ const jsx = (
 
 ReactDOM.render(jsx, document.getElementById('app-root'));
 
-//TODO: add prettier
-
-//TODO: You sould think about seting up also eslint and stylelint.
-//Powerful and it makes our lives easier (together with prettier)
-
-//TODO: learn about prop-types package and implement it (by separate PR). Easy to handle ;)
-//use documentation :P
+//TODO: nice one :) you can stay with this config (eslint, prettier), but if you wish to
+//have super nice and verified one, check airbnb linter settings ;) not in this branch
 
 //TODO: your webpack configuration is not ready to build production version of the App.
-//But it is not for this PR, add to todoss.
+//But it is not for this PR, add to todos.
