@@ -40,3 +40,5 @@ export default connect(
 // export default connect(null, mapDispatchh...`
 // and then use as an action `onAddActivity` in component (with props destructured)
 // (or name it as you wish, but similar to original action).
+
+//TODO: add to todos handle absolute imports
