@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ActivitiesListItem from './ActivitiesListItem';
 import selectActivities from '../store/activities/selectors/activities';
+import activityPropTypeShape from '../prop-types/activity';
 
 const ActivitiesList = ({ activities }) => (
   <div>
@@ -18,7 +19,7 @@ ActivitiesList.defaultProps = {
 };
 
 ActivitiesList.propTypes = {
-  activities: PropTypes.array
+  activities: PropTypes.arrayOf(PropTypes.shape(activityPropTypeShape))
 };
 
 const mapStateToProps = state => ({

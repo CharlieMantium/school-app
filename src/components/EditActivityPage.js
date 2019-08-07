@@ -5,7 +5,7 @@ import ActivityForm from './ActivityForm';
 import { editActivity, removeActivity } from '../actions/activities';
 import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
 import activityPropTypeShape from '../prop-types/activity';
-import historyPushPropTypeShape from '../prop-types/historyPush';
+import historyPushPropTypeShape from '../prop-types/history';
 
 const EditActivityPage = props => (
   <div>

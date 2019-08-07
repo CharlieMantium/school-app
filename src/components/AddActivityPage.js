@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import AcivityForm from './ActivityForm';
 import { addActivity } from '../actions/activities';
 import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
-import historyPushPropTypeShape from '../prop-types/historyPush';
+import historyPushPropTypeShape from '../prop-types/history';
 
 const AddActivityPage = ({ onAddActivity, history }) => (
   <div>
