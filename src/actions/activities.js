@@ -1,14 +1,12 @@
 import uuid from 'uuid-v4';
 
-export const addActivity = (
-  {
-    name = 'Just stuff',
-    room = 'Anywhere',
-    teacher = 'Anonymous',
-    classNo,
-    day
-  } = {}
-) => ({
+export const addActivity = ({
+  name = 'Just stuff',
+  room = 'Anywhere',
+  teacher = 'Anonymous',
+  classNo,
+  day
+} = {}) => ({
   type: 'ADD_ACTIVITY',
   activity: {
     id: uuid(),
@@ -18,9 +16,9 @@ export const addActivity = (
     classNo,
     day
   }
-})
+});
 
-export const removeActivity = (id) => ({
+export const removeActivity = id => ({
   type: 'REMOVE_ACTIVITY',
   id
 });

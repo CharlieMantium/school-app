@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AddActivityPage from '../components/AddActivityPage';
 import EditActivityPage from '../components/EditActivityPage';
 import Header from '../components/Header';
@@ -14,7 +14,7 @@ import {
 const AppRouter = () => (
   <BrowserRouter>
     <div>
-      <Header/>
+      <Header />
       <Switch>
         <Route path={ACTIVITY_PLAN_ROUTE} component={PlanPage} exact={true} />
         <Route path={CREATE_ACTIVITY_ROUTE} component={AddActivityPage} />

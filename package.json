@@ -6,7 +6,14 @@
   "scripts": {
     "serve": "live-server public/",
     "build": "webpack",
-    "dev-server": "webpack-dev-server --watch"
+    "dev-server": "webpack-dev-server --watch",
+    "lint:js": "eslint src",
+    "lint:styles": "stylelint 'src/styles/**/*.scss'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn run lint:js && yarn run lint:styles"
+    }
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -21,6 +28,7 @@
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -33,6 +41,17 @@
     "webpack-cli": "^3.3.5"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.2",
+    "prettier": "^1.18.2",
+    "stylelint": "^10.1.0",
+    "stylelint-config-recommended": "^2.2.0",
+    "stylelint-webpack-plugin": "^0.10.5",
     "webpack-dev-server": "^3.7.2"
   }
 }

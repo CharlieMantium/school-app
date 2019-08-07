@@ -1,17 +1,41 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {setTextFilter} from '../actions/filters';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setTextFilter } from '../actions/filters';
 
-const ActivitiesListFilters = ({ filters, dispatch }) => (
+const ActivitiesListFilters = ({ filters: { text }, onSetTextFilter }) => (
   <div>
-    <input type="text" value={filters.text} onChange={(e) => {
-      dispatch(setTextFilter(e.target.value))
-    }}/>
+    <input
+      type="text"
+      value={text}
+      onChange={e => {
+        onSetTextFilter(e.target.value);
+      }}
+    />
   </div>
 );
 
-const mapStateToProps = (state) => ({
+ActivitiesListFilters.defaultProps = {
+  filters: {},
+  text: ''
+};
+
+ActivitiesListFilters.propTypes = {
+  filters: PropTypes.shape({
+    text: PropTypes.string
+  }),
+  onSetTextFilter: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
   filters: state.filters
 });
 
-export default connect(mapStateToProps)(ActivitiesListFilters);
+const mapDispatchToProps = {
+  onSetTextFilter: setTextFilter
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ActivitiesListFilters);

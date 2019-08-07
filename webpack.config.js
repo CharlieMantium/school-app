@@ -1,4 +1,5 @@
 const path = require('path');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   entry: './src/app.js',
@@ -8,19 +9,19 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    rules: [{
-      loader: 'babel-loader',
-      test: /\.js$/,
-      exclude: /node_modules/
-    }, {
-      test: /\.s?css$/,
-      use: [
-        'style-loader',
-        'css-loader',
-        'sass-loader'
-      ]
-    }]
+    rules: [
+      {
+        use: ['babel-loader', 'eslint-loader'],
+        test: /\.js$/,
+        exclude: /node_modules/
+      },
+      {
+        test: /\.s?css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
   },
+  plugins: [new StyleLintPlugin()],
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public'),

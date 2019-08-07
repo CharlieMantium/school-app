@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from 'redux';
+import { createStore, combineReducers } from 'redux';
 import activitiesReducer from '../reducers/activities';
 import filtersReducer from '../reducers/filters';
 
@@ -13,13 +13,13 @@ export default () => {
   return store;
 };
 
-//TODO: Also, but not in this PR (separate one) I recommend you to restucture the store 
+//TODO: Also, but not in this PR (separate one) I recommend you to restucture the store
 //files to have:
 //  store/activities/actions.js
 //  store/activities/reducer.js
 //  store/activities/filters.js
 
-//TODO: I see that selectors folder has been created. I don't see reason for 
+//TODO: I see that selectors folder has been created. I don't see reason for
 //  that.store/activities/actions.js
 //	store/activities/reducer.js
 //	store/activities/filters.js
