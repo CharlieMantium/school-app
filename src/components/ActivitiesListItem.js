@@ -14,7 +14,7 @@ const ActivitiesListItem = ({ name, day, classNo, teacher, id, room }) => (
 
 ActivitiesListItem.defaultProps = {
   teacher: 'Anonymous',
-  room: 'anywhere'
+  room: 'anywhere',
 };
 
 ActivitiesListItem.propTypes = {
@@ -23,10 +23,10 @@ ActivitiesListItem.propTypes = {
   classNo: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   teacher: PropTypes.string,
-  room: PropTypes.string
+  room: PropTypes.string,
 };
 
 export default ActivitiesListItem;
 
-//TODO: What if I provide Activity Name and Day, but not Class Number?
-//For user it will be confusing ;) but this is to handle by separate PR!
+// TODO: What if I provide Activity Name and Day, but not Class Number?
+// For user it will be confusing ;) but this is to handle by separate PR!

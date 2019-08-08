@@ -15,15 +15,15 @@ const ActivitiesList = ({ activities }) => (
 );
 
 ActivitiesList.defaultProps = {
-  activities: []
+  activities: [],
 };
 
 ActivitiesList.propTypes = {
-  activities: PropTypes.arrayOf(PropTypes.shape(activityPropTypeShape))
+  activities: PropTypes.arrayOf(PropTypes.shape(activityPropTypeShape)),
 };
 
 const mapStateToProps = state => ({
-  activities: selectActivities(state.activities, state.filters)
+  activities: selectActivities(state.activities, state.filters),
 });
 
 export default connect(mapStateToProps)(ActivitiesList);

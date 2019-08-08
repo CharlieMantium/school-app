@@ -8,7 +8,7 @@ import NotFoundPage from '../components/NotFoundPage';
 import {
   ACTIVITY_PLAN_ROUTE,
   CREATE_ACTIVITY_ROUTE,
-  EDIT_ACTIVITY_ID_ROUTE
+  EDIT_ACTIVITY_ID_ROUTE,
 } from '../constants/routes';
 
 const AppRouter = () => (
@@ -16,7 +16,7 @@ const AppRouter = () => (
     <div>
       <Header />
       <Switch>
-        <Route path={ACTIVITY_PLAN_ROUTE} component={PlanPage} exact={true} />
+        <Route path={ACTIVITY_PLAN_ROUTE} component={PlanPage} exact />
         <Route path={CREATE_ACTIVITY_ROUTE} component={AddActivityPage} />
         <Route path={EDIT_ACTIVITY_ID_ROUTE} component={EditActivityPage} />
         <Route component={NotFoundPage} />

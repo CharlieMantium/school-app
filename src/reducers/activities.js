@@ -13,16 +13,15 @@ export default (state = activitiesReducerDefaultState, action) => {
         if (activity.id === action.id) {
           return {
             ...activity,
-            ...action.updates
+            ...action.updates,
           };
-        } else {
-          return activity;
         }
+        return activity;
       });
     default:
       return state;
   }
 };
 
-//TODO: Imo state shuould be an object
+// TODO: Imo state shuould be an object
 // Probably you will have more fields here in this object.
