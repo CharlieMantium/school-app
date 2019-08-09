@@ -5,7 +5,7 @@ export const addActivity = ({
   room = 'Anywhere',
   teacher = 'Anonymous',
   classNo,
-  day
+  day,
 } = {}) => ({
   type: 'ADD_ACTIVITY',
   activity: {
@@ -14,17 +14,17 @@ export const addActivity = ({
     room,
     teacher,
     classNo,
-    day
-  }
+    day,
+  },
 });
 
 export const removeActivity = id => ({
   type: 'REMOVE_ACTIVITY',
-  id
+  id,
 });
 
 export const editActivity = (id, updates) => ({
   type: 'EDIT_ACTIVITY',
   id,
-  updates
+  updates,
 });

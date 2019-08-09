@@ -20,19 +20,19 @@ const AddActivityPage = ({ onAddActivity, history }) => (
 
 AddActivityPage.propTypes = {
   onAddActivity: PropTypes.func.isRequired,
-  history: PropTypes.shape(historyPushPropTypeShape)
+  history: PropTypes.shape(historyPushPropTypeShape).isRequired,
 };
 
 const mapDispatchToProps = {
-  onAddActivity: addActivity
+  onAddActivity: addActivity,
 };
 
 export default connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AddActivityPage);
 
-//TODO: Talk with Lukasz about comment:
+// TODO: Talk with Lukasz about comment:
 // const mapDispatchToProps = {
 //   onAddActivity: addActivity`
 // }
@@ -41,4 +41,4 @@ export default connect(
 // and then use as an action `onAddActivity` in component (with props destructured)
 // (or name it as you wish, but similar to original action).
 
-//TODO: add to todos handle absolute imports
+// TODO: add to todos handle absolute imports

@@ -1,7 +1,7 @@
-import { SET_TEXT_FILTER } from '../store/filters/actionTypes';
+import SET_TEXT_FILTER from '../store/filters/actionTypes';
 
 const filtersReducerDefaultState = {
-  text: ''
+  text: '',
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -9,7 +9,7 @@ export default (state = filtersReducerDefaultState, action) => {
     case SET_TEXT_FILTER:
       return {
         ...state,
-        text: action.text
+        text: action.text,
       };
     default:
       return state;

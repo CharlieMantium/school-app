@@ -21,6 +21,7 @@ const EditActivityPage = props => (
         props.onRemoveActivity(props.activity.id);
         props.history.push(ACTIVITY_PLAN_ROUTE);
       }}
+      type="submit"
     >
       Remove
     </button>
@@ -30,27 +31,27 @@ const EditActivityPage = props => (
 EditActivityPage.defaultProps = {
   activity: {
     room: 'anywhere',
-    teacher: 'Anonymous'
-  }
+    teacher: 'Anonymous',
+  },
 };
 
 EditActivityPage.propTypes = {
   activity: PropTypes.shape(activityPropTypeShape),
-  history: PropTypes.shape(historyPushPropTypeShape),
+  history: PropTypes.shape(historyPushPropTypeShape).isRequired,
   onEditActivity: PropTypes.func.isRequired,
-  onRemoveActivity: PropTypes.func.isRequired
+  onRemoveActivity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
-  activity: state.activities.find(activity => activity.id === props.match.params.id)
+  activity: state.activities.find(activity => activity.id === props.match.params.id),
 });
 
 const mapDispatchToProps = {
   onEditActivity: editActivity,
-  onRemoveActivity: removeActivity
+  onRemoveActivity: removeActivity,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(EditActivityPage);

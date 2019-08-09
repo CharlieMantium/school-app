@@ -1,12 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import activityPropTypeShape from '../prop-types/activity';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
-    activity: PropTypes.shape(activityPropTypeShape),
-    onSubmit: PropTypes.func
+    activity: PropTypes.shape({
+      classNo: PropTypes.string,
+      day: PropTypes.string,
+      id: PropTypes.string,
+      name: PropTypes.string,
+      room: PropTypes.string,
+      teacher: PropTypes.string,
+    }),
+    onSubmit: PropTypes.func.isRequired,
   };
+
+  static defaultProps = {
+    activity: undefined,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,11 +26,11 @@ export default class ActivityForm extends React.Component {
       name: props.activity ? props.activity.name : '',
       room: props.activity ? props.activity.room : '',
       teacher: props.activity ? props.activity.teacher : '',
-      error: ''
-      //TODO: when you will use prop-types you will be able to improve this place ;)
-      //TODO: I think, that now (looking at previous comments, maybe you will be able to
-      //improve). If not, because activity will be able to be undefined, in separate PR
-      //you should check lodash package and get method ;)
+      error: '',
+      // TODO: when you will use prop-types you will be able to improve this place ;)
+      // TODO: I think, that now (looking at previous comments, maybe you will be able to
+      // improve). If not, because activity will be able to be undefined, in separate PR
+      // you should check lodash package and get method ;)
     };
   }
 
@@ -43,8 +54,8 @@ export default class ActivityForm extends React.Component {
     const { name, day, classNo, room, teacher } = this.state;
     if (!name || !day || !classNo) {
       this.setState({ error: 'Please provide Activity Name, Day and Class Number!' });
-      //TODO: What if I provide Activity Name and Day, but not Class Number?
-      //For user it will be confusing ;) but this is to handle by separate PR!
+      // TODO: What if I provide Activity Name and Day, but not Class Number?
+      // For user it will be confusing ;) but this is to handle by separate PR!
     } else {
       this.setState({ error: '' });
       this.props.onSubmit({
@@ -52,7 +63,7 @@ export default class ActivityForm extends React.Component {
         day,
         name,
         room,
-        teacher
+        teacher,
       });
     }
   };
@@ -66,7 +77,6 @@ export default class ActivityForm extends React.Component {
           <input
             type="text"
             placeholder="Activity Name"
-            autoFocus
             value={name}
             onChange={this.onNameChange}
           />
@@ -83,7 +93,7 @@ export default class ActivityForm extends React.Component {
             value={classNo}
             onChange={this.onClassNoChange}
           />
-          <select value={day} onChange={this.onDayChange} required={true}>
+          <select value={day} onChange={this.onDayChange} required>
             <option value="">Pick a day</option>
             <option value={1}>Monday</option>
             <option value={2}>Tuesday</option>
@@ -93,7 +103,7 @@ export default class ActivityForm extends React.Component {
             <option value={6}>Saturday</option>
             <option value={7}>Sunday</option>
           </select>
-          <button>Add Activity</button>
+          <button type="submit">Add Activity</button>
         </form>
       </div>
     );

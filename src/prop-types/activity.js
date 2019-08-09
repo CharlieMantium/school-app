@@ -6,5 +6,5 @@ export default {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   room: PropTypes.string,
-  teacher: PropTypes.string
+  teacher: PropTypes.string,
 };
