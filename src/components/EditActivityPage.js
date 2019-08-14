@@ -43,7 +43,7 @@ EditActivityPage.propTypes = {
 };
 
 const mapStateToProps = (state, props) => ({
-  activity: state.activities.find(activity => activity.id === props.match.params.id),
+  activity: state.activities.items.find(activity => activity.id === props.match.params.id),
 });
 
 const mapDispatchToProps = {
