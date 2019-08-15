@@ -57,6 +57,8 @@ export default class ActivityForm extends React.Component {
     e.preventDefault();
     const { name, day, classNo, room, teacher } = this.state;
     if (!name || !day || !classNo || !teacher || !room) {
+      // TODO: and then, this logic can be moved to Input.
+      // You should have as many errors as required fields, separate ones.
       let errorText = '';
       if (!name) {
         errorText = `${errorText}Please provide Name. `;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ActivityForm from './ActivityForm';
 import { editActivity, removeActivity } from '../actions/activities';
+import { getEditedActivity } from '../store/activities/selectors';
 import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
 import activityPropTypeShape from '../prop-types/activity';
 import historyPushPropTypeShape from '../prop-types/history';
@@ -43,7 +44,7 @@ EditActivityPage.propTypes = {
 };
 
 const mapStateToProps = (state, props) => ({
-  activity: state.activities.items.find(activity => activity.id === props.match.params.id),
+  activity: getEditedActivity(state, props),
 });
 
 const mapDispatchToProps = {

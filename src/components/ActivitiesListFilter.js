@@ -1,8 +1,9 @@
 import React from 'react';
+import Input from './Input';
 
 const ActivitiesListFilter = () => (
   <div>
-    <input type="text" />
+    <Input type="text" />
   </div>
 );
 

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ActivitiesListItem from './ActivitiesListItem';
+import { getActivityItems } from '../store/activities/selectors';
 import activityPropTypeShape from '../prop-types/activity';
 
 const ActivitiesList = ({ activities }) => (
@@ -22,7 +23,7 @@ ActivitiesList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  activities: state.activities.items,
+  activities: getActivityItems(state),
 });
 
 export default connect(mapStateToProps)(ActivitiesList);
