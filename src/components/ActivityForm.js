@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Input from './Input';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
@@ -49,13 +50,32 @@ export default class ActivityForm extends React.Component {
 
   onDayChange = e => this.setState({ day: e.target.value });
 
+  onBlur = e =>
+    !e.target.value && this.setState({ error: `Please provide ${e.target.placeholder}` });
+
   onSubmit = e => {
     e.preventDefault();
     const { name, day, classNo, room, teacher } = this.state;
-    if (!name || !day || !classNo) {
-      this.setState({ error: 'Please provide Activity Name, Day and Class Number!' });
-      // TODO: What if I provide Activity Name and Day, but not Class Number?
-      // For user it will be confusing ;) but this is to handle by separate PR!
+    if (!name || !day || !classNo || !teacher || !room) {
+      // TODO: and then, this logic can be moved to Input.
+      // You should have as many errors as required fields, separate ones.
+      let errorText = '';
+      if (!name) {
+        errorText = `${errorText}Please provide Name. `;
+      }
+      if (!day) {
+        errorText = `${errorText}Please provide Day. `;
+      }
+      if (!classNo) {
+        errorText = `${errorText}Please provide Class Number. `;
+      }
+      if (!room) {
+        errorText = `${errorText}Please provide Room. `;
+      }
+      if (!teacher) {
+        errorText = `${errorText}Please provide Teacher. `;
+      }
+      this.setState({ error: errorText });
     } else {
       this.setState({ error: '' });
       this.props.onSubmit({
@@ -74,24 +94,33 @@ export default class ActivityForm extends React.Component {
       <div>
         {error && <p>{error}</p>}
         <form onSubmit={this.onSubmit}>
-          <input
+          <Input
             type="text"
             placeholder="Activity Name"
             value={name}
             onChange={this.onNameChange}
+            onBlur={this.onBlur}
           />
-          <input
+          <Input
             type="text"
             placeholder="Teacher"
             value={teacher}
             onChange={this.onTeacherChange}
+            onBlur={this.onBlur}
           />
-          <input type="text" placeholder="Room" value={room} onChange={this.onRoomChange} />
-          <input
+          <Input
+            type="text"
+            placeholder="Room"
+            value={room}
+            onChange={this.onRoomChange}
+            onBlur={this.onBlur}
+          />
+          <Input
             type="number"
             placeholder="Class Number"
             value={classNo}
             onChange={this.onClassNoChange}
+            onBlur={this.onBlur}
           />
           <select value={day} onChange={this.onDayChange} required>
             <option value="">Pick a day</option>

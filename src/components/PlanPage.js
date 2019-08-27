@@ -1,10 +1,10 @@
 import React from 'react';
 import ActivitiesList from './ActivitiesList';
-import ActivitiesListFilters from './ActivitiesListFilters';
+import ActivitiesListFilter from './ActivitiesListFilter';
 
 const PlanPage = () => (
   <div>
-    <ActivitiesListFilters />
+    <ActivitiesListFilter />
     <ActivitiesList />
   </div>
 );
