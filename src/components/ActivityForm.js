@@ -38,55 +38,46 @@ export default class ActivityForm extends React.Component {
     };
   }
 
-  onNameChange = e => {
-    this.setState({ name: e.target.value });
-    this.setState({ nameError: '' });
-  };
-
-  onTeacherChange = e => {
-    this.setState({ teacher: e.target.value });
-    this.setState({ teacherError: '' });
-  };
-
-  onRoomChange = e => {
-    this.setState({ room: e.target.value });
-    this.setState({ roomError: '' });
-  };
-
-  onClassNoChange = e => {
-    const classNo = e.target.value;
-    if (!classNo || classNo.match(/^[1-9]\d*$/)) {
-      this.setState({ classNo });
+  onInputValueChange = field => e => {
+    const inputValue = e.target.value;
+    if (field === 'classNo' && (!inputValue || inputValue.match(/^[1-9]\d*$/))) {
+      this.setState({ [field]: inputValue });
+    } else {
+      this.setState({ [field]: inputValue });
     }
-    this.setState({ classNoError: '' });
+    this.setState({ [`${field}Error`]: '' });
   };
+  // this 'if' above looks weird but I think there's a way to specify the condition even more to avoid 'else' but I
+  // think it will make the code much more complicated to read. Tell me if I'm right in any of those things xD
 
-  onDayChange = e => this.setState({ day: e.target.value });
-
-  onBlur = field => e =>
-    !e.target.value && this.setState({ [field]: `Please provide ${e.target.placeholder}` });
+  onBlur = field => e => !e.target.value && this.setState({ [field]: 'Required' });
 
   onSubmit = e => {
     e.preventDefault();
-    this.setState({ nameError: '' });
-    this.setState({ classNoError: '' });
-    this.setState({ roomError: '' });
-    this.setState({ teacherError: '' });
+    this.setState({
+      nameError: '',
+      classNoError: '',
+      roomError: '',
+      teacherError: '',
+    });
     const { name, day, classNo, room, teacher } = this.state;
+    const errors = {};
+    const errorMsg = 'Required';
     if (!name || !day || !classNo || !teacher || !room) {
-      // TODO: and then, this logic can be moved to Input.
-      // You should have as many errors as required fields, separate ones.
       if (!name) {
-        this.setState({ nameError: 'Please provide Name.' });
+        errors.nameError = errorMsg;
       }
       if (!classNo) {
-        this.setState({ classNoError: 'Please provide Class Number.' });
+        errors.classNoError = errorMsg;
       }
       if (!room) {
-        this.setState({ roomError: 'Please provide Room.' });
+        errors.roomError = errorMsg;
       }
       if (!teacher) {
-        this.setState({ teacherError: 'Please provide Teacher.' });
+        errors.teacherError = errorMsg;
+      }
+      if (Object.keys(errors).length > 0) {
+        this.setState(errors);
       }
     } else {
       this.props.onSubmit({
@@ -118,7 +109,7 @@ export default class ActivityForm extends React.Component {
             type="text"
             placeholder="Activity Name"
             value={name}
-            onChange={this.onNameChange}
+            onChange={this.onInputValueChange('name')}
             onBlur={this.onBlur('nameError')}
             errorMsg={nameError}
           />
@@ -126,7 +117,7 @@ export default class ActivityForm extends React.Component {
             type="text"
             placeholder="Teacher"
             value={teacher}
-            onChange={this.onTeacherChange}
+            onChange={this.onInputValueChange('teacher')}
             onBlur={this.onBlur('teacherError')}
             errorMsg={teacherError}
           />
@@ -134,7 +125,7 @@ export default class ActivityForm extends React.Component {
             type="text"
             placeholder="Room"
             value={room}
-            onChange={this.onRoomChange}
+            onChange={this.onInputValueChange('room')}
             onBlur={this.onBlur('roomError')}
             errorMsg={roomError}
           />
@@ -142,11 +133,11 @@ export default class ActivityForm extends React.Component {
             type="number"
             placeholder="Class Number"
             value={classNo}
-            onChange={this.onClassNoChange}
+            onChange={this.onInputValueChange('classNo')}
             onBlur={this.onBlur('classNoError')}
             errorMsg={classNoError}
           />
-          <select value={day} onChange={this.onDayChange} required>
+          <select value={day} onChange={this.onInputValueChange('day')} required>
             <option value="">Pick a day</option>
             <option value={1}>Monday</option>
             <option value={2}>Tuesday</option>
