@@ -1,30 +1,31 @@
 const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: './src/app.js',
   mode: 'development',
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         use: ['babel-loader', 'eslint-loader'],
         test: /\.js$/,
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
-    ]
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
   },
-  plugins: [new StyleLintPlugin()],
+  plugins: [new StyleLintPlugin(), new LodashModuleReplacementPlugin()],
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public'),
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
 };

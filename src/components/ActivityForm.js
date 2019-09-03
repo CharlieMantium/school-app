@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
+import { validateNumber, validatePositive, validateInteger } from '../helpers/validators';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
@@ -40,15 +41,24 @@ export default class ActivityForm extends React.Component {
 
   onInputValueChange = field => e => {
     const inputValue = e.target.value;
-    if (field === 'classNo' && (!inputValue || inputValue.match(/^[1-9]\d*$/))) {
-      this.setState({ [field]: inputValue });
+    if (field === 'classNo') {
+      if (
+        validateNumber(inputValue) &&
+        validatePositive(inputValue) &&
+        validateInteger(inputValue)
+      ) {
+        this.setState({
+          [field]: inputValue,
+          [`${field}Error`]: '',
+        });
+      }
     } else {
-      this.setState({ [field]: inputValue });
+      this.setState({
+        [field]: inputValue,
+        [`${field}Error`]: '',
+      });
     }
-    this.setState({ [`${field}Error`]: '' });
   };
-  // this 'if' above looks weird but I think there's a way to specify the condition even more to avoid 'else' but I
-  // think it will make the code much more complicated to read. Tell me if I'm right in any of those things xD
 
   onBlur = field => e => !e.target.value && this.setState({ [field]: 'Required' });
 
@@ -130,7 +140,7 @@ export default class ActivityForm extends React.Component {
             errorMsg={roomError}
           />
           <Input
-            type="number"
+            type="text"
             placeholder="Class Number"
             value={classNo}
             onChange={this.onInputValueChange('classNo')}
