@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import Input from './Input';
-import { validateNumber, validatePositive, validateInteger } from '../helpers/validators';
+import validatePositive from '../helpers/validators';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
@@ -42,11 +43,7 @@ export default class ActivityForm extends React.Component {
   onInputValueChange = field => e => {
     const inputValue = e.target.value;
     if (field === 'classNo') {
-      if (
-        validateNumber(inputValue) &&
-        validatePositive(inputValue) &&
-        validateInteger(inputValue)
-      ) {
+      if (validatePositive(inputValue)) {
         this.setState({
           [field]: inputValue,
           [`${field}Error`]: '',
@@ -86,7 +83,7 @@ export default class ActivityForm extends React.Component {
       if (!teacher) {
         errors.teacherError = errorMsg;
       }
-      if (Object.keys(errors).length > 0) {
+      if (!_.isEmpty(errors)) {
         this.setState(errors);
       }
     } else {
@@ -140,7 +137,7 @@ export default class ActivityForm extends React.Component {
             errorMsg={roomError}
           />
           <Input
-            type="text"
+            type="number"
             placeholder="Class Number"
             value={classNo}
             onChange={this.onInputValueChange('classNo')}
