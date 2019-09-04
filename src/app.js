@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './router/AppRouter';
 import configureStore from './store/configureStore';
-import { addActivity } from './actions/activities';
+import { addActivity } from './store/activities/actions';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
