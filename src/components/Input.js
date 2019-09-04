@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ type, placeholder, value, onChange, onBlur }) => (
+const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
   <div>
     <input
       type={type}
@@ -10,6 +10,7 @@ const Input = ({ type, placeholder, value, onChange, onBlur }) => (
       onChange={onChange}
       onBlur={onBlur}
     />
+    {errorMsg && <p>{errorMsg}</p>}
   </div>
 );
 
@@ -19,6 +20,7 @@ Input.defaultProps = {
   value: '',
   onChange: () => {},
   onBlur: () => {},
+  errorMsg: '',
 };
 
 Input.propTypes = {
@@ -27,6 +29,7 @@ Input.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  errorMsg: PropTypes.string,
 };
 
 export default Input;
