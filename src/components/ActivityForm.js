@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import Input from './Input';
-import validatePositive from '../helpers/validators';
+import { validatePositive, validateDot } from '../helpers/validators';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
@@ -43,7 +43,7 @@ export default class ActivityForm extends React.Component {
   onInputValueChange = field => e => {
     const inputValue = e.target.value;
     if (field === 'classNo') {
-      if (validatePositive(inputValue)) {
+      if (validatePositive(inputValue) && validateDot(inputValue)) {
         this.setState({
           [field]: inputValue,
           [`${field}Error`]: '',
@@ -138,6 +138,7 @@ export default class ActivityForm extends React.Component {
           />
           <Input
             type="number"
+            step="1"
             placeholder="Class Number"
             value={classNo}
             onChange={this.onInputValueChange('classNo')}
