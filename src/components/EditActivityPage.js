@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ActivityForm from './ActivityForm';
-import { editActivity, removeActivity } from '../actions/activities';
+import { editActivity, removeActivity } from '../store/activities/actions';
 import { getEditedActivity } from '../store/activities/selectors';
 import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
 import activityPropTypeShape from '../prop-types/activity';

@@ -1,4 +1,4 @@
-import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY } from '../store/activities/actionTypes';
+import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY } from './actionTypes';
 
 const activitiesReducerDefaultState = {
   activities: {

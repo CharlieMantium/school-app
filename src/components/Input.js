@@ -33,8 +33,3 @@ Input.propTypes = {
 };
 
 export default Input;
-
-// TODO: assumption was a little different.
-// This input should trigger onChange event passed here as a prop.
-// Error message also should be here and should be rendered when Input will get error from his parent,
-// or/and on his own blur. So -> onBlur event should be handle here.
