@@ -18,25 +18,27 @@ export default class ActivityForm extends React.Component {
   };
 
   static defaultProps = {
-    activity: undefined,
+    activity: {
+      classNo: '',
+      day: '',
+      name: '',
+      room: '',
+      teacher: '',
+    },
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      classNo: props.activity ? props.activity.classNo : '',
-      day: props.activity ? props.activity.day : '',
-      name: props.activity ? props.activity.name : '',
-      room: props.activity ? props.activity.room : '',
-      teacher: props.activity ? props.activity.teacher : '',
+      classNo: props.activity.classNo,
+      day: props.activity.day,
+      name: props.activity.name,
+      room: props.activity.room,
+      teacher: props.activity.teacher,
       classNoError: '',
       nameError: '',
       roomError: '',
       teacherError: '',
-      // TODO: when you will use prop-types you will be able to improve this place ;)
-      // TODO: I think, that now (looking at previous comments, maybe you will be able to
-      // improve). If not, because activity will be able to be undefined, in separate PR
-      // you should check lodash package and get method ;)
     };
   }
 
