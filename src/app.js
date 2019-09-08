@@ -13,7 +13,7 @@ const store = configureStore();
 store.dispatch(
   addActivity({
     name: 'matma',
-    day: '2',
+    day: 'tuesday',
     classNo: '3',
     room: 'gym',
   }),
@@ -21,7 +21,7 @@ store.dispatch(
 store.dispatch(
   addActivity({
     name: 'polski',
-    day: '4',
+    day: 'monday',
     classNo: '1',
     teacher: 'Malski',
   }),

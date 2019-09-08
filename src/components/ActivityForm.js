@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import Input from './Input';
 import { validatePositive, validateDot } from '../helpers/validators';
+import daysOfTheWeek from '../constants/daysOfTheWeek';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
@@ -149,13 +150,11 @@ export default class ActivityForm extends React.Component {
           />
           <select value={day} onChange={this.onInputValueChange('day')} required>
             <option value="">Pick a day</option>
-            <option value={1}>Monday</option>
-            <option value={2}>Tuesday</option>
-            <option value={3}>Wednesday</option>
-            <option value={4}>Thursday</option>
-            <option value={5}>Friday</option>
-            <option value={6}>Saturday</option>
-            <option value={7}>Sunday</option>
+            {daysOfTheWeek.map(weekDay => (
+              <option value={weekDay} key={weekDay}>
+                {`${weekDay.charAt(0).toUpperCase()}${weekDay.slice(1)}`}
+              </option>
+            ))}
           </select>
           <button type="submit">Add Activity</button>
         </form>
