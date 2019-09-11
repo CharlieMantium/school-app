@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+
 import Input from './Input';
 import { validatePositive, validateDot } from '../helpers/validators';
-import daysOfTheWeek from '../constants/daysOfTheWeek';
+import { daysOfTheWeek } from '../constants/dates';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
@@ -156,6 +157,15 @@ export default class ActivityForm extends React.Component {
               </option>
             ))}
           </select>
+          {/* TODO: text-transform: capitalize; would be better. It's a micro performance improvement,
+          but you can unblock your thread (js is single threaded lang) and put this operation to css,
+          so another engine will take care about this operations.
+
+          You should start to think about separate Dropdown component. It's a hard thing to do,
+          using native html, it's harder to style options, etc. You could build it by yourself,
+          but also you can use on of the most popular react packages (atm) - rc-dropdown or downshift.
+          It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
+          But by separate pr only for dropdown. */}
           <button type="submit">Add Activity</button>
         </form>
       </div>

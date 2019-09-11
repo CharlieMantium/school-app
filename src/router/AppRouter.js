@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import AddActivityPage from '../components/AddActivityPage';
 import EditActivityPage from '../components/EditActivityPage';
 import Header from '../components/Header';

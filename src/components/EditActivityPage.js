@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import ActivityForm from './ActivityForm';
 import { editActivity, removeActivity } from '../store/activities/actions';
 import { getEditedActivity } from '../store/activities/selectors';
@@ -29,18 +30,18 @@ const EditActivityPage = props => (
   </div>
 );
 
-EditActivityPage.defaultProps = {
-  activity: {
-    room: 'anywhere',
-    teacher: 'Anonymous',
-  },
-};
-
 EditActivityPage.propTypes = {
   activity: PropTypes.shape(activityPropTypeShape),
   history: PropTypes.shape(historyPushPropTypeShape).isRequired,
   onEditActivity: PropTypes.func.isRequired,
   onRemoveActivity: PropTypes.func.isRequired,
+};
+
+EditActivityPage.defaultProps = {
+  activity: {
+    room: 'anywhere',
+    teacher: 'Anonymous',
+  },
 };
 
 const mapStateToProps = (state, props) => ({

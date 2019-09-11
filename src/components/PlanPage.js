@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ActivitiesListFilter from './ActivitiesListFilter';
 import Week from './Week';
 

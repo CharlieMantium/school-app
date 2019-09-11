@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+
 import activitiesReducer from './activities/reducer';
 
 export default () => {
