@@ -1,8 +1,8 @@
-export const monday = 'monday';
-export const tuesday = 'tuesday';
-export const wednesday = 'wednesday';
-export const thursday = 'thursday';
-export const friday = 'friday';
-export const saturday = 'saturday';
-export const sunday = 'sunday';
-export const daysOfTheWeek = [monday, tuesday, wednesday, thursday, friday, saturday, sunday];
+export const MONDAY = 'monday';
+export const TUESDAY = 'tuesday';
+export const WEDNESDAY = 'wednesday';
+export const THURSDAY = 'thursday';
+export const FRIDAY = 'friday';
+export const SATURDAY = 'saturday';
+export const SUNDAY = 'sunday';
+export const daysOfTheWeek = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY];

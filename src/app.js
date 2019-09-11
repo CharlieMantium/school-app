@@ -6,7 +6,7 @@ import 'normalize.css/normalize.css';
 import AppRouter from './router/AppRouter';
 import configureStore from './store/configureStore';
 import { addActivity } from './store/activities/actions';
-import { monday, tuesday } from './constants/dates';
+import { MONDAY, TUESDAY } from './constants/dates';
 import './styles/styles.scss';
 
 const store = configureStore();
@@ -15,7 +15,7 @@ const store = configureStore();
 store.dispatch(
   addActivity({
     name: 'matma',
-    day: tuesday,
+    day: TUESDAY,
     classNo: '3',
     room: 'gym',
   }),
@@ -23,7 +23,7 @@ store.dispatch(
 store.dispatch(
   addActivity({
     name: 'polski',
-    day: monday,
+    day: MONDAY,
     classNo: '1',
     teacher: 'Malski',
   }),

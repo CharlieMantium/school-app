@@ -18,7 +18,7 @@ Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   errorMsg: PropTypes.string,
 };
@@ -27,8 +27,7 @@ Input.defaultProps = {
   type: 'text',
   placeholder: '',
   value: '',
-  onChange: () => {},
-  onBlur: () => {},
+  onBlur: null,
   errorMsg: '',
 };
 

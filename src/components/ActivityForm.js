@@ -115,7 +115,7 @@ export default class ActivityForm extends React.Component {
     } = this.state;
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form className="form" onSubmit={this.onSubmit}>
           <Input
             type="text"
             placeholder="Activity Name"
@@ -149,19 +149,22 @@ export default class ActivityForm extends React.Component {
             onBlur={this.onBlur('classNoError')}
             errorMsg={classNoError}
           />
-          <select value={day} onChange={this.onInputValueChange('day')} required>
-            <option value="">Pick a day</option>
+          <select
+            className="form__select"
+            value={day}
+            onChange={this.onInputValueChange('day')}
+            required
+          >
+            <option className="form__selectOption" value="">
+              Pick a day
+            </option>
             {daysOfTheWeek.map(weekDay => (
-              <option value={weekDay} key={weekDay}>
-                {`${weekDay.charAt(0).toUpperCase()}${weekDay.slice(1)}`}
+              <option className="form__selectOption" value={weekDay} key={weekDay}>
+                {weekDay}
               </option>
             ))}
           </select>
-          {/* TODO: text-transform: capitalize; would be better. It's a micro performance improvement,
-          but you can unblock your thread (js is single threaded lang) and put this operation to css,
-          so another engine will take care about this operations.
-
-          You should start to think about separate Dropdown component. It's a hard thing to do,
+          {/* TODO: You should start to think about separate Dropdown component. It's a hard thing to do,
           using native html, it's harder to style options, etc. You could build it by yourself,
           but also you can use on of the most popular react packages (atm) - rc-dropdown or downshift.
           It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
