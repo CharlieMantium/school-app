@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { EDIT_ACTIVITY_ROUTE } from '../constants/routes';
 
-const ActivitiesListItem = ({ name, day, classNo, teacher, id, room }) => (
+import { EDIT_ACTIVITY_ROUTE } from '../constants/routes';
+import activityPropTypeShape from '../prop-types/activity';
+
+const ActivitiesListItem = ({ activity: { name, day, classNo, teacher, id, room } }) => (
   <div>
     <Link to={EDIT_ACTIVITY_ROUTE(id)}>
       <h3>{name}</h3>
@@ -13,12 +15,11 @@ const ActivitiesListItem = ({ name, day, classNo, teacher, id, room }) => (
 );
 
 ActivitiesListItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  day: PropTypes.string.isRequired,
-  classNo: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  teacher: PropTypes.string.isRequired,
-  room: PropTypes.string.isRequired,
+  activity: PropTypes.shape(activityPropTypeShape),
+};
+
+ActivitiesListItem.defaultProps = {
+  activity: {},
 };
 
 export default ActivitiesListItem;

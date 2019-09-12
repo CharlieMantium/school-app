@@ -1,3 +1,7 @@
+export const getActivitiesForDay = (activities, day) => {
+  return activities.filter(activity => activity.day === day);
+};
+
 export const getActivityItems = state => {
   return state.activities.items;
 };

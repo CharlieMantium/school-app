@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+
 import Input from './Input';
 import { validatePositive, validateDot } from '../helpers/validators';
+import { daysOfTheWeek } from '../constants/dates';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
@@ -113,7 +115,7 @@ export default class ActivityForm extends React.Component {
     } = this.state;
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form className="form" onSubmit={this.onSubmit}>
           <Input
             type="text"
             placeholder="Activity Name"
@@ -147,16 +149,26 @@ export default class ActivityForm extends React.Component {
             onBlur={this.onBlur('classNoError')}
             errorMsg={classNoError}
           />
-          <select value={day} onChange={this.onInputValueChange('day')} required>
-            <option value="">Pick a day</option>
-            <option value={1}>Monday</option>
-            <option value={2}>Tuesday</option>
-            <option value={3}>Wednesday</option>
-            <option value={4}>Thursday</option>
-            <option value={5}>Friday</option>
-            <option value={6}>Saturday</option>
-            <option value={7}>Sunday</option>
+          <select
+            className="form__select"
+            value={day}
+            onChange={this.onInputValueChange('day')}
+            required
+          >
+            <option className="form__selectOption" value="">
+              Pick a day
+            </option>
+            {daysOfTheWeek.map(weekDay => (
+              <option className="form__selectOption" value={weekDay} key={weekDay}>
+                {weekDay}
+              </option>
+            ))}
           </select>
+          {/* TODO: You should start to think about separate Dropdown component. It's a hard thing to do,
+          using native html, it's harder to style options, etc. You could build it by yourself,
+          but also you can use on of the most popular react packages (atm) - rc-dropdown or downshift.
+          It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
+          But by separate pr only for dropdown. */}
           <button type="submit">Add Activity</button>
         </form>
       </div>

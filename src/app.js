@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import 'normalize.css/normalize.css';
+
 import AppRouter from './router/AppRouter';
 import configureStore from './store/configureStore';
 import { addActivity } from './store/activities/actions';
-import 'normalize.css/normalize.css';
+import { MONDAY, TUESDAY } from './constants/dates';
 import './styles/styles.scss';
 
 const store = configureStore();
@@ -13,7 +15,7 @@ const store = configureStore();
 store.dispatch(
   addActivity({
     name: 'matma',
-    day: '2',
+    day: TUESDAY,
     classNo: '3',
     room: 'gym',
   }),
@@ -21,7 +23,7 @@ store.dispatch(
 store.dispatch(
   addActivity({
     name: 'polski',
-    day: '4',
+    day: MONDAY,
     classNo: '1',
     teacher: 'Malski',
   }),

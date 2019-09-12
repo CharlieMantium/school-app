@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import AcivityForm from './ActivityForm';
 import { addActivity } from '../store/activities/actions';
 import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';

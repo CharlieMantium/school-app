@@ -1,11 +1,12 @@
 import React from 'react';
-import ActivitiesList from './ActivitiesList';
+
 import ActivitiesListFilter from './ActivitiesListFilter';
+import Week from './Week';
 
 const PlanPage = () => (
   <div>
     <ActivitiesListFilter />
-    <ActivitiesList />
+    <Week />
   </div>
 );
 

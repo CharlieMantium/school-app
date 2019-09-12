@@ -14,22 +14,21 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
   </div>
 );
 
-Input.defaultProps = {
-  type: 'text',
-  placeholder: '',
-  value: '',
-  onChange: () => {},
-  onBlur: () => {},
-  errorMsg: '',
-};
-
 Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   errorMsg: PropTypes.string,
+};
+
+Input.defaultProps = {
+  type: 'text',
+  placeholder: '',
+  value: '',
+  onBlur: null,
+  errorMsg: '',
 };
 
 export default Input;
