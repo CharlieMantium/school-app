@@ -1,2 +1,3 @@
-// eslint-disable-next-line no-console
+/* eslint-disable no-console */
 console.log('aaaaaaa');
+console.log('cos innego');
