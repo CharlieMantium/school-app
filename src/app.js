@@ -18,6 +18,7 @@ store.dispatch(
     day: TUESDAY,
     classNo: '3',
     room: 'gym',
+    teacher: 'Indiana Jones',
   }),
 );
 store.dispatch(
@@ -25,6 +26,7 @@ store.dispatch(
     name: 'polski',
     day: MONDAY,
     classNo: '1',
+    room: 'hell',
     teacher: 'Malski',
   }),
 );

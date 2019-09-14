@@ -31,17 +31,10 @@ const EditActivityPage = props => (
 );
 
 EditActivityPage.propTypes = {
-  activity: PropTypes.shape(activityPropTypeShape),
+  activity: PropTypes.shape(activityPropTypeShape).isRequired,
   history: PropTypes.shape(historyPushPropTypeShape).isRequired,
   onEditActivity: PropTypes.func.isRequired,
   onRemoveActivity: PropTypes.func.isRequired,
-};
-
-EditActivityPage.defaultProps = {
-  activity: {
-    room: 'anywhere',
-    teacher: 'Anonymous',
-  },
 };
 
 const mapStateToProps = (state, props) => ({

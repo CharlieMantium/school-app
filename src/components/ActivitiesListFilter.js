@@ -4,7 +4,7 @@ import Input from './Input';
 
 const ActivitiesListFilter = () => (
   <div>
-    <Input type="text" />
+    <Input type="text" onChange={() => {}} />
   </div>
 );
 
