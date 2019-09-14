@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ActivitiesListFilter correctly 1`] = `
+<div>
+  <Input
+    errorMsg=""
+    onBlur={null}
+    onChange={[Function]}
+    placeholder=""
+    type="text"
+    value=""
+  />
+</div>
+`;

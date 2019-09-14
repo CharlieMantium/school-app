@@ -7,7 +7,7 @@ import Day from './Day';
 import { daysOfTheWeek } from '../constants/dates';
 import { getActivityItems, getActivitiesForDay } from '../store/activities/selectors';
 
-const Week = ({ activities }) => (
+export const Week = ({ activities }) => (
   <div>
     {daysOfTheWeek.map(day => (
       <Day weekDay={day} activities={getActivitiesForDay(activities, day)} key={day} />

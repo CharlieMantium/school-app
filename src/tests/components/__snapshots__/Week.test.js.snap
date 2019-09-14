@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Week correctly 1`] = `
+<div>
+  <Day
+    activities={
+      Array [
+        Object {
+          "classNo": "1",
+          "day": "monday",
+          "id": "2",
+          "name": "polski",
+          "room": "hell",
+          "teacher": "Malski",
+        },
+        Object {
+          "classNo": "2",
+          "day": "monday",
+          "id": "3",
+          "name": "polski",
+          "room": "103",
+          "teacher": "Malski",
+        },
+      ]
+    }
+    key="monday"
+    weekDay="monday"
+  />
+  <Day
+    activities={
+      Array [
+        Object {
+          "classNo": "3",
+          "day": "tuesday",
+          "id": "1",
+          "name": "matma",
+          "room": "gym",
+          "teacher": "Indiana Jones",
+        },
+      ]
+    }
+    key="tuesday"
+    weekDay="tuesday"
+  />
+  <Day
+    activities={
+      Array [
+        Object {
+          "classNo": "7",
+          "day": "wednesday",
+          "id": "4",
+          "name": "w-f",
+          "room": "gym",
+          "teacher": "RAMBO",
+        },
+      ]
+    }
+    key="wednesday"
+    weekDay="wednesday"
+  />
+  <Day
+    activities={Array []}
+    key="thursday"
+    weekDay="thursday"
+  />
+  <Day
+    activities={
+      Array [
+        Object {
+          "classNo": "5",
+          "day": "friday",
+          "id": "5",
+          "name": "WOS",
+          "room": "nowhere",
+          "teacher": "Chopin",
+        },
+      ]
+    }
+    key="friday"
+    weekDay="friday"
+  />
+  <Day
+    activities={Array []}
+    key="saturday"
+    weekDay="saturday"
+  />
+  <Day
+    activities={Array []}
+    key="sunday"
+    weekDay="sunday"
+  />
+</div>
+`;

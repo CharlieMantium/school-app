@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Day with no activities 1`] = `
+<div>
+  <p>
+    MONDAY
+  </p>
+</div>
+`;
+
+exports[`should render Day with testState 1`] = `
+<div>
+  <p>
+    MONDAY
+  </p>
+  <ActivitiesListItem
+    activity={
+      Object {
+        "classNo": "1",
+        "day": "monday",
+        "id": "2",
+        "name": "polski",
+        "room": "hell",
+        "teacher": "Malski",
+      }
+    }
+    key="2"
+  />
+  <ActivitiesListItem
+    activity={
+      Object {
+        "classNo": "2",
+        "day": "monday",
+        "id": "3",
+        "name": "polski",
+        "room": "103",
+        "teacher": "Malski",
+      }
+    }
+    key="3"
+  />
+</div>
+`;

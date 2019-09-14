@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Input correctly with test data 1`] = `
+<div>
+  <input
+    onBlur={[Function]}
+    onChange={[Function]}
+    placeholder="Put your text here."
+    type="text"
+    value="this input value"
+  />
+  <p>
+    error text
+  </p>
+</div>
+`;
+
+exports[`should render Input correctly without non-required data 1`] = `
+<div>
+  <input
+    onBlur={null}
+    onChange={[Function]}
+    placeholder=""
+    type="text"
+    value=""
+  />
+</div>
+`;

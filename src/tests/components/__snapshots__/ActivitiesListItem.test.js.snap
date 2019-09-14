@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ActivitiesListItem correctly 1`] = `
+<div>
+  <Link
+    to="/edit/4"
+  >
+    <h3>
+      w-f
+    </h3>
+  </Link>
+  <p>
+    On wednesday on 7 class with RAMBO in room: gym
+  </p>
+</div>
+`;

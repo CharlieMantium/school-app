@@ -31,10 +31,14 @@ const EditActivityPage = props => (
 );
 
 EditActivityPage.propTypes = {
-  activity: PropTypes.shape(activityPropTypeShape).isRequired,
+  activity: PropTypes.shape(activityPropTypeShape),
   history: PropTypes.shape(historyPushPropTypeShape).isRequired,
   onEditActivity: PropTypes.func.isRequired,
   onRemoveActivity: PropTypes.func.isRequired,
+};
+
+EditActivityPage.defaultProps = {
+  activity: {},
 };
 
 const mapStateToProps = (state, props) => ({
