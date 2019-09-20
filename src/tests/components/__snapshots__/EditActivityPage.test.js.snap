@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditActivityPage should render EditActivityPage correctly 1`] = `
+<div>
+  <ActivityForm
+    activity={
+      Object {
+        "classNo": "1",
+        "day": "monday",
+        "id": "2",
+        "name": "polski",
+        "room": "hell",
+        "teacher": "Malski",
+      }
+    }
+    onSubmit={[Function]}
+  />
+  <button
+    onClick={[Function]}
+    type="submit"
+  >
+    Remove
+  </button>
+</div>
+`;

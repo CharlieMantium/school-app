@@ -7,7 +7,7 @@ import { addActivity } from '../store/activities/actions';
 import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
 import historyPushPropTypeShape from '../prop-types/history';
 
-const AddActivityPage = ({ onAddActivity, history }) => (
+export const AddActivityPage = ({ onAddActivity, history }) => (
   <div>
     <h1>Add Activity</h1>
     <AcivityForm

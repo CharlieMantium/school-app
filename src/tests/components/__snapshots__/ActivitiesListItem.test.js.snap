@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render ActivitiesListItem correctly 1`] = `
+exports[`ActivitiesListItem should render ActivitiesListItem correctly 1`] = `
 <div>
   <Link
     to="/edit/4"

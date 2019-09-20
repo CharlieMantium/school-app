@@ -3,7 +3,9 @@ import { shallow } from 'enzyme';
 
 import ActivitiesListFilter from '../../components/ActivitiesListFilter';
 
-test('should render ActivitiesListFilter correctly', () => {
-  const wrapper = shallow(<ActivitiesListFilter />);
-  expect(wrapper).toMatchSnapshot();
+describe('ActivitiesListFilter', () => {
+  it('should render ActivitiesListFilter correctly', () => {
+    const wrapper = shallow(<ActivitiesListFilter />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render Week correctly 1`] = `
+exports[`Week should render Week correctly 1`] = `
 <div>
   <Day
     activities={

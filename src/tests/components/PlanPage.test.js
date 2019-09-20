@@ -3,7 +3,9 @@ import { shallow } from 'enzyme';
 
 import PlanPage from '../../components/PlanPage';
 
-test('should render PlanPage correctly', () => {
-  const wrapper = shallow(<PlanPage />);
-  expect(wrapper).toMatchSnapshot();
+describe('PlanPage', () => {
+  it('should render PlanPage correctly', () => {
+    const wrapper = shallow(<PlanPage />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

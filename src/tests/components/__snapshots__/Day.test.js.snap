@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render Day with no activities 1`] = `
+exports[`Day should render Day with no activities 1`] = `
 <div>
   <p>
     MONDAY
@@ -8,7 +8,7 @@ exports[`should render Day with no activities 1`] = `
 </div>
 `;
 
-exports[`should render Day with testState 1`] = `
+exports[`Day should render Day with testState 1`] = `
 <div>
   <p>
     MONDAY

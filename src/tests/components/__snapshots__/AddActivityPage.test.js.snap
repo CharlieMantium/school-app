@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddActivityPage should render AddActivityPage correctly 1`] = `
+<div>
+  <h1>
+    Add Activity
+  </h1>
+  <ActivityForm
+    activity={
+      Object {
+        "classNo": "",
+        "day": "",
+        "name": "",
+        "room": "",
+        "teacher": "",
+      }
+    }
+    onSubmit={[Function]}
+  />
+</div>
+`;
