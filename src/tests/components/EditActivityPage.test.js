@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
-import { EditActivityPage } from '../../components/EditActivityPage';
+import { EditActivityPageUnwrapped } from '../../components/EditActivityPage';
 import testState from '../fixtures/state';
 
 let onEditActivitySpy;
@@ -15,7 +15,7 @@ beforeEach(() => {
   onRemoveActivitySpy = jest.fn();
   historySpy = { push: jest.fn() };
   wrapper = shallow(
-    <EditActivityPage
+    <EditActivityPageUnwrapped
       activity={testState.activities.items[1]}
       onEditActivity={onEditActivitySpy}
       onRemoveActivity={onRemoveActivitySpy}
@@ -26,7 +26,8 @@ beforeEach(() => {
 
 describe('EditActivityPage', () => {
   it('should render EditActivityPage correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('[data-test="form"]').exists()).toBe(true);
+    expect(wrapper.find('[data-test="button-remove"]').exists()).toBe(true);
   });
 
   it('should handle onSubmit', () => {

@@ -2,104 +2,72 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ActivityForm from '../../components/ActivityForm';
+import { daysOfTheWeek } from '../../constants/dates';
+import testRenderErrorOnBlur from '../../helpers/tests';
+import inputTypesArray from '../fixtures/inputTypesArray';
 import testState from '../fixtures/state';
-import Input from '../../components/Input';
-import shouldRenderErrorOnBlur from '../fixtures/shouldRenderErrorOnBlur';
 
 describe('ActivityForm', () => {
   it('should render ActivityForm correctly', () => {
     const wrapper = shallow(<ActivityForm onSubmit={() => {}} />);
-    expect(wrapper).toMatchSnapshot();
+    const dataTestStrings = [
+      '[data-test="select-day"]',
+      '[data-test="select-option-default"]',
+      '[data-test="button-submit"]',
+      ...daysOfTheWeek.map(day => `[data-test="select-option-${day}"]`),
+    ];
+    inputTypesArray.forEach(inputType => {
+      expect(wrapper.find(`[data-test="input-component-${inputType}"]`).exists()).toBe(true);
+      expect(wrapper.find(`[data-test="input-component-${inputType}"]`).prop('value')).toBe('');
+    });
+    dataTestStrings.forEach(dataTestString => {
+      expect(wrapper.find(dataTestString).exists()).toBe(true);
+    });
   });
 
   it('should render ActivityForm with testState', () => {
     const wrapper = shallow(
-      <ActivityForm on onSubmit={() => {}} activity={testState.activities.items[1]} />,
+      <ActivityForm onSubmit={() => {}} activity={testState.activities.items[1]} />,
     );
-    expect(wrapper).toMatchSnapshot();
+    inputTypesArray.forEach(inputType => {
+      expect(wrapper.find(`[data-test="input-component-${inputType}"]`).prop('value')).toBe(
+        testState.activities.items[1][`${inputType}`],
+      );
+    });
+    expect(wrapper.find('[data-test="select-day"]').prop('value')).toBe(
+      testState.activities.items[1].day,
+    );
   });
 
   it('should set errorMsg in inputs after invalid form submition', () => {
     const wrapper = shallow(<ActivityForm onSubmit={() => {}} />);
-    expect(wrapper).toMatchSnapshot();
-    wrapper.find('form').simulate('submit', {
+    inputTypesArray.forEach(inputType => {
+      expect(wrapper.find(`[data-test="input-component-${inputType}"]`).prop('errorMsg')).toBe('');
+    });
+    wrapper.find('[data-test="form"]').simulate('submit', {
       preventDefault: () => {},
     });
-    expect(wrapper.state('classNoError').length).toBeGreaterThan(0);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should set name on input change', () => {
-    const value = 'New name';
-    const wrapper = shallow(<ActivityForm on onSubmit={() => {}} />);
-    wrapper
-      .find(Input)
-      .at(0)
-      .simulate('change', {
-        target: { value },
-      });
-    expect(wrapper.state('name')).toBe(value);
-  });
-
-  it('should set teacher on input change', () => {
-    const value = 'New teacher';
-    const wrapper = shallow(<ActivityForm on onSubmit={() => {}} />);
-    wrapper
-      .find(Input)
-      .at(1)
-      .simulate('change', {
-        target: { value },
-      });
-    expect(wrapper.state('teacher')).toBe(value);
-  });
-
-  it('should set room on input change', () => {
-    const value = 'New room';
-    const wrapper = shallow(<ActivityForm on onSubmit={() => {}} />);
-    wrapper
-      .find(Input)
-      .at(2)
-      .simulate('change', {
-        target: { value },
-      });
-    expect(wrapper.state('room')).toBe(value);
-  });
-
-  it('should set classNo on input change', () => {
-    const value = '123';
-    const wrapper = shallow(<ActivityForm on onSubmit={() => {}} />);
-    wrapper
-      .find(Input)
-      .at(3)
-      .simulate('change', {
-        target: { value },
-      });
-    expect(wrapper.state('classNo')).toBe(value);
-  });
-
-  it('should set day on input change', () => {
-    const value = 'new day';
-    const wrapper = shallow(<ActivityForm on onSubmit={() => {}} />);
-    wrapper.find('select').simulate('change', {
-      target: { value },
+    inputTypesArray.forEach(inputType => {
+      expect(wrapper.find(`[data-test="input-component-${inputType}"]`).prop('errorMsg')).toBe(
+        'Required',
+      );
     });
-    expect(wrapper.state('day')).toBe(value);
   });
 
   it('should render error on blur of name input', () => {
-    shouldRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 0);
+    testRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 0);
   });
 
   it('should render error on blur of teacher input', () => {
-    shouldRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 1);
+    testRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 1);
   });
 
   it('should render error on blur of room input', () => {
-    shouldRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 2);
+    testRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 2);
   });
 
   it('should render error on blur of classNo input', () => {
-    shouldRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 3);
+    testRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 3);
   });
 
   it('should call onSubmit prop for valid form submition', () => {

@@ -7,7 +7,7 @@ import { addActivity } from '../store/activities/actions';
 import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
 import historyPushPropTypeShape from '../prop-types/history';
 
-export const AddActivityPage = ({ onAddActivity, history }) => (
+const AddActivityPage = ({ onAddActivity, history }) => (
   <div>
     <h1>Add Activity</h1>
     <AcivityForm
@@ -28,6 +28,7 @@ const mapDispatchToProps = {
   onAddActivity: addActivity,
 };
 
+export { AddActivityPage as AddActivityPageUnwrapped };
 export default connect(
   null,
   mapDispatchToProps,

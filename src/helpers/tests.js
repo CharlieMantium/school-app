@@ -6,10 +6,10 @@ export default (testedInput, inputIndex) => {
     .find('input')
     .at(inputIndex)
     .simulate('click');
-  expect(wrapper).toMatchSnapshot();
+  expect(wrapper.find('[data-test="error-message"]').exists()).toBe(false);
   wrapper
     .find('input')
     .at(inputIndex)
     .simulate('blur');
-  expect(wrapper).toMatchSnapshot();
+  expect(wrapper.find('[data-test="error-message"]').exists()).toBe(true);
 };

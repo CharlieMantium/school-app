@@ -15,7 +15,8 @@ describe('Day', () => {
         activities={getActivitiesForDay(testState.activities.items, testDay)}
       />,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay.toUpperCase());
+    expect(wrapper.find('[data-test="activities-list-item"]').length).toBe(2);
   });
 
   it('should render Day with no activities', () => {
@@ -23,6 +24,7 @@ describe('Day', () => {
     const wrapper = shallow(
       <Day weekDay={testDay} activities={getActivitiesForDay([], testDay)} />,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay.toUpperCase());
+    expect(wrapper.find('[data-test="activities-list-item"]').exists()).toBe(false);
   });
 });

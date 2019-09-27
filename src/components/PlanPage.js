@@ -5,8 +5,8 @@ import Week from './Week';
 
 const PlanPage = () => (
   <div>
-    <ActivitiesListFilter />
-    <Week />
+    <ActivitiesListFilter data-test="filter-component" />
+    <Week data-test="week-component" />
   </div>
 );
 

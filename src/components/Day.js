@@ -6,9 +6,9 @@ import ActivitiesListItem from './ActivitiesListItem';
 
 const Day = ({ activities, weekDay }) => (
   <div>
-    <p>{weekDay.toUpperCase()}</p>
+    <p data-test="day-name">{weekDay.toUpperCase()}</p>
     {activities.map(activity => (
-      <ActivitiesListItem activity={activity} key={activity.id} />
+      <ActivitiesListItem activity={activity} key={activity.id} data-test="activities-list-item" />
     ))}
   </div>
 );

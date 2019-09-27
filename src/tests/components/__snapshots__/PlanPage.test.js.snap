@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`PlanPage should render PlanPage correctly 1`] = `
-<div>
-  <ActivitiesListFilter />
-  <Connect(Week) />
-</div>
-`;
