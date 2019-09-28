@@ -28,6 +28,7 @@ const mapDispatchToProps = {
   onAddActivity: addActivity,
 };
 
+export { AddActivityPage as AddActivityPageUnwrapped };
 export default connect(
   null,
   mapDispatchToProps,

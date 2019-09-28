@@ -7,10 +7,10 @@ import activityPropTypeShape from '../prop-types/activity';
 
 const ActivitiesListItem = ({ activity: { name, day, classNo, teacher, id, room } }) => (
   <div>
-    <Link to={EDIT_ACTIVITY_ROUTE(id)}>
-      <h3>{name}</h3>
+    <Link to={EDIT_ACTIVITY_ROUTE(id)} data-test="react-link">
+      <h3 data-test="activity-name">{name}</h3>
     </Link>
-    <p>{`On ${day} on ${classNo} class with ${teacher} in room: ${room}`}</p>
+    <p data-test="activity-details">{`On ${day} on ${classNo} class with ${teacher} in room: ${room}`}</p>
   </div>
 );
 

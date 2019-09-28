@@ -17,6 +17,7 @@ const EditActivityPage = props => (
         props.onEditActivity(props.activity.id, activity);
         props.history.push(ACTIVITY_PLAN_ROUTE);
       }}
+      data-test="form"
     />
     <button
       onClick={() => {
@@ -24,6 +25,7 @@ const EditActivityPage = props => (
         props.history.push(ACTIVITY_PLAN_ROUTE);
       }}
       type="submit"
+      data-test="button-remove"
     >
       Remove
     </button>
@@ -46,6 +48,7 @@ const mapDispatchToProps = {
   onRemoveActivity: removeActivity,
 };
 
+export { EditActivityPage as EditActivityPageUnwrapped };
 export default connect(
   mapStateToProps,
   mapDispatchToProps,

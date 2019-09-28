@@ -10,7 +10,12 @@ import { getActivityItems, getActivitiesForDay } from '../store/activities/selec
 const Week = ({ activities }) => (
   <div>
     {daysOfTheWeek.map(day => (
-      <Day weekDay={day} activities={getActivitiesForDay(activities, day)} key={day} />
+      <Day
+        weekDay={day}
+        activities={getActivitiesForDay(activities, day)}
+        key={day}
+        data-test="day-component"
+      />
     ))}
   </div>
 );
@@ -27,4 +32,5 @@ const mapStateToProps = state => ({
   activities: getActivityItems(state),
 });
 
+export { Week as WeekUnwrapped };
 export default connect(mapStateToProps)(Week);

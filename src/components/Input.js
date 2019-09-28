@@ -9,8 +9,9 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
       value={value}
       onChange={onChange}
       onBlur={onBlur}
+      data-test="input"
     />
-    {errorMsg && <p>{errorMsg}</p>}
+    {errorMsg && <p data-test="error-message">{errorMsg}</p>}
   </div>
 );
 

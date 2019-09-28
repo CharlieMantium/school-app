@@ -115,7 +115,7 @@ export default class ActivityForm extends React.Component {
     } = this.state;
     return (
       <div>
-        <form className="form" onSubmit={this.onSubmit}>
+        <form className="form" onSubmit={this.onSubmit} data-test="form">
           <Input
             type="text"
             placeholder="Activity Name"
@@ -123,6 +123,7 @@ export default class ActivityForm extends React.Component {
             onChange={this.onInputValueChange('name')}
             onBlur={this.onBlur('nameError')}
             errorMsg={nameError}
+            data-test="input-component-name"
           />
           <Input
             type="text"
@@ -131,6 +132,7 @@ export default class ActivityForm extends React.Component {
             onChange={this.onInputValueChange('teacher')}
             onBlur={this.onBlur('teacherError')}
             errorMsg={teacherError}
+            data-test="input-component-teacher"
           />
           <Input
             type="text"
@@ -139,6 +141,7 @@ export default class ActivityForm extends React.Component {
             onChange={this.onInputValueChange('room')}
             onBlur={this.onBlur('roomError')}
             errorMsg={roomError}
+            data-test="input-component-room"
           />
           <Input
             type="number"
@@ -148,18 +151,25 @@ export default class ActivityForm extends React.Component {
             onChange={this.onInputValueChange('classNo')}
             onBlur={this.onBlur('classNoError')}
             errorMsg={classNoError}
+            data-test="input-component-classNo"
           />
           <select
             className="form__select"
             value={day}
             onChange={this.onInputValueChange('day')}
             required
+            data-test="select-day"
           >
-            <option className="form__selectOption" value="">
+            <option className="form__selectOption" value="" data-test="select-option-default">
               Pick a day
             </option>
             {daysOfTheWeek.map(weekDay => (
-              <option className="form__selectOption" value={weekDay} key={weekDay}>
+              <option
+                className="form__selectOption"
+                value={weekDay}
+                key={weekDay}
+                data-test={`select-option-${weekDay}`}
+              >
                 {weekDay}
               </option>
             ))}
@@ -169,7 +179,9 @@ export default class ActivityForm extends React.Component {
           but also you can use on of the most popular react packages (atm) - rc-dropdown or downshift.
           It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
           But by separate pr only for dropdown. */}
-          <button type="submit">Add Activity</button>
+          <button type="submit" data-test="button-submit">
+            Add Activity
+          </button>
         </form>
       </div>
     );
