@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import Input from './Input';
-import { validatePositive, validateDot } from '../helpers/validators';
-import { daysOfTheWeek } from '../constants/dates';
+import Input from '../Input/Input';
+import { validatePositive, validateDot } from '../../helpers/validators';
+import { daysOfTheWeek } from '../../constants/dates';
 
 export default class ActivityForm extends React.Component {
   static propTypes = {

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { EDIT_ACTIVITY_ROUTE } from '../constants/routes';
-import activityPropTypeShape from '../prop-types/activity';
+import { EDIT_ACTIVITY_ROUTE } from '../../constants/routes';
+import activityPropTypeShape from '../../prop-types/activity';
 
 const ActivitiesListItem = ({ activity: { name, day, classNo, teacher, id, room } }) => (
   <div>

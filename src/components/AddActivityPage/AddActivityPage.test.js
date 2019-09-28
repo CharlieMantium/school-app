@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { AddActivityPageUnwrapped } from '../../components/AddActivityPage';
+import { AddActivityPageUnwrapped } from './AddActivityPage';
 import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
-import testState from '../fixtures/state';
+import testState from '../../tests/fixtures/state';
 
 describe('AddActivityPage', () => {
   it('should handle onSubmit', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ActivitiesListFilter from './ActivitiesListFilter';
-import Week from './Week';
+import ActivitiesListFilter from '../ActivitiesListFilter';
+import Week from '../Week/Week';
 
 const PlanPage = () => (
   <div>

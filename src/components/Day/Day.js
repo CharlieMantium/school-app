@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import activityPropTypeShape from '../prop-types/activity';
-import ActivitiesListItem from './ActivitiesListItem';
+import activityPropTypeShape from '../../prop-types/activity';
+import ActivitiesListItem from '../ActivitiesListItem/ActivitiesListItem';
 
 const Day = ({ activities, weekDay }) => (
   <div>

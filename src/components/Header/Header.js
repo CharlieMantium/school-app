@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from '../constants/routes';
+import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from '../../constants/routes';
 
 const Header = () => (
   <header>

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import activityPropTypeShape from '../prop-types/activity';
-import Day from './Day';
-import { daysOfTheWeek } from '../constants/dates';
-import { getActivityItems, getActivitiesForDay } from '../store/activities/selectors';
+import activityPropTypeShape from '../../prop-types/activity';
+import Day from '../Day/Day';
+import { daysOfTheWeek } from '../../constants/dates';
+import { getActivityItems, getActivitiesForDay } from '../../store/activities/selectors';
 
 const Week = ({ activities }) => (
   <div>

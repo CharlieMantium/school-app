@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
-import { EditActivityPageUnwrapped } from '../../components/EditActivityPage';
-import testState from '../fixtures/state';
+import { EditActivityPageUnwrapped } from './EditActivityPage';
+import testState from '../../tests/fixtures/state';
 
 let onEditActivitySpy;
 let onRemoveActivitySpy;

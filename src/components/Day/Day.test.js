@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Day from '../../components/Day';
-import testState from '../fixtures/state';
+import Day from './Day';
+import testState from '../../tests/fixtures/state';
 import { getActivitiesForDay } from '../../store/activities/selectors';
 import { MONDAY } from '../../constants/dates';
 

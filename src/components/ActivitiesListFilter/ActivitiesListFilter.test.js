@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ActivitiesListFilter from '../../components/ActivitiesListFilter';
+import ActivitiesListFilter from './ActivitiesListFilter';
 
 describe('ActivitiesListFilter', () => {
   it('should render ActivitiesListFilter correctly', () => {

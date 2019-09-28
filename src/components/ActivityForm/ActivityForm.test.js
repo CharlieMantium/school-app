@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ActivityForm from '../../components/ActivityForm';
+import ActivityForm from './ActivityForm';
 import { daysOfTheWeek } from '../../constants/dates';
 import testRenderErrorOnBlur from '../../helpers/tests';
-import inputTypesArray from '../fixtures/inputTypesArray';
-import testState from '../fixtures/state';
+import inputTypesArray from '../../tests/fixtures/inputTypesArray';
+import testState from '../../tests/fixtures/state';
 
 describe('ActivityForm', () => {
   it('should render ActivityForm correctly', () => {

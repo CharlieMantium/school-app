@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ActivitiesListItem from '../../components/ActivitiesListItem';
-import testState from '../fixtures/state';
+import ActivitiesListItem from './ActivitiesListItem';
+import testState from '../../tests/fixtures/state';
 
 describe('ActivitiesListItem', () => {
   it('should render ActivitiesListItem correctly', () => {
