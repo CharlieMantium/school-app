@@ -16,7 +16,7 @@ describe('Day', () => {
       />,
     );
     expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay.toUpperCase());
-    expect(wrapper.find('[data-test="activities-list-item"]').length).toBe(2);
+    expect(wrapper.find('[data-test="activities-list-item"]')).toHaveLength(2);
   });
 
   it('should render Day with no activities', () => {

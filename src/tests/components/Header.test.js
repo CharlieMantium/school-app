@@ -7,6 +7,6 @@ describe('Header', () => {
   it('should render Header correctly', () => {
     const wrapper = shallow(<Header />);
     expect(wrapper.find('[data-test="app-name"]').exists()).toBe(true);
-    expect(wrapper.find('[data-test="react-navlink"]').length).toBe(2);
+    expect(wrapper.find('[data-test="react-navlink"]')).toHaveLength(2);
   });
 });
