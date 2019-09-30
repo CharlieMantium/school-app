@@ -1,11 +1,7 @@
-import activitiesReducer from '../../../store/activities/reducer';
-import testState from '../../fixtures/state';
-import activity from '../../fixtures/activity';
-import {
-  ADD_ACTIVITY,
-  REMOVE_ACTIVITY,
-  EDIT_ACTIVITY,
-} from '../../../store/activities/actionTypes';
+import activitiesReducer from './reducer';
+import testState from '../../tests/fixtures/state';
+import activity from '../../tests/fixtures/activity';
+import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY } from './actionTypes';
 
 describe('activities reducer', () => {
   it('should set default activities state', () => {

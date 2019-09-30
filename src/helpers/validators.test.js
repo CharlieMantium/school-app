@@ -1,4 +1,4 @@
-import { validateDot, validatePositive } from '../../helpers/validators';
+import { validateDot, validatePositive } from './validators';
 
 describe('validator', () => {
   it('should return true if input string dont contain dot', () => {

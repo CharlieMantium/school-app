@@ -1,11 +1,7 @@
-import {
-  getActivitiesForDay,
-  getActivityItems,
-  getEditedActivity,
-} from '../../../store/activities/selectors';
-import { MONDAY } from '../../../constants/dates';
-import testProps from '../../fixtures/props';
-import testState from '../../fixtures/state';
+import { getActivitiesForDay, getActivityItems, getEditedActivity } from './selectors';
+import { MONDAY } from '../../constants/dates';
+import testProps from '../../tests/fixtures/props';
+import testState from '../../tests/fixtures/state';
 
 describe('activities selectors', () => {
   it('should return activities for given day', () => {

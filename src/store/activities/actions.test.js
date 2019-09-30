@@ -1,5 +1,5 @@
-import { addActivity, removeActivity, editActivity } from '../../../store/activities/actions';
-import { MONDAY } from '../../../constants/dates';
+import { addActivity, removeActivity, editActivity } from './actions';
+import { MONDAY } from '../../constants/dates';
 
 describe('activities actions', () => {
   it('should setup add activity action object', () => {
