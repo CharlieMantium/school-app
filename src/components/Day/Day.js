@@ -8,7 +8,11 @@ const Day = ({ activities, weekDay }) => (
   <div>
     <p data-test="day-name">{weekDay.toUpperCase()}</p>
     {activities.map(activity => (
-      <ActivitiesListItem activity={activity} key={activity.id} data-test="activities-list-item" />
+      <ActivitiesListItem
+        activity={activity}
+        key={activity.name}
+        data-test="activities-list-item"
+      />
     ))}
   </div>
 );

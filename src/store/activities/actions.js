@@ -1,16 +1,27 @@
-import uuid from 'uuid-v4';
+import database from '../../firebase/firebase';
 
-export const addActivity = ({ classNo, day, name, room, teacher } = {}) => ({
+export const addActivity = activity => ({
   type: 'ADD_ACTIVITY',
-  activity: {
-    classNo,
-    day,
-    id: uuid(),
-    name,
-    room,
-    teacher,
-  },
+  activity,
 });
+
+export const startAddActivity = (activityData = {}) => {
+  return dispatch => {
+    const { classNo, day, name, room, teacher } = activityData;
+    const activity = { classNo, day, name, room, teacher };
+    return database
+      .ref('activities/items')
+      .push(activity)
+      .then(ref => {
+        dispatch(
+          addActivity({
+            id: ref.key,
+            ...activity,
+          }),
+        );
+      });
+  };
+};
 
 export const removeActivity = id => ({
   type: 'REMOVE_ACTIVITY',

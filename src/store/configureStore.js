@@ -1,11 +1,11 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
 import activitiesReducer from './activities/reducer';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export default () => {
-  const store = createStore(
-    activitiesReducer,
-    window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  );
+  const store = createStore(activitiesReducer, composeEnhancers(applyMiddleware(thunk)));
   return store;
 };
