@@ -1,9 +1,9 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import database from '../../firebase/firebase';
 
+import database from '../../firebase/firebase';
 import { startAddActivity, addActivity, removeActivity, editActivity } from './actions';
-import { ADD_ACTIVITY } from './actionTypes';
+import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY } from './actionTypes';
 import testState from '../../tests/fixtures/state';
 import testActivityData from '../../tests/fixtures/activity';
 
@@ -14,7 +14,7 @@ describe('activities actions', () => {
     const activityData = testState.activities.items[2];
     const action = addActivity(activityData);
     expect(action).toEqual({
-      type: 'ADD_ACTIVITY',
+      type: ADD_ACTIVITY,
       activity: testState.activities.items[2],
     });
   });
@@ -43,7 +43,7 @@ describe('activities actions', () => {
   it('should setup remove activity action object', () => {
     const action = removeActivity('123abc');
     expect(action).toEqual({
-      type: 'REMOVE_ACTIVITY',
+      type: REMOVE_ACTIVITY,
       id: '123abc',
     });
   });
@@ -51,7 +51,7 @@ describe('activities actions', () => {
   it('should setup edit activity action object', () => {
     const action = editActivity('111aaa', { name: 'mmmm' });
     expect(action).toEqual({
-      type: 'EDIT_ACTIVITY',
+      type: EDIT_ACTIVITY,
       id: '111aaa',
       updates: {
         name: 'mmmm',

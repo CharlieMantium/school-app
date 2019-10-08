@@ -1,6 +1,6 @@
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import DotEnv from 'dotenv'; // eslint-disable-line import/no-extraneous-dependencies
+import DotEnv from 'dotenv';
 
 DotEnv.config({ path: '.env.test' });
 

@@ -12,6 +12,11 @@ const firebaseConfig = {
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
+const missingFirebaseConfigKeys = Object.keys(firebaseConfig).filter(key => !firebaseConfig[key]);
+if (missingFirebaseConfigKeys) {
+  console.log(missingFirebaseConfigKeys); // eslint-disable-line no-console
+}
+
 firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
