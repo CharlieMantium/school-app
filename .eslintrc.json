@@ -30,7 +30,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "arrow-parens": ["error", "as-needed"],
     "react/destructuring-assignment": ["off"],
-    "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION__"] }],
+    "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }],
     "import/no-named-as-default": ["off"]
   }
 }

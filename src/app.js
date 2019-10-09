@@ -8,6 +8,7 @@ import configureStore from './store/configureStore';
 import { addActivity } from './store/activities/actions';
 import { MONDAY, TUESDAY } from './constants/dates';
 import './styles/styles.scss';
+import './firebase/firebase';
 
 const store = configureStore();
 
