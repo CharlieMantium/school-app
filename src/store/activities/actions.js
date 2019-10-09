@@ -7,17 +7,21 @@ export const addActivity = activity => ({
 });
 
 export const startAddActivity = (activity = {}) => dispatch => {
-  return database
-    .ref('activities/items')
-    .push(activity)
-    .then(ref => {
-      dispatch(
-        addActivity({
-          id: ref.key,
-          ...activity,
-        }),
-      );
-    });
+  try {
+    return database
+      .ref('activities/items')
+      .push(activity)
+      .then(ref => {
+        dispatch(
+          addActivity({
+            id: ref.key,
+            ...activity,
+          }),
+        );
+      });
+  } catch (error) {
+    return console.error(`Opps! ${error}`); // eslint-disable-line no-console
+  }
 };
 
 export const removeActivity = id => ({
