@@ -6,21 +6,17 @@ export const addActivity = activity => ({
   activity,
 });
 
-export const startAddActivity = (activity = {}) => dispatch => {
+export const startAddActivity = (activity = {}) => async dispatch => {
   try {
-    return database
-      .ref('activities/items')
-      .push(activity)
-      .then(ref => {
-        dispatch(
-          addActivity({
-            id: ref.key,
-            ...activity,
-          }),
-        );
-      });
+    const id = await database.ref('activities/items').push(activity).key;
+    return dispatch(
+      addActivity({
+        id,
+        ...activity,
+      }),
+    );
   } catch (error) {
-    return console.error(`Opps! ${error}`); // eslint-disable-line no-console
+    return console.error(`Ops! ${error}`); // eslint-disable-line no-console
   }
 };
 
