@@ -8,7 +8,7 @@ export const addActivity = activity => ({
 
 export const startAddActivity = (activity = {}) => async dispatch => {
   try {
-    const id = await database.ref('activities/items').push(activity).key;
+    const { key: id } = await database.ref('activities/items').push(activity);
     return dispatch(
       addActivity({
         id,
@@ -16,7 +16,7 @@ export const startAddActivity = (activity = {}) => async dispatch => {
       }),
     );
   } catch (error) {
-    return console.error(`Ops! ${error}`); // eslint-disable-line no-console
+    console.error(`Ops! ${error}`); // eslint-disable-line no-console
   }
 };
 
@@ -30,6 +30,3 @@ export const editActivity = (id, updates) => ({
   id,
   updates,
 });
-
-// TODO: you don't have catch if error occurres (in startAddActivity).
-// Try to do in async/awat fashion, using try-catch block. You can do it in separate PR
