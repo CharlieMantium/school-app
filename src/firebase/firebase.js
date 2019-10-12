@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 const missingFirebaseConfigKeys = Object.keys(firebaseConfig).filter(key => !firebaseConfig[key]);
-if (missingFirebaseConfigKeys) {
+if (missingFirebaseConfigKeys.length) {
   console.log(missingFirebaseConfigKeys); // eslint-disable-line no-console
 }
 
