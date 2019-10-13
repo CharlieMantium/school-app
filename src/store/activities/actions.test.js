@@ -15,6 +15,7 @@ import {
 import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
 import testState from '../../tests/fixtures/state';
 import testActivityData from '../../tests/fixtures/activity';
+import pathGenerator from '../../helpers/pathGenerator';
 
 const createMockStore = configureMockStore([thunk]);
 
@@ -24,7 +25,7 @@ beforeEach(done => {
     activitiesData[id] = { name, room, day, classNo, teacher };
   });
   database
-    .ref('activities/items')
+    .ref(pathGenerator())
     .set(activitiesData)
     .then(() => done());
 });
@@ -79,7 +80,7 @@ describe('activities actions', () => {
           type: REMOVE_ACTIVITY,
           id,
         });
-        return database.ref(`activities/items/${id}`).once('value');
+        return database.ref(pathGenerator(id)).once('value');
       })
       .then(snapshot => {
         expect(snapshot.val()).toBeFalsy();
@@ -114,7 +115,7 @@ describe('activities actions', () => {
           id,
           updates,
         });
-        return database.ref(`activities/items/${id}`).once('value');
+        return database.ref(pathGenerator(id)).once('value');
       })
       .then(snapshot => {
         expect(snapshot.val()).toEqual({

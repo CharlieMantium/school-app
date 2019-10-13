@@ -9,20 +9,20 @@ import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
 import activityPropTypeShape from '../../prop-types/activity';
 import historyPushPropTypeShape from '../../prop-types/history';
 
-const EditActivityPage = props => (
+const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemoveActivity }) => (
   <div>
     <ActivityForm
-      activity={props.activity}
-      onSubmit={activity => {
-        props.onStartEditActivity(props.activity.id, activity);
-        props.history.push(ACTIVITY_PLAN_ROUTE);
+      activity={activity}
+      onSubmit={activitySubmited => {
+        onStartEditActivity(activity.id, activitySubmited);
+        history.push(ACTIVITY_PLAN_ROUTE);
       }}
       data-test="form"
     />
     <button
       onClick={() => {
-        props.onStartRemoveActivity(props.activity.id);
-        props.history.push(ACTIVITY_PLAN_ROUTE);
+        onStartRemoveActivity(activity.id);
+        history.push(ACTIVITY_PLAN_ROUTE);
       }}
       type="submit"
       data-test="button-remove"
@@ -53,3 +53,8 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(EditActivityPage);
+
+// TODO: in general, I don't like this onStartEditActivity.
+// You could try to handle it in prettier way.
+// There is a nice package to handle requests redux-axios-middleware.
+// It will be a good job if you will handle it using only documentation. Do it in separate PR.

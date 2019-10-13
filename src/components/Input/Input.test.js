@@ -18,5 +18,3 @@ describe('Input', () => {
     expect(wrapper.find('[data-test="error-message"]').text()).toBe(errorMsg);
   });
 });
-
-// put blur test here (the one from form)

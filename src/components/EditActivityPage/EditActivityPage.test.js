@@ -42,6 +42,6 @@ describe('EditActivityPage', () => {
   it('should handle onRemoveActivities', () => {
     wrapper.find('button').simulate('click');
     expect(historySpy.push).toHaveBeenLastCalledWith(ACTIVITY_PLAN_ROUTE);
-    expect(onStartRemoveActivitySpy).toHaveBeenLastCalledWith(testState.activities.items[1].id);
+    expect(onStartRemoveActivitySpy).toHaveBeenCalledWith(testState.activities.items[1].id);
   });
 });
