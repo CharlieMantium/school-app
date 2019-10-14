@@ -33,6 +33,7 @@ const mapDispatchToProps = {
   onStartSetActivities: startSetActivities,
 };
 
+export { PlanPage as PlanPageUnwrapped };
 export default connect(
   null,
   mapDispatchToProps,
