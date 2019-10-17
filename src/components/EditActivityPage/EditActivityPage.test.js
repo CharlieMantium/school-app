@@ -1,24 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
 import { EditActivityPageUnwrapped } from './EditActivityPage';
 import testState from '../../tests/fixtures/state';
 
-let onEditActivitySpy;
-let onRemoveActivitySpy;
+let onStartEditActivitySpy;
+let onStartRemoveActivitySpy;
 let historySpy;
 let wrapper;
 
 beforeEach(() => {
-  onEditActivitySpy = jest.fn();
-  onRemoveActivitySpy = jest.fn();
+  onStartEditActivitySpy = jest.fn();
+  onStartRemoveActivitySpy = jest.fn();
   historySpy = { push: jest.fn() };
   wrapper = shallow(
     <EditActivityPageUnwrapped
       activity={testState.activities.items[1]}
-      onEditActivity={onEditActivitySpy}
-      onRemoveActivity={onRemoveActivitySpy}
+      onStartEditActivity={onStartEditActivitySpy}
+      onStartRemoveActivity={onStartRemoveActivitySpy}
       history={historySpy}
     />,
   );
@@ -32,8 +31,7 @@ describe('EditActivityPage', () => {
 
   it('should handle onSubmit', () => {
     wrapper.find('ActivityForm').prop('onSubmit')(testState.activities.items[1]);
-    expect(historySpy.push).toHaveBeenLastCalledWith(ACTIVITY_PLAN_ROUTE);
-    expect(onEditActivitySpy).toHaveBeenLastCalledWith(
+    expect(onStartEditActivitySpy).toHaveBeenLastCalledWith(
       testState.activities.items[1].id,
       testState.activities.items[1],
     );
@@ -41,7 +39,6 @@ describe('EditActivityPage', () => {
 
   it('should handle onRemoveActivities', () => {
     wrapper.find('button').simulate('click');
-    expect(historySpy.push).toHaveBeenLastCalledWith(ACTIVITY_PLAN_ROUTE);
-    expect(onRemoveActivitySpy).toHaveBeenLastCalledWith(testState.activities.items[1].id);
+    expect(onStartRemoveActivitySpy).toHaveBeenCalledWith(testState.activities.items[1].id);
   });
 });

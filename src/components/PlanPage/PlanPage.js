@@ -1,13 +1,38 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import ActivitiesListFilter from '../ActivitiesListFilter';
-import Week from '../Week/Week';
+import Week from '../Week';
+import { startSetActivities } from '../../store/activities/actions';
 
-const PlanPage = () => (
-  <div>
-    <ActivitiesListFilter data-test="filter-component" />
-    <Week data-test="week-component" />
-  </div>
-);
+class PlanPage extends React.Component {
+  static propTypes = {
+    onStartSetActivities: PropTypes.func.isRequired,
+  };
 
-export default PlanPage;
+  componentDidMount() {
+    this.props.onStartSetActivities();
+  }
+
+  render() {
+    return (
+      <div>
+        <ActivitiesListFilter data-test="filter-component" />
+        <Week data-test="week-component" />
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = {
+  onStartSetActivities: startSetActivities,
+};
+
+export { PlanPage as PlanPageUnwrapped };
+export default connect(
+  null,
+  mapDispatchToProps,
+)(PlanPage);
+
+// TODO: implement loader component

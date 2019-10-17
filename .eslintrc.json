@@ -31,6 +31,7 @@
     "arrow-parens": ["error", "as-needed"],
     "react/destructuring-assignment": ["off"],
     "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }],
-    "import/no-named-as-default": ["off"]
+    "import/no-named-as-default": ["off"],
+    "import/prefer-default-export": ["off"]
   }
 }

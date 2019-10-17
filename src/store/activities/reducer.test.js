@@ -1,7 +1,7 @@
 import activitiesReducer from './reducer';
 import testState from '../../tests/fixtures/state';
 import activity from '../../tests/fixtures/activity';
-import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY } from './actionTypes';
+import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
 
 describe('activities reducer', () => {
   it('should set default activities state', () => {
@@ -77,5 +77,14 @@ describe('activities reducer', () => {
     };
     const state = activitiesReducer(testState, action);
     expect(state).toEqual(state);
+  });
+
+  it('should set expenses', () => {
+    const action = {
+      type: SET_ACTIVITIES,
+      activities: testState.activities.items,
+    };
+    const state = activitiesReducer({}, action);
+    expect(state).toEqual(testState);
   });
 });
