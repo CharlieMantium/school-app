@@ -8,11 +8,7 @@ import { startSetActivities } from '../../store/activities/actions';
 
 class PlanPage extends React.Component {
   static propTypes = {
-    onStartSetActivities: PropTypes.func,
-  };
-
-  static defaultProps = {
-    onStartSetActivities: () => {},
+    onStartSetActivities: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -38,3 +34,5 @@ export default connect(
   null,
   mapDispatchToProps,
 )(PlanPage);
+
+// TODO: implement loader component

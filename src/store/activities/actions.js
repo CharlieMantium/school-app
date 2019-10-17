@@ -1,6 +1,6 @@
 import database from '../../firebase/firebase';
 import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
-import pathGenerator from '../../helpers/pathGenerator';
+import { generateActivitiesItemsPath } from '../../helpers/paths';
 
 export const addActivity = activity => ({
   type: ADD_ACTIVITY,
@@ -9,7 +9,7 @@ export const addActivity = activity => ({
 
 export const startAddActivity = (activity = {}) => async dispatch => {
   try {
-    const { key: id } = await database.ref(pathGenerator()).push(activity);
+    const { key: id } = await database.ref(generateActivitiesItemsPath()).push(activity);
     return dispatch(
       addActivity({
         id,
@@ -28,7 +28,7 @@ export const removeActivity = id => ({
 
 export const startRemoveActivity = id => async dispatch => {
   try {
-    await database.ref(pathGenerator(id)).remove();
+    await database.ref(generateActivitiesItemsPath(id)).remove();
     return dispatch(removeActivity(id));
   } catch (error) {
     return console.error(`Ops! ${error}`); // eslint-disable-line no-console
@@ -43,7 +43,7 @@ export const editActivity = (id, updates) => ({
 
 export const startEditActivity = (id, updates) => async dispatch => {
   try {
-    await database.ref(pathGenerator(id)).update(updates);
+    await database.ref(generateActivitiesItemsPath(id)).update(updates);
     return dispatch(editActivity(id, updates));
   } catch (error) {
     return console.error(`Ops! ${error}`); // eslint-disable-line no-console
@@ -57,7 +57,7 @@ export const setActivities = activities => ({
 
 export const startSetActivities = () => async dispatch => {
   try {
-    const snapshot = await database.ref(pathGenerator()).once('value');
+    const snapshot = await database.ref(generateActivitiesItemsPath()).once('value');
     const activities = [];
     snapshot.forEach(childSnapshot => {
       activities.push({ id: childSnapshot.key, ...childSnapshot.val() });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -9,28 +9,47 @@ import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
 import activityPropTypeShape from '../../prop-types/activity';
 import historyPushPropTypeShape from '../../prop-types/history';
 
-const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemoveActivity }) => (
-  <div>
-    <ActivityForm
-      activity={activity}
-      onSubmit={activitySubmited => {
-        onStartEditActivity(activity.id, activitySubmited);
+const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemoveActivity }) => {
+  const asyncEditActivity = useCallback(
+    async activitySubmited => {
+      try {
+        await onStartEditActivity(activity.id, activitySubmited);
         history.push(ACTIVITY_PLAN_ROUTE);
-      }}
-      data-test="form"
-    />
-    <button
-      onClick={() => {
-        onStartRemoveActivity(activity.id);
-        history.push(ACTIVITY_PLAN_ROUTE);
-      }}
-      type="submit"
-      data-test="button-remove"
-    >
-      Remove
-    </button>
-  </div>
-);
+      } catch (error) {
+        console.log(`Something went wrong durring activity editing: ${error}`); // eslint-disable-line no-console
+      }
+    },
+    [activity.id],
+  );
+
+  const asyncRemoveActivity = useCallback(async () => {
+    try {
+      await onStartRemoveActivity(activity.id);
+      history.push(ACTIVITY_PLAN_ROUTE);
+    } catch (error) {
+      console.log(`Something went wrong durring activity removal: ${error}`); // eslint-disable-line no-console
+    }
+  }, []);
+
+  return (
+    <div>
+      <ActivityForm
+        activity={activity}
+        onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
+        data-test="form"
+      />
+      <button
+        onClick={() => {
+          asyncRemoveActivity(activity.id);
+        }}
+        type="submit"
+        data-test="button-remove"
+      >
+        Remove
+      </button>
+    </div>
+  );
+};
 
 EditActivityPage.propTypes = {
   activity: PropTypes.shape(activityPropTypeShape).isRequired,
