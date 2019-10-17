@@ -39,9 +39,7 @@ const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemov
         data-test="form"
       />
       <button
-        onClick={() => {
-          asyncRemoveActivity(activity.id);
-        }}
+        onClick={() => asyncRemoveActivity(activity.id)}
         type="submit"
         data-test="button-remove"
       >
@@ -77,3 +75,7 @@ export default connect(
 // You could try to handle it in prettier way.
 // There is a nice package to handle requests redux-axios-middleware.
 // It will be a good job if you will handle it using only documentation. Do it in separate PR.
+
+// TODO: I recommend you to think about react-intl package.
+// This is not a priority, but it would be great knowledge for future ;)
+// spend some time for internatiolization in short future.

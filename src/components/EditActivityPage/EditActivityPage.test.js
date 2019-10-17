@@ -35,7 +35,6 @@ describe('EditActivityPage', () => {
       testState.activities.items[1].id,
       testState.activities.items[1],
     );
-    // I don't knwo how to write those fucking tests for historySpy.push to be called
   });
 
   it('should handle onRemoveActivities', () => {
