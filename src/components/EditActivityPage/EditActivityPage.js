@@ -16,7 +16,8 @@ const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemov
         await onStartEditActivity(activity.id, activitySubmited);
         history.push(ACTIVITY_PLAN_ROUTE);
       } catch (error) {
-        console.log(`Something went wrong durring activity editing: ${error}`); // eslint-disable-line no-console
+        // eslint-disable-next-line no-console
+        console.log(`Something went wrong durring activity editing: ${error}`);
       }
     },
     [activity.id],
@@ -27,7 +28,8 @@ const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemov
       await onStartRemoveActivity(activity.id);
       history.push(ACTIVITY_PLAN_ROUTE);
     } catch (error) {
-      console.log(`Something went wrong durring activity removal: ${error}`); // eslint-disable-line no-console
+      // eslint-disable-next-line no-console
+      console.log(`Something went wrong durring activity removal: ${error}`);
     }
   }, []);
 
@@ -38,6 +40,7 @@ const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemov
         onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
         data-test="form"
       />
+
       <button
         onClick={() => asyncRemoveActivity(activity.id)}
         type="submit"
@@ -50,10 +53,20 @@ const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemov
 };
 
 EditActivityPage.propTypes = {
-  activity: PropTypes.shape(activityPropTypeShape).isRequired,
+  activity: PropTypes.shape(activityPropTypeShape),
   history: PropTypes.shape(historyPushPropTypeShape).isRequired,
   onStartEditActivity: PropTypes.func.isRequired,
   onStartRemoveActivity: PropTypes.func.isRequired,
+};
+
+EditActivityPage.defaultProps = {
+  activity: {
+    classNo: '',
+    day: '',
+    name: '',
+    room: '',
+    teacher: '',
+  },
 };
 
 const mapStateToProps = (state, props) => ({
@@ -70,11 +83,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(EditActivityPage);
-
-// TODO: in general, I don't like this onStartEditActivity.
-// You could try to handle it in prettier way.
-// There is a nice package to handle requests redux-axios-middleware.
-// It will be a good job if you will handle it using only documentation. Do it in separate PR.
 
 // TODO: I recommend you to think about react-intl package.
 // This is not a priority, but it would be great knowledge for future ;)
