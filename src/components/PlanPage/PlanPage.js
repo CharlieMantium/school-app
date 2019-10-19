@@ -12,23 +12,20 @@ class PlanPage extends React.Component {
     onStartSetActivities: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: false,
-    };
-  }
+  state = {
+    isLoaded: false,
+  };
 
   async componentDidMount() {
     await this.props.onStartSetActivities();
-    this.setState({ loaded: true });
+    this.setState({ isLoaded: true });
   }
 
   render() {
     return (
       <div>
         <ActivitiesListFilter data-test="filter-component" />
-        <Loader loaded={this.state.loaded}>
+        <Loader loaded={this.state.isLoaded}>
           <Week data-test="week-component" />
         </Loader>
       </div>
