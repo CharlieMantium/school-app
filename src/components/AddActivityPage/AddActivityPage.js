@@ -34,6 +34,4 @@ export default connect(
   mapDispatchToProps,
 )(AddActivityPage);
 
-// TODO: Ask Lukasz about null in export
-
 // TODO: handle absolute imports
