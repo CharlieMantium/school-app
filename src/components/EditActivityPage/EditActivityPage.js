@@ -1,7 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
+import styled from 'styled-components';
+import Loader from 'react-loader';
+import database from '../../firebase/firebase';
 
 import ActivityForm from '../ActivityForm/ActivityForm';
 import { startEditActivity, startRemoveActivity } from '../../store/activities/actions';
@@ -9,9 +12,26 @@ import { getEditedActivity } from '../../store/activities/selectors';
 import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
 import activityPropTypeShape from '../../prop-types/activity';
 import historyPushPropTypeShape from '../../prop-types/history';
+import { generateActivitiesItemsPath } from '../../helpers/paths';
 
-const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemoveActivity }) => {
-  const activityId = get(activity, 'id');
+const Button = styled.button`
+  color: red;
+`;
+
+const EditActivityPage = ({
+  activity,
+  history,
+  onStartEditActivity,
+  onStartRemoveActivity,
+  match: {
+    params: { id },
+  },
+}) => {
+  const [isIdLoaded, changeIdLoaded] = useState(false);
+  const [editedActivity, setEditedActivity] = useState({ ...activity, id });
+
+  const activityId = get(editedActivity, 'id', id);
+
   const asyncEditActivity = useCallback(
     async activitySubmited => {
       try {
@@ -35,21 +55,32 @@ const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemov
     }
   }, [activityId]);
 
+  useEffect(() => {
+    (async () => {
+      const snapshot = await database.ref(generateActivitiesItemsPath(id)).once('value');
+      const fetchedActivity = snapshot.val();
+      setEditedActivity({ ...fetchedActivity, id: snapshot.key });
+      changeIdLoaded(!isIdLoaded);
+    })();
+  }, [id]);
+
   return (
     <div>
-      <ActivityForm
-        activity={activity}
-        onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
-        data-test="form"
-      />
+      <Loader loaded={isIdLoaded} data-test="loader">
+        <ActivityForm
+          activity={editedActivity}
+          onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
+          data-test="form"
+        />
+      </Loader>
 
-      <button
-        onClick={() => asyncRemoveActivity(activity.id)}
+      <Button
+        onClick={() => asyncRemoveActivity(activityId)}
         type="submit"
         data-test="button-remove"
       >
         Remove
-      </button>
+      </Button>
     </div>
   );
 };
@@ -57,6 +88,11 @@ const EditActivityPage = ({ activity, history, onStartEditActivity, onStartRemov
 EditActivityPage.propTypes = {
   activity: PropTypes.shape(activityPropTypeShape),
   history: PropTypes.shape(historyPushPropTypeShape).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
   onStartEditActivity: PropTypes.func.isRequired,
   onStartRemoveActivity: PropTypes.func.isRequired,
 };
