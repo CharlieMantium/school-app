@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import { EditActivityPageUnwrapped } from './EditActivityPage';
 import testState from '../../tests/fixtures/state';
+import testProps from '../../tests/fixtures/props';
 
 let onStartEditActivitySpy;
 let onStartRemoveActivitySpy;
@@ -19,26 +20,28 @@ beforeEach(() => {
       onStartEditActivity={onStartEditActivitySpy}
       onStartRemoveActivity={onStartRemoveActivitySpy}
       history={historySpy}
+      match={testProps.match}
     />,
   );
 });
 
 describe('EditActivityPage', () => {
   it('should render EditActivityPage correctly', () => {
-    expect(wrapper.find('[data-test="form"]').exists()).toBe(true);
+    expect(wrapper.find('[data-test="loader"]').exists()).toBe(true);
     expect(wrapper.find('[data-test="button-remove"]').exists()).toBe(true);
   });
 
   it('should handle onSubmit', () => {
     wrapper.find('ActivityForm').prop('onSubmit')(testState.activities.items[1]);
     expect(onStartEditActivitySpy).toHaveBeenLastCalledWith(
-      testState.activities.items[1].id,
+      testProps.match.params.id,
       testState.activities.items[1],
     );
   });
 
-  it('should handle onRemoveActivities', () => {
-    wrapper.find('button').simulate('click');
-    expect(onStartRemoveActivitySpy).toHaveBeenCalledWith(testState.activities.items[1].id);
+  it('should handle onRemoveActivities', done => {
+    wrapper.find('[data-test="button-remove"]').simulate('click');
+    expect(onStartRemoveActivitySpy).toHaveBeenCalledWith(testProps.match.params.id);
+    done();
   });
 });

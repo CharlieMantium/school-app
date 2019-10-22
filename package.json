@@ -54,6 +54,7 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "styled-components": "^4.4.0",
     "uuid-v4": "^0.1.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5"
@@ -62,6 +63,7 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "babel-eslint": "^10.0.2",
     "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-styled-components": "^1.10.6",
     "cross-env": "^6.0.3",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
