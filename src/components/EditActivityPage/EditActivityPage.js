@@ -12,6 +12,7 @@ import { getEditedActivity } from '../../store/activities/selectors';
 import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
 import activityPropTypeShape from '../../prop-types/activity';
 import historyPushPropTypeShape from '../../prop-types/history';
+import matchPropTypeShape from '../../prop-types/matchShape';
 import { generateActivitiesItemsPath } from '../../helpers/paths';
 
 const Button = styled.button`
@@ -27,7 +28,7 @@ const EditActivityPage = ({
     params: { id },
   },
 }) => {
-  const [isIdLoaded, changeIdLoaded] = useState(false);
+  const [isIdLoaded, setIsIdLoaded] = useState(false);
   const [editedActivity, setEditedActivity] = useState({ ...activity, id });
 
   const activityId = get(editedActivity, 'id', id);
@@ -55,14 +56,22 @@ const EditActivityPage = ({
     }
   }, [activityId]);
 
-  useEffect(() => {
+  const asyncSetActivity = () => {
     (async () => {
-      const snapshot = await database.ref(generateActivitiesItemsPath(id)).once('value');
-      const fetchedActivity = snapshot.val();
-      setEditedActivity({ ...fetchedActivity, id: snapshot.key });
-      changeIdLoaded(!isIdLoaded);
+      setIsIdLoaded(false);
+      try {
+        const snapshot = await database.ref(generateActivitiesItemsPath(id)).once('value');
+        const fetchedActivity = snapshot.val();
+        setEditedActivity({ ...fetchedActivity, id: snapshot.key });
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(`Something went wrong durring activity load: ${error}`);
+      }
+      setIsIdLoaded(true);
     })();
-  }, [id]);
+  };
+
+  useEffect(asyncSetActivity, [id]);
 
   return (
     <div>
@@ -88,11 +97,7 @@ const EditActivityPage = ({
 EditActivityPage.propTypes = {
   activity: PropTypes.shape(activityPropTypeShape),
   history: PropTypes.shape(historyPushPropTypeShape).isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }).isRequired,
+  match: PropTypes.shape(matchPropTypeShape).isRequired,
   onStartEditActivity: PropTypes.func.isRequired,
   onStartRemoveActivity: PropTypes.func.isRequired,
 };
