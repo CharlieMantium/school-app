@@ -1,37 +1,73 @@
 {
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true,
-    "jest": true
-  },
-  "extends": ["airbnb", "prettier", "plugin:react/recommended"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": false,
-    "codeFrame": true,
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018
-  },
-  "plugins": ["react", "prettier"],
-  "rules": {
-    "prettier/prettier": "error",
-    "indent": ["error", 2, { "SwitchCase": 1 }],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "arrow-parens": ["error", "as-needed"],
-    "react/destructuring-assignment": ["off"],
-    "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }],
-    "import/no-named-as-default": ["off"],
-    "import/prefer-default-export": ["off"]
-  }
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"jest": true
+	},
+	"extends": [
+		"airbnb",
+		"prettier",
+		"plugin:prettier/recommended",
+		"plugin:react/recommended",
+		"prettier/react"
+	],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module",
+		"allowImportExportEverywhere": false,
+		"codeFrame": true,
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2018
+	},
+	"plugins": ["react", "prettier"],
+	"rules": {
+		"prettier/prettier": "error",
+		"indent": [
+			2,
+			"tab",
+			{
+				"ignoredNodes": [
+					"JSXElement",
+					"JSXElement > *",
+					"JSXAttribute",
+					"JSXIdentifier",
+					"JSXNamespacedName",
+					"JSXMemberExpression",
+					"JSXSpreadAttribute",
+					"JSXExpressionContainer",
+					"JSXOpeningElement",
+					"JSXClosingElement",
+					"JSXText",
+					"JSXEmptyExpression",
+					"JSXSpreadChild"
+				],
+				"SwitchCase": 1
+			}
+		],
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "single"],
+		"semi": ["error", "always"],
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"arrow-parens": ["error", "as-needed"],
+		"react/destructuring-assignment": ["off"],
+		"no-underscore-dangle": [
+			"error",
+			{ "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }
+		],
+		"import/no-named-as-default": ["off"],
+		"import/prefer-default-export": ["off"],
+		"no-tabs": 0,
+		"react/jsx-indent": [
+			2,
+			"tab",
+			{ "checkAttributes": true, "indentLogicalExpressions": true }
+		]
+	}
 }

@@ -1,7 +1,7 @@
 export const validateDot = input => {
-  return !input.includes('.');
+	return !input.includes('.');
 };
 
 export const validatePositive = input => {
-  return Number(input) > 0;
+	return Number(input) > 0;
 };

@@ -1,7 +1,7 @@
 export default {
-  match: {
-    params: {
-      id: '3',
-    },
-  },
+	match: {
+		params: {
+			id: '3',
+		},
+	},
 };
