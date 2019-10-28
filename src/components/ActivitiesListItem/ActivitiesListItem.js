@@ -8,37 +8,35 @@ import activityPropTypeShape from '../../prop-types/activity';
 import { spacing } from '../../styles/base/base';
 
 const ClassNoParagraph = styled.p`
-	display: inline;
-	margin: ${spacing.sSize};
+  display: inline;
+  margin: ${spacing.sSize};
 `;
 
 const EditActivityLink = styled(Link)`
-	word-break: break-all;
+  word-break: break-all;
 `;
 
 const ActivityDescParagraph = styled.p`
-	margin: ${spacing.sSize};
-	word-break: break-all;
+  margin: ${spacing.sSize};
+  word-break: break-all;
 `;
 
-const ActivitiesListItem = ({
-	activity: { name, classNo, teacher, id, room },
-}) => (
-	<>
-		<ClassNoParagraph>{`${classNo}.`}</ClassNoParagraph>
-		<EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)} data-test="react-link">
-			{name}
-		</EditActivityLink>
-		<ActivityDescParagraph data-test="activity-details">{`Teacher: ${teacher}, in room: ${room}`}</ActivityDescParagraph>
-	</>
+const ActivitiesListItem = ({ activity: { name, classNo, teacher, id, room } }) => (
+  <>
+    <ClassNoParagraph>{`${classNo}.`}</ClassNoParagraph>
+    <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)} data-test="react-link">
+      {name}
+    </EditActivityLink>
+    <ActivityDescParagraph data-test="activity-details">{`Teacher: ${teacher}, in room: ${room}`}</ActivityDescParagraph>
+  </>
 );
 
 ActivitiesListItem.propTypes = {
-	activity: PropTypes.shape(activityPropTypeShape),
+  activity: PropTypes.shape(activityPropTypeShape),
 };
 
 ActivitiesListItem.defaultProps = {
-	activity: {},
+  activity: {},
 };
 
 export default ActivitiesListItem;

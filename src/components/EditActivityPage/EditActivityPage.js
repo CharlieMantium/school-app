@@ -7,10 +7,7 @@ import Loader from 'react-loader';
 import database from '../../firebase/firebase';
 
 import ActivityForm from '../ActivityForm/ActivityForm';
-import {
-	startEditActivity,
-	startRemoveActivity,
-} from '../../store/activities/actions';
+import { startEditActivity, startRemoveActivity } from '../../store/activities/actions';
 import { getEditedActivity } from '../../store/activities/selectors';
 import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
 import activityPropTypeShape from '../../prop-types/activity';
@@ -19,111 +16,109 @@ import matchPropTypeShape from '../../prop-types/matchShape';
 import { generateActivitiesItemsPath } from '../../helpers/paths';
 
 const Button = styled.button`
-	color: red;
+  color: red;
 `;
 
 const EditActivityPage = ({
-	activity,
-	history,
-	onStartEditActivity,
-	onStartRemoveActivity,
-	match: {
-		params: { id },
-	},
+  activity,
+  history,
+  onStartEditActivity,
+  onStartRemoveActivity,
+  match: {
+    params: { id },
+  },
 }) => {
-	const [isIdLoaded, setIsIdLoaded] = useState(false);
-	const [editedActivity, setEditedActivity] = useState({ ...activity, id });
+  const [isIdLoaded, setIsIdLoaded] = useState(false);
+  const [editedActivity, setEditedActivity] = useState({ ...activity, id });
 
-	const activityId = get(editedActivity, 'id', id);
+  const activityId = get(editedActivity, 'id', id);
 
-	const asyncEditActivity = useCallback(
-		async activitySubmited => {
-			try {
-				await onStartEditActivity(activityId, activitySubmited);
-				history.push(ACTIVITY_PLAN_ROUTE);
-			} catch (error) {
-				// eslint-disable-next-line no-console
-				console.log(`Something went wrong durring activity editing: ${error}`);
-			}
-		},
-		[activityId],
-	);
+  const asyncEditActivity = useCallback(
+    async activitySubmited => {
+      try {
+        await onStartEditActivity(activityId, activitySubmited);
+        history.push(ACTIVITY_PLAN_ROUTE);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(`Something went wrong durring activity editing: ${error}`);
+      }
+    },
+    [activityId],
+  );
 
-	const asyncRemoveActivity = useCallback(async () => {
-		try {
-			await onStartRemoveActivity(activityId);
-			history.push(ACTIVITY_PLAN_ROUTE);
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.log(`Something went wrong durring activity removal: ${error}`);
-		}
-	}, [activityId]);
+  const asyncRemoveActivity = useCallback(async () => {
+    try {
+      await onStartRemoveActivity(activityId);
+      history.push(ACTIVITY_PLAN_ROUTE);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(`Something went wrong durring activity removal: ${error}`);
+    }
+  }, [activityId]);
 
-	const asyncSetActivity = () => {
-		(async () => {
-			setIsIdLoaded(false);
-			try {
-				const snapshot = await database
-					.ref(generateActivitiesItemsPath(id))
-					.once('value');
-				const fetchedActivity = snapshot.val();
-				setEditedActivity({ ...fetchedActivity, id: snapshot.key });
-			} catch (error) {
-				// eslint-disable-next-line no-console
-				console.log(`Something went wrong durring activity load: ${error}`);
-			}
-			setIsIdLoaded(true);
-		})();
-	};
+  const asyncSetActivity = () => {
+    (async () => {
+      setIsIdLoaded(false);
+      try {
+        const snapshot = await database.ref(generateActivitiesItemsPath(id)).once('value');
+        const fetchedActivity = snapshot.val();
+        setEditedActivity({ ...fetchedActivity, id: snapshot.key });
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(`Something went wrong durring activity load: ${error}`);
+      }
+      setIsIdLoaded(true);
+    })();
+  };
 
-	useEffect(asyncSetActivity, [id]);
+  useEffect(asyncSetActivity, [id]);
 
-	return (
-		<div>
-			<Loader loaded={isIdLoaded} data-test="loader">
-				<ActivityForm
-					activity={editedActivity}
-					onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
-					data-test="form"
-				/>
-			</Loader>
+  return (
+    <div>
+      <Loader loaded={isIdLoaded} data-test="loader">
+        <ActivityForm
+          activity={editedActivity}
+          onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
+          data-test="form"
+        />
+      </Loader>
 
-			<Button
-				onClick={() => asyncRemoveActivity(activityId)}
-				type="submit"
-				data-test="button-remove"
-			>
-				Remove
-			</Button>
-		</div>
-	);
+      <Button
+        onClick={() => asyncRemoveActivity(activityId)}
+        type="submit"
+        data-test="button-remove"
+      >
+        Remove
+      </Button>
+    </div>
+  );
 };
 
 EditActivityPage.propTypes = {
-	activity: PropTypes.shape(activityPropTypeShape),
-	history: PropTypes.shape(historyPushPropTypeShape).isRequired,
-	match: PropTypes.shape(matchPropTypeShape).isRequired,
-	onStartEditActivity: PropTypes.func.isRequired,
-	onStartRemoveActivity: PropTypes.func.isRequired,
+  activity: PropTypes.shape(activityPropTypeShape),
+  history: PropTypes.shape(historyPushPropTypeShape).isRequired,
+  match: PropTypes.shape(matchPropTypeShape).isRequired,
+  onStartEditActivity: PropTypes.func.isRequired,
+  onStartRemoveActivity: PropTypes.func.isRequired,
 };
 
 EditActivityPage.defaultProps = {
-	activity: null,
+  activity: null,
 };
 
 const mapStateToProps = (state, props) => ({
-	activity: getEditedActivity(state, props),
+  activity: getEditedActivity(state, props),
 });
 
 const mapDispatchToProps = {
-	onStartEditActivity: startEditActivity,
-	onStartRemoveActivity: startRemoveActivity,
+  onStartEditActivity: startEditActivity,
+  onStartRemoveActivity: startRemoveActivity,
 };
 
 export { EditActivityPage as EditActivityPageUnwrapped };
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(EditActivityPage);
 
 // TODO: I recommend you to think about react-intl package.

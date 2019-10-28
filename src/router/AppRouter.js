@@ -7,23 +7,23 @@ import Header from '../components/Header';
 import PlanPage from '../components/PlanPage';
 import NotFoundPage from '../components/NotFoundPage';
 import {
-	ACTIVITY_PLAN_ROUTE,
-	CREATE_ACTIVITY_ROUTE,
-	EDIT_ACTIVITY_ID_ROUTE,
+  ACTIVITY_PLAN_ROUTE,
+  CREATE_ACTIVITY_ROUTE,
+  EDIT_ACTIVITY_ID_ROUTE,
 } from '../constants/routes';
 
 const AppRouter = () => (
-	<BrowserRouter>
-		<>
-			<Header />
-			<Switch>
-				<Route path={ACTIVITY_PLAN_ROUTE} component={PlanPage} exact />
-				<Route path={CREATE_ACTIVITY_ROUTE} component={AddActivityPage} />
-				<Route path={EDIT_ACTIVITY_ID_ROUTE} component={EditActivityPage} />
-				<Route component={NotFoundPage} />
-			</Switch>
-		</>
-	</BrowserRouter>
+  <BrowserRouter>
+    <>
+      <Header />
+      <Switch>
+        <Route path={ACTIVITY_PLAN_ROUTE} component={PlanPage} exact />
+        <Route path={CREATE_ACTIVITY_ROUTE} component={AddActivityPage} />
+        <Route path={EDIT_ACTIVITY_ID_ROUTE} component={EditActivityPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </>
+  </BrowserRouter>
 );
 
 export default AppRouter;

@@ -31,19 +31,19 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const StyledWrapper = styled.div`
-	font-family: 'Cabin';
+  font-family: 'Cabin';
 `;
 
 const Layout = ({ children }) => (
-	<>
-		<Normalize />
-		<GlobalStyle />
-		<StyledWrapper>{children}</StyledWrapper>
-	</>
+  <>
+    <Normalize />
+    <GlobalStyle />
+    <StyledWrapper>{children}</StyledWrapper>
+  </>
 );
 
 Layout.propTypes = {
-	children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

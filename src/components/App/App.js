@@ -8,11 +8,11 @@ import AppRouter from '../../router/AppRouter';
 const store = configureStore();
 
 const App = () => (
-	<Layout>
-		<Provider store={store}>
-			<AppRouter />
-		</Provider>
-	</Layout>
+  <Layout>
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  </Layout>
 );
 
 export default App;

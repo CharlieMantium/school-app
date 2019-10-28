@@ -7,36 +7,36 @@ import Week from '../Week';
 import { startSetActivities } from '../../store/activities/actions';
 
 const PlanPage = ({ onStartSetActivities }) => {
-	const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-	const asyncOnStartSetActivities = () => {
-		(async () => {
-			await onStartSetActivities();
-			setIsDataLoaded(true);
-		})();
-	};
+  const asyncOnStartSetActivities = () => {
+    (async () => {
+      await onStartSetActivities();
+      setIsDataLoaded(true);
+    })();
+  };
 
-	useEffect(asyncOnStartSetActivities, []);
+  useEffect(asyncOnStartSetActivities, []);
 
-	return (
-		<>
-			<Loader loaded={isDataLoaded}>
-				<Week data-test="week-component" />
-			</Loader>
-		</>
-	);
+  return (
+    <>
+      <Loader loaded={isDataLoaded}>
+        <Week data-test="week-component" />
+      </Loader>
+    </>
+  );
 };
 
 PlanPage.propTypes = {
-	onStartSetActivities: PropTypes.func.isRequired,
+  onStartSetActivities: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
-	onStartSetActivities: startSetActivities,
+  onStartSetActivities: startSetActivities,
 };
 
 export { PlanPage as PlanPageUnwrapped };
 export default connect(
-	null,
-	mapDispatchToProps,
+  null,
+  mapDispatchToProps,
 )(PlanPage);

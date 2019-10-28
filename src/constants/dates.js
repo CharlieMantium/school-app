@@ -5,12 +5,4 @@ export const THURSDAY = 'thursday';
 export const FRIDAY = 'friday';
 export const SATURDAY = 'saturday';
 export const SUNDAY = 'sunday';
-export const daysOfTheWeek = [
-	MONDAY,
-	TUESDAY,
-	WEDNESDAY,
-	THURSDAY,
-	FRIDAY,
-	SATURDAY,
-	SUNDAY,
-];
+export const daysOfTheWeek = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY];
