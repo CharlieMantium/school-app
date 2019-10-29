@@ -9,7 +9,7 @@ import { daysOfTheWeek } from '../../constants/dates';
 export default class ActivityForm extends React.Component {
   static propTypes = {
     activity: PropTypes.shape({
-      classNo: PropTypes.string,
+      activityOrdinal: PropTypes.string,
       day: PropTypes.string,
       id: PropTypes.string,
       name: PropTypes.string,
@@ -21,7 +21,7 @@ export default class ActivityForm extends React.Component {
 
   static defaultProps = {
     activity: {
-      classNo: '',
+      activityOrdinal: '',
       day: '',
       name: '',
       room: '',
@@ -32,12 +32,12 @@ export default class ActivityForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      classNo: props.activity.classNo,
+      activityOrdinal: props.activity.activityOrdinal,
       day: props.activity.day,
       name: props.activity.name,
       room: props.activity.room,
       teacher: props.activity.teacher,
-      classNoError: '',
+      activityOrdinalError: '',
       nameError: '',
       roomError: '',
       teacherError: '',
@@ -46,7 +46,7 @@ export default class ActivityForm extends React.Component {
 
   onInputValueChange = field => e => {
     const inputValue = e.target.value;
-    if (field === 'classNo') {
+    if (field === 'activityOrdinal') {
       if (validatePositive(inputValue) && validateDot(inputValue)) {
         this.setState({
           [field]: inputValue,
@@ -67,19 +67,19 @@ export default class ActivityForm extends React.Component {
     e.preventDefault();
     this.setState({
       nameError: '',
-      classNoError: '',
+      activityOrdinalError: '',
       roomError: '',
       teacherError: '',
     });
-    const { name, day, classNo, room, teacher } = this.state;
+    const { name, day, activityOrdinal, room, teacher } = this.state;
     const errors = {};
     const errorMsg = 'Required';
-    if (!name || !day || !classNo || !teacher || !room) {
+    if (!name || !day || !activityOrdinal || !teacher || !room) {
       if (!name) {
         errors.nameError = errorMsg;
       }
-      if (!classNo) {
-        errors.classNoError = errorMsg;
+      if (!activityOrdinal) {
+        errors.activityOrdinalError = errorMsg;
       }
       if (!room) {
         errors.roomError = errorMsg;
@@ -92,7 +92,7 @@ export default class ActivityForm extends React.Component {
       }
     } else {
       this.props.onSubmit({
-        classNo,
+        activityOrdinal,
         day,
         name,
         room,
@@ -105,10 +105,10 @@ export default class ActivityForm extends React.Component {
     const {
       name,
       day,
-      classNo,
+      activityOrdinal,
       room,
       teacher,
-      classNoError,
+      activityOrdinalError,
       nameError,
       roomError,
       teacherError,
@@ -147,11 +147,11 @@ export default class ActivityForm extends React.Component {
             type="number"
             step="1"
             placeholder="Class Number"
-            value={classNo}
-            onChange={this.onInputValueChange('classNo')}
-            onBlur={this.onBlur('classNoError')}
-            errorMsg={classNoError}
-            data-test="input-component-classNo"
+            value={activityOrdinal}
+            onChange={this.onInputValueChange('activityOrdinal')}
+            onBlur={this.onBlur('activityOrdinalError')}
+            errorMsg={activityOrdinalError}
+            data-test="input-component-activityOrdinal"
           />
           <select
             className="form__select"

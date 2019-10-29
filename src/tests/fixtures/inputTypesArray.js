@@ -1,1 +1,1 @@
-export default ['name', 'teacher', 'room', 'classNo'];
+export default ['name', 'teacher', 'room', 'activityOrdinal'];

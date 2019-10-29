@@ -21,8 +21,8 @@ const createMockStore = configureMockStore([thunk]);
 
 beforeEach(done => {
   const activitiesData = {};
-  testState.activities.items.forEach(({ id, name, room, day, classNo, teacher }) => {
-    activitiesData[id] = { name, room, day, classNo, teacher };
+  testState.activities.items.forEach(({ id, name, room, day, activityOrdinal, teacher }) => {
+    activitiesData[id] = { name, room, day, activityOrdinal, teacher };
   });
   database
     .ref(generateActivitiesItemsPath())
@@ -101,7 +101,7 @@ describe('activities actions', () => {
 
   it('should edit activity on firebase', done => {
     const store = createMockStore({});
-    const { id, classNo, room, teacher, day } = testState.activities.items[2];
+    const { id, activityOrdinal, room, teacher, day } = testState.activities.items[2];
     const updatedName = 'woooork';
     const updates = {
       name: updatedName,
@@ -120,7 +120,7 @@ describe('activities actions', () => {
       .then(snapshot => {
         expect(snapshot.val()).toEqual({
           name: updatedName,
-          classNo,
+          activityOrdinal,
           room,
           teacher,
           day,

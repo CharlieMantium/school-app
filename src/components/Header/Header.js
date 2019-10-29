@@ -10,7 +10,6 @@ import { spacing, colors } from '../../styles/base/base';
 const HeaderWrapper = styled.header`
   align-items: center;
   display: flex;
-  height: 10vh;
   justify-content: space-around;
 
   @media (min-width: ${spacing.desktopBreakpoint}) {
@@ -21,7 +20,8 @@ const HeaderWrapper = styled.header`
 const AppName = styled(NavLink)`
   color: ${colors.black};
   font-family: Satisfy;
-  font-size: 8vw;
+  font-size: 3em;
+  margin: ${spacing.xsSize} ${spacing.mSize};
   text-decoration: none;
   text-shadow: -1px 0 ${colors.white}, 0 1px ${colors.white}, 1px 0 ${colors.white},
     0 -1px ${colors.white};
@@ -39,10 +39,6 @@ const ToolsWrapper = styled.div`
   align-items: center;
 `;
 
-const Filter = styled(ActivitiesListFilter)``;
-
-const AddActivityLink = styled(NavLink)``;
-
 const AddIcon = styled(DiffAdded)`
   color: ${colors.white};
   height: 28px;
@@ -55,12 +51,18 @@ const Header = () => (
       School App
     </AppName>
     <ToolsWrapper>
-      <Filter data-test="filter-component" />
-      <AddActivityLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
+      <ActivitiesListFilter data-test="filter-component" />
+      <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
         <AddIcon title="Add New Activity" />
-      </AddActivityLink>
+      </NavLink>
     </ToolsWrapper>
   </HeaderWrapper>
 );
 
 export default Header;
+
+// TODO: why do you need to wrap it with styled with empty block?
+// Karols comment: there was an imported component, wrapped in other 'styled' component,
+// but without anything in ``. Karols comment ends.
+// I think, that there is a lack of some rules in your eslint setup
+// for styled-comopnents (handle it by separate PR)

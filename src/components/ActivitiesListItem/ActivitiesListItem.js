@@ -7,7 +7,7 @@ import { EDIT_ACTIVITY_ROUTE } from '../../constants/routes';
 import activityPropTypeShape from '../../prop-types/activity';
 import { spacing } from '../../styles/base/base';
 
-const ClassNoParagraph = styled.p`
+const ActivityOrdinalWrapper = styled.p`
   display: inline;
   margin: ${spacing.sSize};
 `;
@@ -21,9 +21,9 @@ const ActivityDescParagraph = styled.p`
   word-break: break-all;
 `;
 
-const ActivitiesListItem = ({ activity: { name, classNo, teacher, id, room } }) => (
+const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, room } }) => (
   <>
-    <ClassNoParagraph>{`${classNo}.`}</ClassNoParagraph>
+    <ActivityOrdinalWrapper>{`${activityOrdinal}.`}</ActivityOrdinalWrapper>
     <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)} data-test="react-link">
       {name}
     </EditActivityLink>

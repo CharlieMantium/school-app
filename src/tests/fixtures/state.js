@@ -4,7 +4,7 @@ export default {
   activities: {
     items: [
       {
-        classNo: '3',
+        activityOrdinal: '3',
         day: TUESDAY,
         id: '1',
         name: 'matma',
@@ -12,7 +12,7 @@ export default {
         teacher: 'Indiana Jones',
       },
       {
-        classNo: '1',
+        activityOrdinal: '1',
         day: MONDAY,
         id: '2',
         name: 'polski',
@@ -20,7 +20,7 @@ export default {
         teacher: 'Malski',
       },
       {
-        classNo: '2',
+        activityOrdinal: '2',
         day: MONDAY,
         id: '3',
         name: 'polski',
@@ -28,7 +28,7 @@ export default {
         teacher: 'Malski',
       },
       {
-        classNo: '7',
+        activityOrdinal: '7',
         day: WEDNESDAY,
         id: '4',
         name: 'w-f',
@@ -36,7 +36,7 @@ export default {
         teacher: 'RAMBO',
       },
       {
-        classNo: '5',
+        activityOrdinal: '5',
         day: FRIDAY,
         id: '5',
         name: 'WOS',

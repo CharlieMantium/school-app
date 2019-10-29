@@ -13,7 +13,6 @@ const Footer = styled.footer`
   align-items: flex-end;
   display: flex;
   flex-direction: row-reverse;
-  height: 3vh;
   width: 100%;
 
   @media (min-width: ${spacing.desktopBreakpoint}) {

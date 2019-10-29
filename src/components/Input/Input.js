@@ -7,8 +7,6 @@ const StyledInput = styled.input`
   margin: auto;
 `;
 
-const ErrorMsgParagraph = styled.p``;
-
 const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
   <>
     <StyledInput
@@ -19,7 +17,7 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
       onBlur={onBlur}
       data-test="input"
     />
-    {errorMsg && <ErrorMsgParagraph data-test="error-message">{errorMsg}</ErrorMsgParagraph>}
+    {errorMsg && <p data-test="error-message">{errorMsg}</p>}
   </>
 );
 

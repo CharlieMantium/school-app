@@ -6,16 +6,16 @@ import { Normalize } from 'styled-normalize';
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
-	};
-	body {
-		background-image: url('/images/background/background.jpg');
-		background-size: cover;
-		height: 100vh;
-	};
+  };
+  body {
+    background-image: url('/images/background/background.jpg');
+    background-size: cover;
+    height: 100vh;
+  };
 
-	*, *::before, *::after {
-		box-sizing: inherit;
-	};
+  *, *::before, *::after {
+    box-sizing: inherit;
+  };
 `;
 
 const StyledWrapper = styled.div`

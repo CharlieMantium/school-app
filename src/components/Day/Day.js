@@ -30,7 +30,7 @@ const DayName = styled.p`
 const Day = ({ activities, weekDay }) => (
   <DayWrapper>
     <DayName data-test="day-name">{weekDay.toUpperCase()}</DayName>
-    {orderBy(activities, activity => activity.classNo).map(activity => (
+    {orderBy(activities, activity => activity.activityOrdinal).map(activity => (
       <ActivitiesListItem
         activity={activity}
         key={activity.name}

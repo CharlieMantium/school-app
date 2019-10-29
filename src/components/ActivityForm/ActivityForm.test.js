@@ -66,7 +66,7 @@ describe('ActivityForm', () => {
     testRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 2);
   });
 
-  it('should render error on blur of classNo input', () => {
+  it('should render error on blur of activityOrdinal input', () => {
     testRenderErrorOnBlur(<ActivityForm on onSubmit={() => {}} />, 3);
   });
 
@@ -78,12 +78,12 @@ describe('ActivityForm', () => {
     wrapper.find('form').simulate('submit', {
       preventDefault: () => {},
     });
-    expect(wrapper.state('classNoError')).toBe('');
+    expect(wrapper.state('activityOrdinalError')).toBe('');
     expect(wrapper.state('nameError')).toBe('');
     expect(wrapper.state('roomError')).toBe('');
     expect(wrapper.state('teacherError')).toBe('');
     expect(onSubmitSpy).toHaveBeenCalledWith({
-      classNo: testState.activities.items[1].classNo,
+      activityOrdinal: testState.activities.items[1].activityOrdinal,
       day: testState.activities.items[1].day,
       name: testState.activities.items[1].name,
       room: testState.activities.items[1].room,

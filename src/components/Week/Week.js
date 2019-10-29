@@ -13,23 +13,20 @@ const StyledWeekWrapper = styled.div`
   @media (min-width: ${spacing.desktopBreakpoint}) {
     align-items: stretch;
     display: flex;
-    height: 80vh;
   }
 `;
 
 const Week = ({ activities }) => (
-  <>
-    <StyledWeekWrapper>
-      {daysOfTheWeek.map(day => (
-        <Day
-          weekDay={day}
-          activities={getActivitiesForDay(activities, day)}
-          key={day}
-          data-test="day-component"
-        />
-      ))}
-    </StyledWeekWrapper>
-  </>
+  <StyledWeekWrapper>
+    {daysOfTheWeek.map(day => (
+      <Day
+        weekDay={day}
+        activities={getActivitiesForDay(activities, day)}
+        key={day}
+        data-test="day-component"
+      />
+    ))}
+  </StyledWeekWrapper>
 );
 
 Week.propTypes = {
