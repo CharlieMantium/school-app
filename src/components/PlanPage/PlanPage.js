@@ -9,9 +9,12 @@ import { startSetActivities } from '../../store/activities/actions';
 const PlanPage = ({ onStartSetActivities }) => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-  useEffect(async () => {
-    await onStartSetActivities();
-    setIsDataLoaded(true);
+  useEffect(() => {
+    const afterComponentMountSetActivities = async () => {
+      await onStartSetActivities();
+      setIsDataLoaded(true);
+    };
+    afterComponentMountSetActivities();
   }, []);
 
   return (

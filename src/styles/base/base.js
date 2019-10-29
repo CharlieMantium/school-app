@@ -9,3 +9,7 @@ export const spacing = {
   mSize: '10px',
   desktopBreakpoint: '680px',
 };
+
+export const fontSizes = {
+  xlFontSize: '3rem',
+};

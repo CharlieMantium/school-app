@@ -5,7 +5,7 @@ import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from '../../constants/routes';
 import ActivitiesListFilter from '../ActivitiesListFilter';
-import { spacing, colors } from '../../styles/base/base';
+import { spacing, colors, fontSizes } from '../../styles/base/base';
 
 const HeaderWrapper = styled.header`
   align-items: center;
@@ -20,7 +20,7 @@ const HeaderWrapper = styled.header`
 const AppName = styled(NavLink)`
   color: ${colors.black};
   font-family: Satisfy;
-  font-size: 3em;
+  font-size: ${fontSizes.xlFontSize};
   margin: ${spacing.xsSize} ${spacing.mSize};
   text-decoration: none;
   text-shadow: -1px 0 ${colors.white}, 0 1px ${colors.white}, 1px 0 ${colors.white},
@@ -28,7 +28,6 @@ const AppName = styled(NavLink)`
   white-space: nowrap;
 
   @media (min-width: ${spacing.desktopBreakpoint}) {
-    font-size: 3em;
     margin: ${spacing.mSize};
   }
 `;
