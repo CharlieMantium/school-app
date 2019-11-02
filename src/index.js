@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import 'normalize.css/normalize.css';
 
 import App from './components/App';
-import './styles/styles.scss';
 import './firebase/firebase';
 
 ReactDOM.render(<App />, document.getElementById('app-root'));

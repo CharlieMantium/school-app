@@ -826,7 +826,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@emotion/is-prop-valid@^0.8.1":
+"@emotion/is-prop-valid@^0.8.1", "@emotion/is-prop-valid@^0.8.3":
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.3.tgz#cbe62ddbea08aa022cdf72da3971570a33190d29"
   integrity sha512-We7VBiltAJ70KQA0dWkdPMXnYoizlxOXpvtjmu5/MBnExd+u0PGgV27WCYanmLAbCwAU30Le/xA0CQs/F/Otig==
@@ -1619,7 +1619,7 @@ ajv-errors@^1.0.0:
   resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
   integrity sha512-DCRfO/4nQ+89p/RK43i8Ezd41EqdGIU4ld7nGF8OQ14oc/we5rEntLCUa7+jrn3nn83BosfwZA0wb4pon2o8iQ==
 
-ajv-keywords@^3.1.0:
+ajv-keywords@^3.1.0, ajv-keywords@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.4.1.tgz#ef916e271c64ac12171fd8384eaae6b2345854da"
   integrity sha512-RO1ibKvd27e6FEShVFfPALuHI3WjSVNeK5FIsmme/LYRNxjKuNj+Dt7bucLa6NdSv3JcVTyMlm9kGR84z1XpaQ==
@@ -4823,6 +4823,14 @@ file-entry-cache@^5.0.1:
   integrity sha512-bCg29ictuBaKUwwArK4ouCaqDgLZcysCFLmM/Yn/FDoqndh/9vNuQfXRDvTuXKLxfD/JtZQGKFT8MGcJBK644g==
   dependencies:
     flat-cache "^2.0.1"
+
+file-loader@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-4.2.0.tgz#5fb124d2369d7075d70a9a5abecd12e60a95215e"
+  integrity sha512-+xZnaK5R8kBJrHK0/6HRlrKNamvVS5rjyuju+rnyxRGuwUJwpAMsVzUl5dz6rK8brkzjV6JpcFNjp6NqV0g1OQ==
+  dependencies:
+    loader-utils "^1.2.3"
+    schema-utils "^2.0.0"
 
 filename-regex@^2.0.0:
   version "2.0.1"
@@ -9637,6 +9645,14 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
+schema-utils@^2.0.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.5.0.tgz#8f254f618d402cc80257486213c8970edfd7c22f"
+  integrity sha512-32ISrwW2scPXHUSusP8qMg5dLUawKkyV+/qIEV9JdXKx+rsM6mi8vZY8khg2M69Qom16rtroWXD3Ybtiws38gQ==
+  dependencies:
+    ajv "^6.10.2"
+    ajv-keywords "^3.4.1"
+
 scss-tokenizer@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/scss-tokenizer/-/scss-tokenizer-0.2.3.tgz#8eb06db9a9723333824d3f5530641149847ce5d1"
@@ -10301,6 +10317,19 @@ styled-components@^4.4.0:
     stylis-rule-sheet "^0.0.10"
     supports-color "^5.5.0"
 
+styled-icons@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/styled-icons/-/styled-icons-8.6.0.tgz#e5b7183b2ca569fe414e913adaa9f67f6e45142b"
+  integrity sha512-qxHyIIVzy9AKAlKSoH3FjfugwIwdOO/gzMZwJTy/ltE+jQQeF+rvJ1RG6rDrK0ZTp+2sY/S6tvnMiR7LIVFBjA==
+  dependencies:
+    "@emotion/is-prop-valid" "^0.8.3"
+    tslib "^1.9.3"
+
+styled-normalize@^8.0.6:
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/styled-normalize/-/styled-normalize-8.0.6.tgz#f27f87292f46aa79ad6db6339aff5db529df3c91"
+  integrity sha512-tOnAD1+wV04aiVy6chaQA4u/EtkGiGZPlIBYvEfWlZQBrDqRhu9EdPyXlFzLWxpOmANoQelJqSOMlV3QNCDKkw==
+
 stylelint-config-recommended@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-2.2.0.tgz#46ab139db4a0e7151fd5f94af155512886c96d3f"
@@ -10662,7 +10691,7 @@ trough@^1.0.0:
   dependencies:
     glob "^7.1.2"
 
-tslib@1.10.0, tslib@^1.9.0:
+tslib@1.10.0, tslib@^1.9.0, tslib@^1.9.3:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==

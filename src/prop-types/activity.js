@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export default {
-  classNo: PropTypes.string.isRequired,
+  activityOrdinal: PropTypes.string.isRequired,
   day: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   room: PropTypes.string.isRequired,

@@ -14,7 +14,7 @@ import {
 
 const AppRouter = () => (
   <BrowserRouter>
-    <div>
+    <>
       <Header />
       <Switch>
         <Route path={ACTIVITY_PLAN_ROUTE} component={PlanPage} exact />
@@ -22,7 +22,7 @@ const AppRouter = () => (
         <Route path={EDIT_ACTIVITY_ID_ROUTE} component={EditActivityPage} />
         <Route component={NotFoundPage} />
       </Switch>
-    </div>
+    </>
   </BrowserRouter>
 );
 

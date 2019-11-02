@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const StyledInput = styled.input`
+  width: 100%;
+  margin: auto;
+`;
 
 const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
-  <div>
-    <input
+  <>
+    <StyledInput
       type={type}
       placeholder={placeholder}
       value={value}
@@ -12,7 +18,7 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
       data-test="input"
     />
     {errorMsg && <p data-test="error-message">{errorMsg}</p>}
-  </div>
+  </>
 );
 
 Input.propTypes = {

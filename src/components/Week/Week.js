@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import activityPropTypeShape from '../../prop-types/activity';
 import Day from '../Day/Day';
 import { daysOfTheWeek } from '../../constants/dates';
 import { getActivityItems, getActivitiesForDay } from '../../store/activities/selectors';
+import { spacing } from '../../styles/base/base';
+
+const StyledWeekWrapper = styled.div`
+  @media (min-width: ${spacing.desktopBreakpoint}) {
+    align-items: stretch;
+    display: flex;
+  }
+`;
 
 const Week = ({ activities }) => (
-  <div>
+  <StyledWeekWrapper>
     {daysOfTheWeek.map(day => (
       <Day
         weekDay={day}
@@ -17,7 +26,7 @@ const Week = ({ activities }) => (
         data-test="day-component"
       />
     ))}
-  </div>
+  </StyledWeekWrapper>
 );
 
 Week.propTypes = {

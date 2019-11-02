@@ -1,37 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader';
 
-import ActivitiesListFilter from '../ActivitiesListFilter';
 import Week from '../Week';
 import { startSetActivities } from '../../store/activities/actions';
 
-class PlanPage extends React.Component {
-  static propTypes = {
-    onStartSetActivities: PropTypes.func.isRequired,
-  };
+const PlanPage = ({ onStartSetActivities }) => {
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-  state = {
-    isLoaded: false,
-  };
+  useEffect(() => {
+    const afterComponentMountSetActivities = async () => {
+      await onStartSetActivities();
+      setIsDataLoaded(true);
+    };
+    afterComponentMountSetActivities();
+  }, []);
 
-  async componentDidMount() {
-    await this.props.onStartSetActivities();
-    this.setState({ isLoaded: true });
-  }
+  return (
+    <>
+      <Loader loaded={isDataLoaded}>
+        <Week data-test="week-component" />
+      </Loader>
+    </>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <ActivitiesListFilter data-test="filter-component" />
-        <Loader loaded={this.state.isLoaded}>
-          <Week data-test="week-component" />
-        </Loader>
-      </div>
-    );
-  }
-}
+PlanPage.propTypes = {
+  onStartSetActivities: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = {
   onStartSetActivities: startSetActivities,
