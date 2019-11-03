@@ -19,7 +19,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const StyledWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   font-family: 'Cabin';
+  height: 100vh;
 `;
 
 const Layout = ({ children }) => (

@@ -13,12 +13,8 @@ const Footer = styled.footer`
   align-items: flex-end;
   display: flex;
   flex-direction: row-reverse;
+  margin-top: auto;
   width: 100%;
-
-  @media (min-width: ${spacing.desktopBreakpoint}) {
-    bottom: 0;
-    position: absolute;
-  }
 `;
 
 const BackgroundSrcLink = styled.a`

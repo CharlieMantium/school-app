@@ -5,25 +5,25 @@ import { orderBy } from 'lodash';
 
 import activityPropTypeShape from '../../prop-types/activity';
 import ActivitiesListItem from '../ActivitiesListItem/ActivitiesListItem';
-import { spacing, colors } from '../../styles/base/base';
+import { colors, effects, spacing } from '../../styles/base/base';
 
 const DayWrapper = styled.div`
   border: ${spacing.xsSize} solid ${colors.white};
   border-radius: ${spacing.sSize};
   background: rgba(255, 255, 255, 0.8);
   margin: ${spacing.sSize};
+  padding: ${spacing.sSize};
   @media (min-width: ${spacing.desktopBreakpoint}) {
     width: 14.2%;
   }
 `;
 
 const DayName = styled.p`
-  border-bottom: 1px solid currentColor;
+  border-bottom: ${spacing.xxsSize} solid currentColor;
   font-weight: bold;
-  margin: ${spacing.mSize} auto;
+  margin: ${spacing.sSize} auto;
   text-align: center;
-  text-shadow: 1px 1px ${colors.white}, 1px -1px ${colors.white}, -1px 1px ${colors.white},
-    -1px -1px ${colors.white};
+  text-shadow: ${effects.outline(colors.white)};
   width: 70%;
 `;
 

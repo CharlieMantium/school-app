@@ -49,7 +49,7 @@ describe('ActivityForm', () => {
     });
     inputTypesArray.forEach(inputType => {
       expect(wrapper.find(`[data-test="input-component-${inputType}"]`).prop('errorMsg')).toBe(
-        'Required',
+        'Required!',
       );
     });
   });

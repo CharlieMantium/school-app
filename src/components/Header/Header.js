@@ -5,7 +5,7 @@ import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from '../../constants/routes';
 import ActivitiesListFilter from '../ActivitiesListFilter';
-import { spacing, colors, fontSizes } from '../../styles/base/base';
+import { colors, effects, fontSizes, spacing } from '../../styles/base/base';
 
 const HeaderWrapper = styled.header`
   align-items: center;
@@ -23,9 +23,13 @@ const AppName = styled(NavLink)`
   font-size: ${fontSizes.xlFontSize};
   margin: ${spacing.xsSize} ${spacing.mSize};
   text-decoration: none;
-  text-shadow: -1px 0 ${colors.white}, 0 1px ${colors.white}, 1px 0 ${colors.white},
-    0 -1px ${colors.white};
+  text-shadow: ${effects.outline(colors.white)};
   white-space: nowrap;
+
+  &:hover {
+    color: ${colors.white};
+    text-shadow: ${effects.outline(colors.black)};
+  }
 
   @media (min-width: ${spacing.desktopBreakpoint}) {
     margin: ${spacing.mSize};
@@ -41,7 +45,11 @@ const ToolsWrapper = styled.div`
 const AddIcon = styled(DiffAdded)`
   color: ${colors.white};
   height: 28px;
-  margin: 20px;
+  margin: ${spacing.xlSize};
+
+  &:hover {
+    color: ${colors.black};
+  }
 `;
 
 const Header = () => (

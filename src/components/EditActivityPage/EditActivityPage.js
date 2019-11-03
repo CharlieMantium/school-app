@@ -2,7 +2,6 @@ import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
-import styled from 'styled-components';
 import Loader from 'react-loader';
 import database from '../../firebase/firebase';
 
@@ -14,10 +13,6 @@ import activityPropTypeShape from '../../prop-types/activity';
 import historyPushPropTypeShape from '../../prop-types/history';
 import matchPropTypeShape from '../../prop-types/matchShape';
 import { generateActivitiesItemsPath } from '../../helpers/paths';
-
-const Button = styled.button`
-  color: red;
-`;
 
 const EditActivityPage = ({
   activity,
@@ -83,13 +78,13 @@ const EditActivityPage = ({
         />
       </Loader>
 
-      <Button
+      <button
         onClick={() => asyncRemoveActivity(activityId)}
         type="submit"
         data-test="button-remove"
       >
         Remove
-      </Button>
+      </button>
     </div>
   );
 };
