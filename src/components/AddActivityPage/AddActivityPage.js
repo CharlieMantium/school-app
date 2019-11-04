@@ -7,7 +7,7 @@ import AcivityForm from '../ActivityForm/ActivityForm';
 import { startAddActivity } from '../../store/activities/actions';
 import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
 import historyPushPropTypeShape from '../../prop-types/history';
-import { H1 } from '../../styles/elements/H1';
+import { Heading } from '../../styles/elements/Heading';
 import { spacing } from '../../styles/base/base';
 
 const AddActivityWrapper = styled.div`
@@ -17,6 +17,7 @@ const AddActivityWrapper = styled.div`
     margin: 0 auto;
     width: 80%;
   }
+
   @media (min-width: ${spacing.largeDesktopBreakpoint}) {
     margin: 0 auto;
     width: 40%;
@@ -25,7 +26,7 @@ const AddActivityWrapper = styled.div`
 
 const AddActivityPage = ({ onStartAddActivity, history }) => (
   <AddActivityWrapper>
-    <H1>Add Activity</H1>
+    <Heading as="h1">Add Activity</Heading>
     <AcivityForm
       onSubmit={activity => {
         onStartAddActivity(activity);

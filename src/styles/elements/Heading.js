@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { colors, effects, spacing } from '../base/base';
 
-export const H1 = styled.h1`
+export const Heading = styled.p`
   color: ${colors.black};
   margin: ${spacing.mSize} auto;
   text-shadow: ${effects.outline(colors.white)};

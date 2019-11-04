@@ -1,9 +1,9 @@
 export const colors = {
   black: '#000',
-  darkGrey: '#838b8b',
+  darkGrey: '#838B8B',
   green: '#5AC18E',
   red: '#F42C04',
-  white: '#fff',
+  white: '#FFF',
 };
 
 export const spacing = {
