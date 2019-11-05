@@ -13,6 +13,9 @@ import activityPropTypeShape from '../../prop-types/activity';
 import historyPushPropTypeShape from '../../prop-types/history';
 import matchPropTypeShape from '../../prop-types/matchShape';
 import { generateActivitiesItemsPath } from '../../helpers/paths';
+import { ActivityFormWrapper } from '../../styles/elements/ActivityFormWrapper';
+import { Heading } from '../../styles/elements/Heading';
+import { Button } from '../../styles/elements/Button';
 
 const EditActivityPage = ({
   activity,
@@ -69,23 +72,25 @@ const EditActivityPage = ({
   useEffect(asyncSetActivity, [id]);
 
   return (
-    <div>
+    <ActivityFormWrapper>
+      <Heading as="h1">Edit Activity</Heading>
       <Loader loaded={isIdLoaded} data-test="loader">
         <ActivityForm
           activity={editedActivity}
           onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
           data-test="form"
         />
+        <Button
+          onClick={() => asyncRemoveActivity(activityId)}
+          type="submit"
+          data-test="button-remove"
+          remove
+          toRight
+        >
+          Remove Activity
+        </Button>
       </Loader>
-
-      <button
-        onClick={() => asyncRemoveActivity(activityId)}
-        type="submit"
-        data-test="button-remove"
-      >
-        Remove
-      </button>
-    </div>
+    </ActivityFormWrapper>
   );
 };
 
