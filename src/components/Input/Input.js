@@ -2,13 +2,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { colors, effects, spacing } from '../../styles/base/base';
+
+const DescriptionsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Description = styled.p`
+  color: ${props => (props.error ? colors.red : colors.white)};
+  text-shadow: ${props => (props.error ? effects.outline(colors.black) : 'none')};
+  margin: ${spacing.mSize} ${spacing.sSize} 0 ${spacing.sSize};
+`;
+
 const StyledInput = styled.input`
-  width: 100%;
+  border: ${spacing.xsSize} solid ${colors.darkGrey};
+  border-radius: ${spacing.sSize};
   margin: auto;
+  padding: ${spacing.xxsSize} ${spacing.sSize};
+  width: 100%;
+
+  &:focus {
+    border-color: ${colors.black};
+  }
+
+  &:hover {
+    border-color: ${colors.green};
+  }
 `;
 
 const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
   <>
+    <DescriptionsWrapper>
+      <Description>{placeholder}</Description>
+      {errorMsg && (
+        <Description error data-test="error-message">
+          {errorMsg}
+        </Description>
+      )}
+    </DescriptionsWrapper>
     <StyledInput
       type={type}
       placeholder={placeholder}
@@ -17,7 +49,6 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
       onBlur={onBlur}
       data-test="input"
     />
-    {errorMsg && <p data-test="error-message">{errorMsg}</p>}
   </>
 );
 

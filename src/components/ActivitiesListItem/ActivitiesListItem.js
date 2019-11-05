@@ -5,20 +5,25 @@ import styled from 'styled-components';
 
 import { EDIT_ACTIVITY_ROUTE } from '../../constants/routes';
 import activityPropTypeShape from '../../prop-types/activity';
-import { spacing } from '../../styles/base/base';
+import { colors, effects, spacing, fontSizes } from '../../styles/base/base';
 
 const ActivityOrdinalWrapper = styled.p`
   display: inline;
-  margin: ${spacing.sSize};
+  margin-right: ${spacing.sSize};
 `;
 
 const EditActivityLink = styled(Link)`
-  word-break: break-all;
+  color: ${colors.green};
+  cursor: pointer;
+  font-size: ${fontSizes.lFontSize};
+  text-decoration: none;
+  text-shadow: ${effects.outline(colors.black)};
+  word-break: break-word;
 `;
 
-const ActivityDescParagraph = styled.p`
-  margin: ${spacing.sSize};
-  word-break: break-all;
+const ActivityDesc = styled.p`
+  margin: ${spacing.xsSize} 0;
+  word-break: break-word;
 `;
 
 const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, room } }) => (
@@ -27,7 +32,7 @@ const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, ro
     <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)} data-test="react-link">
       {name}
     </EditActivityLink>
-    <ActivityDescParagraph data-test="activity-details">{`Teacher: ${teacher}, in room: ${room}`}</ActivityDescParagraph>
+    <ActivityDesc data-test="activity-details">{`Teacher: ${teacher}, in room: ${room}`}</ActivityDesc>
   </>
 );
 

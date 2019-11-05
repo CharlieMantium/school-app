@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import styled from 'styled-components';
 
 import Input from '../Input/Input';
+import { Button } from '../../styles/elements/Button';
 import { validatePositive, validateDot } from '../../helpers/validators';
 import { daysOfTheWeek } from '../../constants/dates';
+import { spacing } from '../../styles/base/base';
+
+const SelectAndButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: ${spacing.xlSize} 0;
+`;
 
 export default class ActivityForm extends React.Component {
   static propTypes = {
@@ -61,7 +70,7 @@ export default class ActivityForm extends React.Component {
     }
   };
 
-  onBlur = field => e => !e.target.value && this.setState({ [field]: 'Required' });
+  onBlur = field => e => !e.target.value && this.setState({ [field]: 'Required!' });
 
   onSubmit = e => {
     e.preventDefault();
@@ -73,7 +82,7 @@ export default class ActivityForm extends React.Component {
     });
     const { name, day, activityOrdinal, room, teacher } = this.state;
     const errors = {};
-    const errorMsg = 'Required';
+    const errorMsg = 'Required!';
     if (!name || !day || !activityOrdinal || !teacher || !room) {
       if (!name) {
         errors.nameError = errorMsg;
@@ -114,62 +123,56 @@ export default class ActivityForm extends React.Component {
       teacherError,
     } = this.state;
     return (
-      <div>
-        <form className="form" onSubmit={this.onSubmit} data-test="form">
-          <Input
-            type="text"
-            placeholder="Activity Name"
-            value={name}
-            onChange={this.onInputValueChange('name')}
-            onBlur={this.onBlur('nameError')}
-            errorMsg={nameError}
-            data-test="input-component-name"
-          />
-          <Input
-            type="text"
-            placeholder="Teacher"
-            value={teacher}
-            onChange={this.onInputValueChange('teacher')}
-            onBlur={this.onBlur('teacherError')}
-            errorMsg={teacherError}
-            data-test="input-component-teacher"
-          />
-          <Input
-            type="text"
-            placeholder="Room"
-            value={room}
-            onChange={this.onInputValueChange('room')}
-            onBlur={this.onBlur('roomError')}
-            errorMsg={roomError}
-            data-test="input-component-room"
-          />
-          <Input
-            type="number"
-            step="1"
-            placeholder="Class Number"
-            value={activityOrdinal}
-            onChange={this.onInputValueChange('activityOrdinal')}
-            onBlur={this.onBlur('activityOrdinalError')}
-            errorMsg={activityOrdinalError}
-            data-test="input-component-activityOrdinal"
-          />
+      <form onSubmit={this.onSubmit} data-test="form">
+        <Input
+          type="text"
+          placeholder="Activity Name"
+          value={name}
+          onChange={this.onInputValueChange('name')}
+          onBlur={this.onBlur('nameError')}
+          errorMsg={nameError}
+          data-test="input-component-name"
+        />
+        <Input
+          type="text"
+          placeholder="Teacher"
+          value={teacher}
+          onChange={this.onInputValueChange('teacher')}
+          onBlur={this.onBlur('teacherError')}
+          errorMsg={teacherError}
+          data-test="input-component-teacher"
+        />
+        <Input
+          type="text"
+          placeholder="Room"
+          value={room}
+          onChange={this.onInputValueChange('room')}
+          onBlur={this.onBlur('roomError')}
+          errorMsg={roomError}
+          data-test="input-component-room"
+        />
+        <Input
+          type="number"
+          step="1"
+          placeholder="Class Number"
+          value={activityOrdinal}
+          onChange={this.onInputValueChange('activityOrdinal')}
+          onBlur={this.onBlur('activityOrdinalError')}
+          errorMsg={activityOrdinalError}
+          data-test="input-component-activityOrdinal"
+        />
+        <SelectAndButtonWrapper>
           <select
-            className="form__select"
             value={day}
             onChange={this.onInputValueChange('day')}
             required
             data-test="select-day"
           >
-            <option className="form__selectOption" value="" data-test="select-option-default">
+            <option value="" data-test="select-option-default">
               Pick a day
             </option>
             {daysOfTheWeek.map(weekDay => (
-              <option
-                className="form__selectOption"
-                value={weekDay}
-                key={weekDay}
-                data-test={`select-option-${weekDay}`}
-              >
+              <option value={weekDay} key={weekDay} data-test={`select-option-${weekDay}`}>
                 {weekDay}
               </option>
             ))}
@@ -179,11 +182,11 @@ export default class ActivityForm extends React.Component {
           but also you can use on of the most popular react packages (atm) - rc-dropdown or downshift.
           It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
           But by separate pr only for dropdown. */}
-          <button type="submit" data-test="button-submit">
+          <Button type="submit" data-test="button-submit">
             Add Activity
-          </button>
-        </form>
-      </div>
+          </Button>
+        </SelectAndButtonWrapper>
+      </form>
     );
   }
 }
