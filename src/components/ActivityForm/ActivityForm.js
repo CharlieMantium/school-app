@@ -183,7 +183,7 @@ export default class ActivityForm extends React.Component {
           It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
           But by separate pr only for dropdown. */}
           <Button type="submit" data-test="button-submit">
-            Add Activity
+            {this.props.activity.name ? 'Update Activity' : 'Add Activity'}
           </Button>
         </SelectAndButtonWrapper>
       </form>
