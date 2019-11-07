@@ -40,5 +40,15 @@
     "import/no-named-as-default": ["off"],
     "import/prefer-default-export": ["off"],
     "react/jsx-indent": ["error", 2, { "checkAttributes": true, "indentLogicalExpressions": true }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      },
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
   }
 }

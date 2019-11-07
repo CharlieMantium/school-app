@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { colors, effects, spacing } from '../../styles/base/base';
+import { colors, effects, spacing } from 'styles/base';
 
 const DescriptionsWrapper = styled.div`
   display: flex;

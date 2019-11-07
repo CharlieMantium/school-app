@@ -1,4 +1,4 @@
-import { MONDAY, TUESDAY, WEDNESDAY, FRIDAY } from '../../constants/dates';
+import { MONDAY, TUESDAY, WEDNESDAY, FRIDAY } from 'constants/dates';
 
 export default {
   activities: {

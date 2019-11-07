@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import testState from 'tests/fixtures/state';
+import { getActivitiesForDay } from 'store/activities/selectors';
+import { MONDAY } from 'constants/dates';
 import Day from './Day';
-import testState from '../../tests/fixtures/state';
-import { getActivitiesForDay } from '../../store/activities/selectors';
-import { MONDAY } from '../../constants/dates';
 
 describe('Day', () => {
   it('should render Day with testState', () => {

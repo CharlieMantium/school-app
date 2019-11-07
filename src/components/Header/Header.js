@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 
-import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from '../../constants/routes';
+import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
+import { colors, effects, fontSizes, spacing } from 'styles/base';
 import ActivitiesListFilter from '../ActivitiesListFilter';
-import { colors, effects, fontSizes, spacing } from '../../styles/base/base';
 
 const HeaderWrapper = styled.header`
   align-items: center;

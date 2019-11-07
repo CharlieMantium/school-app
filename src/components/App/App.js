@@ -2,10 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import styled from 'styled-components';
 
-import Layout from '../../styles/layout/Layout';
-import configureStore from '../../store/configureStore';
-import AppRouter from '../../router/AppRouter';
-import { colors, spacing } from '../../styles/base/base';
+import Layout from 'styles/layout/Layout';
+import { colors, spacing } from 'styles/base';
+import configureStore from 'store/configureStore';
+import AppRouter from 'router/AppRouter';
 
 const store = configureStore();
 

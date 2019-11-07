@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader';
 
+import { startSetActivities } from 'store/activities/actions';
 import Week from '../Week';
-import { startSetActivities } from '../../store/activities/actions';
 
 const PlanPage = ({ onStartSetActivities }) => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);

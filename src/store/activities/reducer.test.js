@@ -1,6 +1,6 @@
+import testState from 'tests/fixtures/state';
+import activity from 'tests/fixtures/activity';
 import activitiesReducer from './reducer';
-import testState from '../../tests/fixtures/state';
-import activity from '../../tests/fixtures/activity';
 import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
 
 describe('activities reducer', () => {
