@@ -1,9 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import testState from 'tests/fixtures/state';
+import { daysOfTheWeek } from 'constants/dates';
+
 import { WeekUnwrapped } from './Week';
-import testState from '../../tests/fixtures/state';
-import { daysOfTheWeek } from '../../constants/dates';
 
 describe('Week', () => {
   it('should render Week correctly', () => {

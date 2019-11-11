@@ -1,7 +1,11 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import database from '../../firebase/firebase';
+import database from 'firebase/firebase';
+import testState from 'tests/fixtures/state';
+import testActivityData from 'tests/fixtures/activity';
+import { generateActivitiesItemsPath } from 'helpers/paths';
+
 import {
   addActivity,
   startAddActivity,
@@ -13,9 +17,6 @@ import {
   startSetActivities,
 } from './actions';
 import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
-import testState from '../../tests/fixtures/state';
-import testActivityData from '../../tests/fixtures/activity';
-import { generateActivitiesItemsPath } from '../../helpers/paths';
 
 const createMockStore = configureMockStore([thunk]);
 

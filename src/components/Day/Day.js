@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { orderBy } from 'lodash';
 
-import activityPropTypeShape from '../../prop-types/activity';
-import ActivitiesListItem from '../ActivitiesListItem/ActivitiesListItem';
-import { colors, effects, spacing } from '../../styles/base/base';
+import activityPropTypeShape from 'prop-types/activity';
+import { colors, effects, spacing } from 'styles/base';
+
+import ActivitiesListItem from '../ActivitiesListItem';
 
 const DayWrapper = styled.div`
   border: ${spacing.xsSize} solid ${colors.white};

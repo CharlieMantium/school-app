@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import styled from 'styled-components';
 
-import Input from '../Input/Input';
-import { Button } from '../../styles/elements/Button';
-import { validatePositive, validateDot } from '../../helpers/validators';
-import { daysOfTheWeek } from '../../constants/dates';
-import { spacing } from '../../styles/base/base';
+import { validatePositive, validateDot } from 'helpers/validators';
+import { Button } from 'styles/elements/Button';
+import { daysOfTheWeek } from 'constants/dates';
+import { spacing } from 'styles/base';
+
+import Input from '../Input';
 
 const SelectAndButtonWrapper = styled.div`
   display: flex;

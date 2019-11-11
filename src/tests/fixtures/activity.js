@@ -1,4 +1,4 @@
-import { SATURDAY } from '../../constants/dates';
+import { SATURDAY } from 'constants/dates';
 
 export default {
   activityOrdinal: '4',

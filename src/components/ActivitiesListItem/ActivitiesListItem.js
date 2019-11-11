@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { EDIT_ACTIVITY_ROUTE } from '../../constants/routes';
-import activityPropTypeShape from '../../prop-types/activity';
-import { colors, effects, spacing, fontSizes } from '../../styles/base/base';
+import { EDIT_ACTIVITY_ROUTE } from 'constants/routes';
+import activityPropTypeShape from 'prop-types/activity';
+import { colors, effects, spacing, fontSizes } from 'styles/base';
 
 const ActivityOrdinalWrapper = styled.p`
   display: inline;

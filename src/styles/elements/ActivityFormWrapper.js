@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { spacing } from '../base/base';
+import { spacing } from '../base';
 
 export const ActivityFormWrapper = styled.div`
   padding: ${spacing.sSize};

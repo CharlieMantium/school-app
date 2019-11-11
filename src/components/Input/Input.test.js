@@ -1,8 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import testData from 'tests/fixtures/inputData';
+
 import Input from './Input';
-import testData from '../../tests/fixtures/inputData';
 
 describe('Input', () => {
   it('should render Input correctly with test data', () => {

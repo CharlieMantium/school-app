@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
 import Loader from 'react-loader';
-import database from '../../firebase/firebase';
 
-import ActivityForm from '../ActivityForm/ActivityForm';
-import { startEditActivity, startRemoveActivity } from '../../store/activities/actions';
-import { getEditedActivity } from '../../store/activities/selectors';
-import { ACTIVITY_PLAN_ROUTE } from '../../constants/routes';
-import activityPropTypeShape from '../../prop-types/activity';
-import historyPushPropTypeShape from '../../prop-types/history';
-import matchPropTypeShape from '../../prop-types/matchShape';
-import { generateActivitiesItemsPath } from '../../helpers/paths';
-import { ActivityFormWrapper } from '../../styles/elements/ActivityFormWrapper';
-import { Heading } from '../../styles/elements/Heading';
-import { Button } from '../../styles/elements/Button';
+import { startEditActivity, startRemoveActivity } from 'store/activities/actions';
+import { getEditedActivity } from 'store/activities/selectors';
+import { ACTIVITY_PLAN_ROUTE } from 'constants/routes';
+import activityPropTypeShape from 'prop-types/activity';
+import historyPushPropTypeShape from 'prop-types/history';
+import matchPropTypeShape from 'prop-types/matchShape';
+import { generateActivitiesItemsPath } from 'helpers/paths';
+import { ActivityFormWrapper } from 'styles/elements/ActivityFormWrapper';
+import { Heading } from 'styles/elements/Heading';
+import { Button } from 'styles/elements/Button';
+import database from 'firebase/firebase';
+
+import ActivityForm from '../ActivityForm';
 
 const EditActivityPage = ({
   activity,

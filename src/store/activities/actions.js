@@ -1,6 +1,8 @@
-import database from '../../firebase/firebase';
+import database from 'firebase/firebase';
+
+import { generateActivitiesItemsPath } from 'helpers/paths';
+
 import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
-import { generateActivitiesItemsPath } from '../../helpers/paths';
 
 export const addActivity = activity => ({
   type: ADD_ACTIVITY,
