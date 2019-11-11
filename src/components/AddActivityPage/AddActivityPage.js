@@ -7,6 +7,7 @@ import { ACTIVITY_PLAN_ROUTE } from 'constants/routes';
 import historyPushPropTypeShape from 'prop-types/history';
 import { Heading } from 'styles/elements/Heading';
 import { ActivityFormWrapper } from 'styles/elements/ActivityFormWrapper';
+
 import AcivityForm from '../ActivityForm';
 
 const AddActivityPage = ({ onStartAddActivity, history }) => (

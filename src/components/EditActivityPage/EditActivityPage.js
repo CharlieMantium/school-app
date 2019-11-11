@@ -15,6 +15,7 @@ import { ActivityFormWrapper } from 'styles/elements/ActivityFormWrapper';
 import { Heading } from 'styles/elements/Heading';
 import { Button } from 'styles/elements/Button';
 import database from 'firebase/firebase';
+
 import ActivityForm from '../ActivityForm';
 
 const EditActivityPage = ({

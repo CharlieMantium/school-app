@@ -5,6 +5,7 @@ import { daysOfTheWeek } from 'constants/dates';
 import testRenderErrorOnBlur from 'helpers/tests';
 import inputTypesArray from 'tests/fixtures/inputTypesArray';
 import testState from 'tests/fixtures/state';
+
 import ActivityForm from './ActivityForm';
 
 describe('ActivityForm', () => {

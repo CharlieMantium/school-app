@@ -5,6 +5,7 @@ import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
 import { colors, effects, fontSizes, spacing } from 'styles/base';
+
 import ActivitiesListFilter from '../ActivitiesListFilter';
 
 const HeaderWrapper = styled.header`

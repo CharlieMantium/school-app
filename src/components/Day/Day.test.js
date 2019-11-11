@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import testState from 'tests/fixtures/state';
 import { getActivitiesForDay } from 'store/activities/selectors';
 import { MONDAY } from 'constants/dates';
+
 import Day from './Day';
 
 describe('Day', () => {

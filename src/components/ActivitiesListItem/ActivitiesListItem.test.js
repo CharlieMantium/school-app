@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import testState from 'tests/fixtures/state';
+
 import ActivitiesListItem from './ActivitiesListItem';
 
 describe('ActivitiesListItem', () => {

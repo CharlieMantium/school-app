@@ -5,6 +5,7 @@ import database from 'firebase/firebase';
 import testState from 'tests/fixtures/state';
 import testActivityData from 'tests/fixtures/activity';
 import { generateActivitiesItemsPath } from 'helpers/paths';
+
 import {
   addActivity,
   startAddActivity,

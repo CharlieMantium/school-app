@@ -7,6 +7,7 @@ import activityPropTypeShape from 'prop-types/activity';
 import { daysOfTheWeek } from 'constants/dates';
 import { getActivityItems, getActivitiesForDay } from 'store/activities/selectors';
 import { spacing } from 'styles/base/base';
+
 import Day from '../Day';
 
 const StyledWeekWrapper = styled.div`

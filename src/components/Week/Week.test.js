@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import testState from 'tests/fixtures/state';
 import { daysOfTheWeek } from 'constants/dates';
+
 import { WeekUnwrapped } from './Week';
 
 describe('Week', () => {

@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import testState from 'tests/fixtures/state';
 import testProps from 'tests/fixtures/props';
+
 import { EditActivityPageUnwrapped } from './EditActivityPage';
 
 let onStartEditActivitySpy;

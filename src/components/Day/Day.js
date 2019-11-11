@@ -5,6 +5,7 @@ import { orderBy } from 'lodash';
 
 import activityPropTypeShape from 'prop-types/activity';
 import { colors, effects, spacing } from 'styles/base';
+
 import ActivitiesListItem from '../ActivitiesListItem';
 
 const DayWrapper = styled.div`

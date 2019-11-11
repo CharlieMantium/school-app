@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import testData from 'tests/fixtures/inputData';
+
 import Input from './Input';
 
 describe('Input', () => {
