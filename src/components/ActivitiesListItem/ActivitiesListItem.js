@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 
 import { EDIT_ACTIVITY_ROUTE } from 'constants/routes';
 import activityPropTypeShape from 'prop-types/activity';
@@ -32,7 +33,13 @@ const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, ro
     <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)} data-test="react-link">
       {name}
     </EditActivityLink>
-    <ActivityDesc data-test="activity-details">{`Teacher: ${teacher}, in room: ${room}`}</ActivityDesc>
+    <ActivityDesc data-test="activity-details">
+      <FormattedMessage
+        id="activityDetails"
+        defaultMessage="Teacher: {teacher}, in room: {room}"
+        values={{ teacher: `${teacher}`, room: `${room}` }}
+      />
+    </ActivityDesc>
   </>
 );
 

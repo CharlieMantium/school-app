@@ -1,13 +1,23 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import styled from 'styled-components';
+import { IntlProvider } from 'react-intl';
 
 import Layout from 'styles/layout/Layout';
 import { colors, spacing } from 'styles/base';
 import configureStore from 'store/configureStore';
 import AppRouter from 'router/AppRouter';
+import messagesPL from 'translations/pl.json';
+import messagesEN from 'translations/en.json';
 
 const store = configureStore();
+
+const messages = {
+  pl: messagesPL,
+  en: messagesEN,
+};
+
+const language = navigator.language.split(/[-_]/)[0];
 
 const Footer = styled.footer`
   align-items: flex-end;
@@ -28,16 +38,18 @@ const BackgroundSrcLink = styled.a`
 `;
 
 const App = () => (
-  <Layout>
-    <Provider store={store}>
-      <AppRouter />
-    </Provider>
-    <Footer>
-      <BackgroundSrcLink href="http://www.freepik.com">
-        Designed by rawpixel.com / Freepik
-      </BackgroundSrcLink>
-    </Footer>
-  </Layout>
+  <IntlProvider locale={language} messages={messages[language]}>
+    <Layout>
+      <Provider store={store}>
+        <AppRouter />
+      </Provider>
+      <Footer>
+        <BackgroundSrcLink href="http://www.freepik.com">
+          Designed by rawpixel.com / Freepik
+        </BackgroundSrcLink>
+      </Footer>
+    </Layout>
+  </IntlProvider>
 );
 
 export default App;

@@ -1,0 +1,20 @@
+{
+  "activityDetails": "Nauczyciel: {teacher}, w sali: {room}",
+  "activityFormBtnEdit": "Edytuj Aktywność",
+  "activityFormBtnAdd": "Doadaj Aktywność",
+  "editActivityHeading": "Edycja Aktywności",
+  "inputDesc-": " ",
+  "inputDesc-Activity Name": "Nazwa Aktywności",
+  "inputDesc-Teacher": "Nauczyciel",
+  "inputDesc-Room": "Sala",
+  "inputDesc-Class Number": "Numer Lekcji",
+  "activityRemoveBtn": "Usuń Aktywność",
+  "activityDaySelect-monday": "poniedziałek",
+  "activityDaySelect-tuesday": "wtorek",
+  "activityDaySelect-wednesday": "środa",
+  "activityDaySelect-thursday": "czwartek",
+  "activityDaySelect-friday": "piątek",
+  "activityDaySelect-saturday": "sobota",
+  "activityDaySelect-sunday": "niedziela",
+  "activityDaySelectDefault": "Wybierz dzień"
+}

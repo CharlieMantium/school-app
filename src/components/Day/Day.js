@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { orderBy } from 'lodash';
+import { FormattedMessage } from 'react-intl';
 
 import activityPropTypeShape from 'prop-types/activity';
 import { colors, effects, spacing } from 'styles/base';
@@ -19,7 +20,7 @@ const DayWrapper = styled.div`
   }
 `;
 
-const DayName = styled.p`
+const DayName = styled(FormattedMessage)`
   border-bottom: ${spacing.xxsSize} solid currentColor;
   font-weight: bold;
   margin: ${spacing.sSize} auto;
@@ -30,7 +31,9 @@ const DayName = styled.p`
 
 const Day = ({ activities, weekDay }) => (
   <DayWrapper>
-    <DayName data-test="day-name">{weekDay.toUpperCase()}</DayName>
+    <DayName id="dayName" as="p" data-test="day-name">
+      {weekDay.toUpperCase()}
+    </DayName>
     {orderBy(activities, activity => activity.activityOrdinal).map(activity => (
       <ActivitiesListItem
         activity={activity}

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 
 import { colors, effects, spacing } from 'styles/base';
 
@@ -34,7 +35,9 @@ const StyledInput = styled.input`
 const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
   <>
     <DescriptionsWrapper>
-      <Description>{placeholder}</Description>
+      <Description>
+        <FormattedMessage id={`inputDesc-${placeholder}`} defaultMessage={placeholder} />
+      </Description>
       {errorMsg && (
         <Description error data-test="error-message">
           {errorMsg}

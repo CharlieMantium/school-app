@@ -36,5 +36,3 @@ export default connect(
   null,
   mapDispatchToProps,
 )(AddActivityPage);
-
-// TODO: handle absolute imports

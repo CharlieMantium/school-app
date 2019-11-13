@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 
 import { validatePositive, validateDot } from 'helpers/validators';
 import { Button } from 'styles/elements/Button';
@@ -184,7 +185,11 @@ export default class ActivityForm extends React.Component {
           It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
           But by separate pr only for dropdown. */}
           <Button type="submit" data-test="button-submit">
-            {this.props.activity.name ? 'Update Activity' : 'Add Activity'}
+            {this.props.activity.name ? (
+              <FormattedMessage id="activityFormBtnEdit" defaultMessage="Edit Activity" />
+            ) : (
+              <FormattedMessage id="activityFormBtnAdd" defaultMessage="Add Activity" />
+            )}
           </Button>
         </SelectAndButtonWrapper>
       </form>
