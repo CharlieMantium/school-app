@@ -170,13 +170,25 @@ export default class ActivityForm extends React.Component {
             required
             data-test="select-day"
           >
-            <option value="" data-test="select-option-default">
-              Pick a day
-            </option>
+            <FormattedMessage id="activityFormSelectDefault" defaultMessage="Pick a Day">
+              {value => (
+                <option value="" data-test="select-option-default">
+                  {value}
+                </option>
+              )}
+            </FormattedMessage>
             {daysOfTheWeek.map(weekDay => (
-              <option value={weekDay} key={weekDay} data-test={`select-option-${weekDay}`}>
-                {weekDay}
-              </option>
+              <FormattedMessage
+                id={`dayOfTheWeek-${weekDay}`}
+                defaultMessage={weekDay}
+                key={weekDay}
+              >
+                {value => (
+                  <option value={weekDay} data-test={`select-option-${weekDay}`}>
+                    {value}
+                  </option>
+                )}
+              </FormattedMessage>
             ))}
           </select>
           {/* TODO: You should start to think about separate Dropdown component. It's a hard thing to do,

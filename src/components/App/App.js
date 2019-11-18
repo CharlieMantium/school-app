@@ -8,13 +8,11 @@ import { colors, spacing } from 'styles/base';
 import configureStore from 'store/configureStore';
 import AppRouter from 'router/AppRouter';
 import messagesPL from 'translations/pl.json';
-import messagesEN from 'translations/en.json';
 
 const store = configureStore();
 
 const messages = {
   pl: messagesPL,
-  en: messagesEN,
 };
 
 const language = navigator.language.split(/[-_]/)[0];

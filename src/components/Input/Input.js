@@ -39,19 +39,23 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
         <FormattedMessage id={`inputDesc-${placeholder}`} defaultMessage={placeholder} />
       </Description>
       {errorMsg && (
-        <Description error data-test="error-message">
-          {errorMsg}
+        <Description error>
+          <FormattedMessage id="errorMessage" defaultMessage={errorMsg} data-test="error-message" />
         </Description>
       )}
     </DescriptionsWrapper>
-    <StyledInput
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      onBlur={onBlur}
-      data-test="input"
-    />
+    <FormattedMessage id={`inputPlaceholder-${placeholder}`} defaultMessage={placeholder}>
+      {formattedValue => (
+        <StyledInput
+          type={type}
+          placeholder={formattedValue}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          data-test="input"
+        />
+      )}
+    </FormattedMessage>
   </>
 );
 

@@ -1,7 +1,7 @@
-import { mount } from 'enzyme';
+import { mountWithIntl } from 'tests/helper/intlEnzymeTestHelper';
 
 export default (testedInput, inputIndex) => {
-  const wrapper = mount(testedInput);
+  const wrapper = mountWithIntl(testedInput);
   wrapper
     .find('input')
     .at(inputIndex)

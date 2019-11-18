@@ -31,9 +31,18 @@ const DayName = styled(FormattedMessage)`
 
 const Day = ({ activities, weekDay }) => (
   <DayWrapper>
-    <DayName id="dayName" as="p" data-test="day-name">
-      {weekDay.toUpperCase()}
-    </DayName>
+    <FormattedMessage
+      id={`dayOfTheWeek-${weekDay}`}
+      defaultMessage={weekDay.toUpperCase()}
+      data-test="day-name"
+    >
+      {value => (
+        <DayName id="dayName" as="p">
+          {value.toUpperCase()}
+        </DayName>
+      )}
+    </FormattedMessage>
+
     {orderBy(activities, activity => activity.activityOrdinal).map(activity => (
       <ActivitiesListItem
         activity={activity}

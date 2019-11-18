@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 
+import { mountWithIntl } from 'tests/helper/intlEnzymeTestHelper';
 import testState from 'tests/fixtures/state';
 import { getActivitiesForDay } from 'store/activities/selectors';
 import { MONDAY } from 'constants/dates';
@@ -10,11 +11,13 @@ import Day from './Day';
 describe('Day', () => {
   it('should render Day with testState', () => {
     const testDay = MONDAY;
-    const wrapper = shallow(
-      <Day
-        weekDay={testDay}
-        activities={getActivitiesForDay(testState.activities.items, testDay)}
-      />,
+    const wrapper = mountWithIntl(
+      <BrowserRouter>
+        <Day
+          weekDay={testDay}
+          activities={getActivitiesForDay(testState.activities.items, testDay)}
+        />
+      </BrowserRouter>,
     );
     expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay.toUpperCase());
     expect(wrapper.find('[data-test="activities-list-item"]')).toHaveLength(2);
@@ -22,8 +25,10 @@ describe('Day', () => {
 
   it('should render Day with no activities', () => {
     const testDay = MONDAY;
-    const wrapper = shallow(
-      <Day weekDay={testDay} activities={getActivitiesForDay([], testDay)} />,
+    const wrapper = mountWithIntl(
+      <BrowserRouter>
+        <Day weekDay={testDay} activities={getActivitiesForDay([], testDay)} />
+      </BrowserRouter>,
     );
     expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay.toUpperCase());
     expect(wrapper.find('[data-test="activities-list-item"]').exists()).toBe(false);

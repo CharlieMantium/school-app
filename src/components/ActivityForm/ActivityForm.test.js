@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 
+import { shallowWithIntl, mountWithIntl } from 'tests/helper/intlEnzymeTestHelper';
 import { daysOfTheWeek } from 'constants/dates';
 import testRenderErrorOnBlur from 'helpers/tests';
 import inputTypesArray from 'tests/fixtures/inputTypesArray';
@@ -10,7 +10,7 @@ import ActivityForm from './ActivityForm';
 
 describe('ActivityForm', () => {
   it('should render ActivityForm correctly', () => {
-    const wrapper = shallow(<ActivityForm onSubmit={() => {}} />);
+    const wrapper = mountWithIntl(<ActivityForm onSubmit={() => {}} />);
     const dataTestStrings = [
       '[data-test="select-day"]',
       '[data-test="select-option-default"]',
@@ -27,7 +27,7 @@ describe('ActivityForm', () => {
   });
 
   it('should render ActivityForm with testState', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ActivityForm onSubmit={() => {}} activity={testState.activities.items[1]} />,
     );
     inputTypesArray.forEach(inputType => {
@@ -41,7 +41,7 @@ describe('ActivityForm', () => {
   });
 
   it('should set errorMsg in inputs after invalid form submition', () => {
-    const wrapper = shallow(<ActivityForm onSubmit={() => {}} />);
+    const wrapper = shallowWithIntl(<ActivityForm onSubmit={() => {}} />);
     inputTypesArray.forEach(inputType => {
       expect(wrapper.find(`[data-test="input-component-${inputType}"]`).prop('errorMsg')).toBe('');
     });
@@ -73,7 +73,7 @@ describe('ActivityForm', () => {
 
   it('should call onSubmit prop for valid form submition', () => {
     const onSubmitSpy = jest.fn();
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ActivityForm activity={testState.activities.items[1]} onSubmit={onSubmitSpy} />,
     );
     wrapper.find('form').simulate('submit', {

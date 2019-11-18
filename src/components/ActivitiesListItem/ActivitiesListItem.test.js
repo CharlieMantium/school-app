@@ -1,13 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 
+import { mountWithIntl } from 'tests/helper/intlEnzymeTestHelper';
 import testState from 'tests/fixtures/state';
 
 import ActivitiesListItem from './ActivitiesListItem';
 
 describe('ActivitiesListItem', () => {
   it('should render ActivitiesListItem correctly', () => {
-    const wrapper = shallow(<ActivitiesListItem activity={testState.activities.items[3]} />);
+    const wrapper = mountWithIntl(
+      <BrowserRouter>
+        <ActivitiesListItem activity={testState.activities.items[3]} />
+      </BrowserRouter>,
+    );
     const { name, teacher, room } = testState.activities.items[3];
     expect(wrapper.find('[data-test="react-link"]').exists()).toBe(true);
     expect(wrapper.find('[data-test="react-link"]').text()).toBe(name);

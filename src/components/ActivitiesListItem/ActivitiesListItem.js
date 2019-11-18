@@ -30,14 +30,15 @@ const ActivityDesc = styled.p`
 const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, room } }) => (
   <>
     <ActivityOrdinalWrapper>{`${activityOrdinal}.`}</ActivityOrdinalWrapper>
-    <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)} data-test="react-link">
-      {name}
-    </EditActivityLink>
-    <ActivityDesc data-test="activity-details">
+    <FormattedMessage data-test="react-link" id="activityName" defaultMessage={name}>
+      {value => <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)}>{value}</EditActivityLink>}
+    </FormattedMessage>
+    <ActivityDesc>
       <FormattedMessage
         id="activityDetails"
         defaultMessage="Teacher: {teacher}, in room: {room}"
         values={{ teacher: `${teacher}`, room: `${room}` }}
+        data-test="activity-details"
       />
     </ActivityDesc>
   </>
