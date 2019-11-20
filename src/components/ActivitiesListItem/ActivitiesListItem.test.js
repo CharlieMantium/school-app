@@ -12,6 +12,7 @@ describe('ActivitiesListItem', () => {
       <BrowserRouter>
         <ActivitiesListItem activity={testState.activities.items[3]} />
       </BrowserRouter>,
+      'en',
     );
     const { name, teacher, room } = testState.activities.items[3];
     expect(wrapper.find('[data-test="react-link"]').exists()).toBe(true);

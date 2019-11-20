@@ -26,19 +26,16 @@ const DayName = styled(FormattedMessage)`
   margin: ${spacing.sSize} auto;
   text-align: center;
   text-shadow: ${effects.outline(colors.white)};
+  text-transform: uppercase;
   width: 70%;
 `;
 
 const Day = ({ activities, weekDay }) => (
   <DayWrapper>
-    <FormattedMessage
-      id={`dayOfTheWeek-${weekDay}`}
-      defaultMessage={weekDay.toUpperCase()}
-      data-test="day-name"
-    >
+    <FormattedMessage id={`weekDays.${weekDay}`} defaultMessage={weekDay} data-test="day-name">
       {value => (
         <DayName id="dayName" as="p">
-          {value.toUpperCase()}
+          {value}
         </DayName>
       )}
     </FormattedMessage>

@@ -14,7 +14,7 @@ import AcivityForm from '../ActivityForm';
 const AddActivityPage = ({ onStartAddActivity, history }) => (
   <ActivityFormWrapper>
     <Heading as="h1">
-      <FormattedMessage id="addActivityHeading" defaultMessage="Add Activity" />
+      <FormattedMessage id="form.heading.addActivityHeading" />
     </Heading>
     <AcivityForm
       onSubmit={activity => {

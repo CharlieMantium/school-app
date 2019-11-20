@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
+import { camelCase } from 'lodash';
 
 import { colors, effects, spacing } from 'styles/base';
 
@@ -36,7 +37,7 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
   <>
     <DescriptionsWrapper>
       <Description>
-        <FormattedMessage id={`inputDesc-${placeholder}`} defaultMessage={placeholder} />
+        <FormattedMessage id={`activity.${camelCase(placeholder)}`} defaultMessage={placeholder} />
       </Description>
       {errorMsg && (
         <Description error>
@@ -44,7 +45,11 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
         </Description>
       )}
     </DescriptionsWrapper>
-    <FormattedMessage id={`inputPlaceholder-${placeholder}`} defaultMessage={placeholder}>
+    <FormattedMessage
+      id={`activity.${camelCase(placeholder)}`}
+      defaultMessage={placeholder}
+      data-test="input"
+    >
       {formattedValue => (
         <StyledInput
           type={type}
@@ -52,7 +57,6 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
           value={value}
           onChange={onChange}
           onBlur={onBlur}
-          data-test="input"
         />
       )}
     </FormattedMessage>

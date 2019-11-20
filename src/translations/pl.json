@@ -1,27 +1,34 @@
 {
-  "activityDetails": "Nauczyciel: {teacher}, w sali: {room}",
-  "activityFormBtnEdit": "Edytuj Aktywność",
-  "activityFormBtnAdd": "Doadaj Aktywność",
-  "editActivityHeading": "Edycja Aktywności",
-  "addActivityHeading": "Dodaj Aktywność",
-  "inputDesc-": " ",
-  "inputDesc-Activity Name": "Nazwa Aktywności",
-  "inputDesc-Teacher": "Nauczyciel",
-  "inputDesc-Room": "Sala",
-  "inputDesc-Class Number": "Numer Lekcji",
-  "activityRemoveBtn": "Usuń Aktywność",
-  "dayOfTheWeek-monday": "poniedziałek",
-  "dayOfTheWeek-tuesday": "wtorek",
-  "dayOfTheWeek-wednesday": "środa",
-  "dayOfTheWeek-thursday": "czwartek",
-  "dayOfTheWeek-friday": "piątek",
-  "dayOfTheWeek-saturday": "sobota",
-  "dayOfTheWeek-sunday": "niedziela",
-  "activityFormSelectDefault": "wybierz dzień",
-  "inputPlaceholder-Activity Name": "Nazwa Aktywności",
-  "inputPlaceholder-Teacher": "Nauczyciel",
-  "inputPlaceholder-Room": "Sala",
-  "inputPlaceholder-Class Number": "Numer Lekcji",
-  "inputPlaceholder-": " ",
-  "errorMessage": "Pole wymagane!"
+  "planView": {
+    "activityDetails": "Nauczyciel: {teacher}, w sali: {room}"
+  },
+  "activity": {
+    "activityName": "Nazwa Aktywności",
+    "teacher": "Nauczyciel",
+    "room": "Sala",
+    "classNumber": "Numer Lekcji",
+    "": " "
+  },
+  "weekDays": {
+    "monday": "poniedziałek",
+    "tuesday": "wtorek",
+    "wednesday": "środa",
+    "thursday": "czwartek",
+    "friday": "piątek",
+    "saturday": "sobota",
+    "sunday": "niedziela"
+  },
+  "form": {
+    "button": {
+      "activityFormBtnAdd": "Dodaj Aktywność",
+      "activityFormBtnEdit": "Edytuj Aktywność",
+      "activityRemoveBtn": "Usuń Aktywność"
+    },
+    "heading": {
+      "addActivityHeading": "Dodaj Aktywność",
+      "editActivityHeading": "Edycja Aktywności"
+    },
+    "errorMessage": "Pole wymagane!",
+    "activityFormSelectDefault": "wybierz dzień"
+  }
 }

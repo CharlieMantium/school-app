@@ -170,7 +170,7 @@ export default class ActivityForm extends React.Component {
             required
             data-test="select-day"
           >
-            <FormattedMessage id="activityFormSelectDefault" defaultMessage="Pick a Day">
+            <FormattedMessage id="form.activityFormSelectDefault" defaultMessage="Pick a day">
               {value => (
                 <option value="" data-test="select-option-default">
                   {value}
@@ -178,11 +178,7 @@ export default class ActivityForm extends React.Component {
               )}
             </FormattedMessage>
             {daysOfTheWeek.map(weekDay => (
-              <FormattedMessage
-                id={`dayOfTheWeek-${weekDay}`}
-                defaultMessage={weekDay}
-                key={weekDay}
-              >
+              <FormattedMessage id={`weekDays.${weekDay}`} defaultMessage={weekDay} key={weekDay}>
                 {value => (
                   <option value={weekDay} data-test={`select-option-${weekDay}`}>
                     {value}
@@ -197,11 +193,10 @@ export default class ActivityForm extends React.Component {
           It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
           But by separate pr only for dropdown. */}
           <Button type="submit" data-test="button-submit">
-            {this.props.activity.name ? (
-              <FormattedMessage id="activityFormBtnEdit" defaultMessage="Edit Activity" />
-            ) : (
-              <FormattedMessage id="activityFormBtnAdd" defaultMessage="Add Activity" />
-            )}
+            <FormattedMessage
+              id={name ? 'form.button.activityFormBtnEdit' : 'form.button.activityFormBtnAdd'}
+              defaultMessage={name ? 'Edit Activity' : 'Add Activity'}
+            />
           </Button>
         </SelectAndButtonWrapper>
       </form>

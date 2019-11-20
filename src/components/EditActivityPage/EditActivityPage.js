@@ -76,7 +76,7 @@ const EditActivityPage = ({
   return (
     <ActivityFormWrapper>
       <Heading as="h1">
-        <FormattedMessage id="editActivityHeading" defaultMessage="Edit Activity" />
+        <FormattedMessage id="form.heading.editActivityHeading" />
       </Heading>
       <Loader loaded={isIdLoaded} data-test="loader">
         <ActivityForm
@@ -91,7 +91,7 @@ const EditActivityPage = ({
           remove
           toRight
         >
-          <FormattedMessage id="activityRemoveBtn" defaultMessage="Remove Activity" />
+          <FormattedMessage id="form.button.activityRemoveBtn" />
         </Button>
       </Loader>
     </ActivityFormWrapper>

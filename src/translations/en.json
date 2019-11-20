@@ -1,0 +1,34 @@
+{
+  "planView": {
+    "activityDetails": "Teacher: {teacher}, room: {room}"
+  },
+  "activity": {
+    "activityName": "Activity Name",
+    "teacher": "Teacher",
+    "room": "Room",
+    "classNumber": "Class Number",
+    "": " "
+  },
+  "weekDays": {
+    "monday": "monday",
+    "tuesday": "tuesday",
+    "wednesday": "wednesday",
+    "thursday": "thursday",
+    "friday": "friday",
+    "saturday": "saturday",
+    "sunday": "sunday"
+  },
+  "form": {
+    "button": {
+      "activityFormBtnAdd": "Add Activity",
+      "activityFormBtnEdit": "Edit Activity",
+      "activityRemoveBtn": "Remove Activity"
+    },
+    "heading": {
+      "addActivityHeading": "Add Activity",
+      "editActivityHeading": "Edit Activity"
+    },
+    "errorMessage": "Required!",
+    "activityFormSelectDefault": "pick a day"
+  }
+}

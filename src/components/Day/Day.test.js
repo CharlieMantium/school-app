@@ -19,7 +19,7 @@ describe('Day', () => {
         />
       </BrowserRouter>,
     );
-    expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay.toUpperCase());
+    expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay);
     expect(wrapper.find('[data-test="activities-list-item"]')).toHaveLength(2);
   });
 
@@ -30,7 +30,7 @@ describe('Day', () => {
         <Day weekDay={testDay} activities={getActivitiesForDay([], testDay)} />
       </BrowserRouter>,
     );
-    expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay.toUpperCase());
+    expect(wrapper.find('[data-test="day-name"]').text()).toBe(testDay);
     expect(wrapper.find('[data-test="activities-list-item"]').exists()).toBe(false);
   });
 });
