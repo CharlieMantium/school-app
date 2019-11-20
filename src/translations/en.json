@@ -6,8 +6,7 @@
     "activityName": "Activity Name",
     "teacher": "Teacher",
     "room": "Room",
-    "classNumber": "Class Number",
-    "": " "
+    "classNumber": "Class Number"
   },
   "weekDays": {
     "monday": "monday",

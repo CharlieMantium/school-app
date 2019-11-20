@@ -6,8 +6,7 @@
     "activityName": "Nazwa Aktywności",
     "teacher": "Nauczyciel",
     "room": "Sala",
-    "classNumber": "Numer Lekcji",
-    "": " "
+    "classNumber": "Numer Lekcji"
   },
   "weekDays": {
     "monday": "poniedziałek",
