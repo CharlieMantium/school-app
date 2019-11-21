@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 
 import { EDIT_ACTIVITY_ROUTE } from 'constants/routes';
 import activityPropTypeShape from 'prop-types/activity';
@@ -29,10 +30,17 @@ const ActivityDesc = styled.p`
 const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, room } }) => (
   <>
     <ActivityOrdinalWrapper>{`${activityOrdinal}.`}</ActivityOrdinalWrapper>
-    <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)} data-test="react-link">
-      {name}
-    </EditActivityLink>
-    <ActivityDesc data-test="activity-details">{`Teacher: ${teacher}, in room: ${room}`}</ActivityDesc>
+    <FormattedMessage data-test="react-link" id="planView.activityName" defaultMessage={name}>
+      {value => <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)}>{value}</EditActivityLink>}
+    </FormattedMessage>
+    <ActivityDesc>
+      <FormattedMessage
+        id="planView.activityDetails"
+        defaultMessage="Teacher: {teacher}, in room: {room}"
+        values={{ teacher, room }}
+        data-test="activity-details"
+      />
+    </ActivityDesc>
   </>
 );
 

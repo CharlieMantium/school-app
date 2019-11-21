@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 import { startAddActivity } from 'store/activities/actions';
 import { ACTIVITY_PLAN_ROUTE } from 'constants/routes';
@@ -12,7 +13,9 @@ import AcivityForm from '../ActivityForm';
 
 const AddActivityPage = ({ onStartAddActivity, history }) => (
   <ActivityFormWrapper>
-    <Heading as="h1">Add Activity</Heading>
+    <Heading as="h1">
+      <FormattedMessage id="form.heading.addActivityHeading" />
+    </Heading>
     <AcivityForm
       onSubmit={activity => {
         onStartAddActivity(activity);
@@ -36,5 +39,3 @@ export default connect(
   null,
   mapDispatchToProps,
 )(AddActivityPage);
-
-// TODO: handle absolute imports

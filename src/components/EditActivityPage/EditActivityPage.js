@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
 import Loader from 'react-loader';
+import { FormattedMessage } from 'react-intl';
 
 import { startEditActivity, startRemoveActivity } from 'store/activities/actions';
 import { getEditedActivity } from 'store/activities/selectors';
@@ -74,7 +75,9 @@ const EditActivityPage = ({
 
   return (
     <ActivityFormWrapper>
-      <Heading as="h1">Edit Activity</Heading>
+      <Heading as="h1">
+        <FormattedMessage id="form.heading.editActivityHeading" />
+      </Heading>
       <Loader loaded={isIdLoaded} data-test="loader">
         <ActivityForm
           activity={editedActivity}
@@ -88,7 +91,7 @@ const EditActivityPage = ({
           remove
           toRight
         >
-          Remove Activity
+          <FormattedMessage id="form.button.activityRemoveBtn" />
         </Button>
       </Loader>
     </ActivityFormWrapper>
@@ -125,3 +128,5 @@ export default connect(
 // TODO: I recommend you to think about react-intl package.
 // This is not a priority, but it would be great knowledge for future ;)
 // spend some time for internatiolization in short future.
+// TODO: not for this pr, but can we change this function name to normal one ?
+// why not removeActivity?

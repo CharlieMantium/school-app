@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 
 import { validatePositive, validateDot } from 'helpers/validators';
 import { Button } from 'styles/elements/Button';
@@ -169,13 +170,21 @@ export default class ActivityForm extends React.Component {
             required
             data-test="select-day"
           >
-            <option value="" data-test="select-option-default">
-              Pick a day
-            </option>
+            <FormattedMessage id="form.activityFormSelectDefault" defaultMessage="Pick a day">
+              {value => (
+                <option value="" data-test="select-option-default">
+                  {value}
+                </option>
+              )}
+            </FormattedMessage>
             {daysOfTheWeek.map(weekDay => (
-              <option value={weekDay} key={weekDay} data-test={`select-option-${weekDay}`}>
-                {weekDay}
-              </option>
+              <FormattedMessage id={`weekDays.${weekDay}`} defaultMessage={weekDay} key={weekDay}>
+                {value => (
+                  <option value={weekDay} data-test={`select-option-${weekDay}`}>
+                    {value}
+                  </option>
+                )}
+              </FormattedMessage>
             ))}
           </select>
           {/* TODO: You should start to think about separate Dropdown component. It's a hard thing to do,
@@ -184,7 +193,10 @@ export default class ActivityForm extends React.Component {
           It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
           But by separate pr only for dropdown. */}
           <Button type="submit" data-test="button-submit">
-            {this.props.activity.name ? 'Update Activity' : 'Add Activity'}
+            <FormattedMessage
+              id={name ? 'form.button.activityFormBtnEdit' : 'form.button.activityFormBtnAdd'}
+              defaultMessage={name ? 'Edit Activity' : 'Add Activity'}
+            />
           </Button>
         </SelectAndButtonWrapper>
       </form>

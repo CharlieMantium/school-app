@@ -23,7 +23,7 @@ export default {
         activityOrdinal: '2',
         day: MONDAY,
         id: '3',
-        name: 'polski',
+        name: 'bolski',
         room: '103',
         teacher: 'Malski',
       },
