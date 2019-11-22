@@ -6,7 +6,7 @@ import Loader from 'react-loader';
 import { FormattedMessage } from 'react-intl';
 
 import { startEditActivity, startRemoveActivity } from 'store/activities/actions';
-import { getEditedActivity } from 'store/activities/selectors';
+import { getEditedActivity, getActivityItems } from 'store/activities/selectors';
 import { ACTIVITY_PLAN_ROUTE } from 'constants/routes';
 import activityPropTypeShape from 'prop-types/activity';
 import historyPushPropTypeShape from 'prop-types/history';
@@ -21,6 +21,7 @@ import ActivityForm from '../ActivityForm';
 
 const EditActivityPage = ({
   activity,
+  currentActivities,
   history,
   onStartEditActivity,
   onStartRemoveActivity,
@@ -80,6 +81,7 @@ const EditActivityPage = ({
       </Heading>
       <Loader loaded={isIdLoaded} data-test="loader">
         <ActivityForm
+          currentActivities={currentActivities}
           activity={editedActivity}
           onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
           data-test="form"
@@ -100,6 +102,7 @@ const EditActivityPage = ({
 
 EditActivityPage.propTypes = {
   activity: PropTypes.shape(activityPropTypeShape),
+  currentActivities: PropTypes.arrayOf(PropTypes.shape(activityPropTypeShape)),
   history: PropTypes.shape(historyPushPropTypeShape).isRequired,
   match: PropTypes.shape(matchPropTypeShape).isRequired,
   onStartEditActivity: PropTypes.func.isRequired,
@@ -108,10 +111,12 @@ EditActivityPage.propTypes = {
 
 EditActivityPage.defaultProps = {
   activity: null,
+  currentActivities: [],
 };
 
 const mapStateToProps = (state, props) => ({
   activity: getEditedActivity(state, props),
+  currentActivities: getActivityItems(state),
 });
 
 const mapDispatchToProps = {

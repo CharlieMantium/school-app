@@ -41,11 +41,7 @@ const Day = ({ activities, weekDay }) => (
     </FormattedMessage>
 
     {orderBy(activities, activity => activity.activityOrdinal).map(activity => (
-      <ActivitiesListItem
-        activity={activity}
-        key={activity.name}
-        data-test="activities-list-item"
-      />
+      <ActivitiesListItem activity={activity} key={activity.id} data-test="activities-list-item" />
     ))}
   </DayWrapper>
 );

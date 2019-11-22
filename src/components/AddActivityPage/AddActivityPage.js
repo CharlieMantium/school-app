@@ -8,15 +8,18 @@ import { ACTIVITY_PLAN_ROUTE } from 'constants/routes';
 import historyPushPropTypeShape from 'prop-types/history';
 import { Heading } from 'styles/elements/Heading';
 import { ActivityFormWrapper } from 'styles/elements/ActivityFormWrapper';
+import activityPropTypeShape from 'prop-types/activity';
+import { getActivityItems } from 'store/activities/selectors';
 
-import AcivityForm from '../ActivityForm';
+import ActivityForm from '../ActivityForm';
 
-const AddActivityPage = ({ onStartAddActivity, history }) => (
+const AddActivityPage = ({ onStartAddActivity, history, currentActivities }) => (
   <ActivityFormWrapper>
     <Heading as="h1">
       <FormattedMessage id="form.heading.addActivityHeading" />
     </Heading>
-    <AcivityForm
+    <ActivityForm
+      currentActivities={currentActivities}
       onSubmit={activity => {
         onStartAddActivity(activity);
         history.push(ACTIVITY_PLAN_ROUTE);
@@ -28,7 +31,16 @@ const AddActivityPage = ({ onStartAddActivity, history }) => (
 AddActivityPage.propTypes = {
   onStartAddActivity: PropTypes.func.isRequired,
   history: PropTypes.shape(historyPushPropTypeShape).isRequired,
+  currentActivities: PropTypes.arrayOf(PropTypes.shape(activityPropTypeShape)),
 };
+
+AddActivityPage.defaultProps = {
+  currentActivities: [],
+};
+
+const mapStateToProps = state => ({
+  currentActivities: getActivityItems(state),
+});
 
 const mapDispatchToProps = {
   onStartAddActivity: startAddActivity,
@@ -36,6 +48,6 @@ const mapDispatchToProps = {
 
 export { AddActivityPage as AddActivityPageUnwrapped };
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(AddActivityPage);
