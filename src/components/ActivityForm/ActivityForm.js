@@ -89,7 +89,14 @@ export default class ActivityForm extends React.Component {
     const { name, day, activityOrdinal, room, teacher, currentActivities } = this.state;
     const errors = {};
     const errorMsg = 'Required!';
-    if (!name || !day || !activityOrdinal || !teacher || !room) {
+    if (
+      !name ||
+      !day ||
+      !activityOrdinal ||
+      !teacher ||
+      !room ||
+      !validateFreeTimeSlot({ day, activityOrdinal }, currentActivities)
+    ) {
       if (!name) {
         errors.nameError = errorMsg;
       }
@@ -102,13 +109,12 @@ export default class ActivityForm extends React.Component {
       if (!teacher) {
         errors.teacherError = errorMsg;
       }
+      if (!validateFreeTimeSlot({ day, activityOrdinal }, currentActivities)) {
+        errors.activityOrdinalError = 'This time slot is already occupied!';
+      }
       if (!_.isEmpty(errors)) {
         this.setState(errors);
       }
-    } else if (validateFreeTimeSlot({ day, activityOrdinal }, currentActivities) === false) {
-      this.setState({
-        activityOrdinalError: 'This time slot is already occupied!',
-      });
     } else {
       this.props.onSubmit({
         activityOrdinal,

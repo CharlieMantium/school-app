@@ -27,7 +27,8 @@
       "addActivityHeading": "Dodaj Aktywność",
       "editActivityHeading": "Edycja Aktywności"
     },
-    "errorMessage": "Pole wymagane!",
+    "errorMessage-required": "Pole wymagane!",
+    "errorMessage-thisTimeSlotIsAlreadyOccupied": "Ta lekcja jest już zajęta!",
     "activityFormSelectDefault": "wybierz dzień"
   }
 }
