@@ -4,10 +4,11 @@ import _ from 'lodash';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
-import { validatePositive, validateDot } from 'helpers/validators';
+import { validatePositive, validateDot, validateFreeTimeSlot } from 'helpers/validators';
 import { Button } from 'styles/elements/Button';
 import { daysOfTheWeek } from 'constants/dates';
 import { spacing } from 'styles/base';
+import activityPropTypeShape from 'prop-types/activity';
 
 import Input from '../Input';
 
@@ -28,6 +29,7 @@ export default class ActivityForm extends React.Component {
       teacher: PropTypes.string,
     }),
     onSubmit: PropTypes.func.isRequired,
+    currentActivities: PropTypes.arrayOf(PropTypes.shape(activityPropTypeShape)),
   };
 
   static defaultProps = {
@@ -38,11 +40,13 @@ export default class ActivityForm extends React.Component {
       room: '',
       teacher: '',
     },
+    currentActivities: [],
   };
 
   constructor(props) {
     super(props);
     this.state = {
+      currentActivities: props.currentActivities,
       activityOrdinal: props.activity.activityOrdinal,
       day: props.activity.day,
       name: props.activity.name,
@@ -72,7 +76,7 @@ export default class ActivityForm extends React.Component {
     }
   };
 
-  onBlur = field => e => !e.target.value && this.setState({ [field]: 'Required!' });
+  onBlur = field => e => !e.target.value && this.setState({ [field]: 'form.error.required' });
 
   onSubmit = e => {
     e.preventDefault();
@@ -82,10 +86,17 @@ export default class ActivityForm extends React.Component {
       roomError: '',
       teacherError: '',
     });
-    const { name, day, activityOrdinal, room, teacher } = this.state;
+    const { name, day, activityOrdinal, room, teacher, currentActivities } = this.state;
     const errors = {};
-    const errorMsg = 'Required!';
-    if (!name || !day || !activityOrdinal || !teacher || !room) {
+    const errorMsg = 'form.error.required';
+    if (
+      !name ||
+      !day ||
+      !activityOrdinal ||
+      !teacher ||
+      !room ||
+      !validateFreeTimeSlot({ day, activityOrdinal }, currentActivities)
+    ) {
       if (!name) {
         errors.nameError = errorMsg;
       }
@@ -97,6 +108,9 @@ export default class ActivityForm extends React.Component {
       }
       if (!teacher) {
         errors.teacherError = errorMsg;
+      }
+      if (!validateFreeTimeSlot({ day, activityOrdinal }, currentActivities)) {
+        errors.activityOrdinalError = 'form.error.occupied';
       }
       if (!_.isEmpty(errors)) {
         this.setState(errors);

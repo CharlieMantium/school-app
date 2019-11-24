@@ -41,7 +41,7 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
       </Description>
       {errorMsg && (
         <Description error>
-          <FormattedMessage id="errorMessage" defaultMessage={errorMsg} data-test="error-message" />
+          <FormattedMessage id={errorMsg} defaultMessage={errorMsg} data-test="error-message" />
         </Description>
       )}
     </DescriptionsWrapper>
