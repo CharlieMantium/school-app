@@ -27,8 +27,10 @@
       "addActivityHeading": "Add Activity",
       "editActivityHeading": "Edit Activity"
     },
-    "errorMessage-required": "Required!",
-    "errorMessage-thisTimeSlotIsAlreadyOccupied!": "This time slot is already occupied!",
+    "error": {
+      "required": "Required!",
+      "occupied": "This time slot is already occupied!"
+    },
     "activityFormSelectDefault": "pick a day"
   }
 }

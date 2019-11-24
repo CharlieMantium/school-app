@@ -76,7 +76,7 @@ export default class ActivityForm extends React.Component {
     }
   };
 
-  onBlur = field => e => !e.target.value && this.setState({ [field]: 'Required!' });
+  onBlur = field => e => !e.target.value && this.setState({ [field]: 'form.error.required' });
 
   onSubmit = e => {
     e.preventDefault();
@@ -88,7 +88,7 @@ export default class ActivityForm extends React.Component {
     });
     const { name, day, activityOrdinal, room, teacher, currentActivities } = this.state;
     const errors = {};
-    const errorMsg = 'Required!';
+    const errorMsg = 'form.error.required';
     if (
       !name ||
       !day ||
@@ -110,7 +110,7 @@ export default class ActivityForm extends React.Component {
         errors.teacherError = errorMsg;
       }
       if (!validateFreeTimeSlot({ day, activityOrdinal }, currentActivities)) {
-        errors.activityOrdinalError = 'This time slot is already occupied!';
+        errors.activityOrdinalError = 'form.error.occupied';
       }
       if (!_.isEmpty(errors)) {
         this.setState(errors);
