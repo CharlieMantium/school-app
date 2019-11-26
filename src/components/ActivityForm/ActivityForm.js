@@ -6,11 +6,11 @@ import { FormattedMessage } from 'react-intl';
 
 import { validatePositive, validateDot, validateFreeTimeSlot } from 'helpers/validators';
 import { Button } from 'styles/elements/Button';
-import { daysOfTheWeek } from 'constants/dates';
 import { spacing } from 'styles/base';
 import activityPropTypeShape from 'prop-types/activity';
 
 import Input from '../Input';
+import Dropdown from '../Dropdown';
 
 const SelectAndButtonWrapper = styled.div`
   display: flex;
@@ -74,6 +74,12 @@ export default class ActivityForm extends React.Component {
         [`${field}Error`]: '',
       });
     }
+  };
+
+  onSelectValueChange = selectedOption => {
+    this.setState({
+      day: selectedOption.value,
+    });
   };
 
   onBlur = field => e => !e.target.value && this.setState({ [field]: 'form.error.required' });
@@ -178,34 +184,12 @@ export default class ActivityForm extends React.Component {
           data-test="input-component-activityOrdinal"
         />
         <SelectAndButtonWrapper>
-          <select
+          <Dropdown
             value={day}
-            onChange={this.onInputValueChange('day')}
+            onChange={this.onSelectValueChange}
             required
             data-test="select-day"
-          >
-            <FormattedMessage id="form.activityFormSelectDefault" defaultMessage="Pick a day">
-              {value => (
-                <option value="" data-test="select-option-default">
-                  {value}
-                </option>
-              )}
-            </FormattedMessage>
-            {daysOfTheWeek.map(weekDay => (
-              <FormattedMessage id={`weekDays.${weekDay}`} defaultMessage={weekDay} key={weekDay}>
-                {value => (
-                  <option value={weekDay} data-test={`select-option-${weekDay}`}>
-                    {value}
-                  </option>
-                )}
-              </FormattedMessage>
-            ))}
-          </select>
-          {/* TODO: You should start to think about separate Dropdown component. It's a hard thing to do,
-          using native html, it's harder to style options, etc. You could build it by yourself,
-          but also you can use on of the most popular react packages (atm) - rc-dropdown or downshift.
-          It will be big exercise. So, do it later (when you start real styling - do it also quite asap).
-          But by separate pr only for dropdown. */}
+          />
           <Button type="submit" data-test="button-submit">
             <FormattedMessage
               id={name ? 'form.button.activityFormBtnEdit' : 'form.button.activityFormBtnAdd'}
