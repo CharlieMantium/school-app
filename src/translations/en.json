@@ -31,6 +31,6 @@
       "required": "Required!",
       "occupied": "This time slot is already occupied!"
     },
-    "activityFormSelectDefault": "pick a day"
+    "activityFormSelectDefault": "Pick a day"
   }
 }

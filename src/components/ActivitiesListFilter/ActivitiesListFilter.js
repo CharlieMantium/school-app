@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input from '../Input';
+import { Input } from '../elements';
 
 const ActivitiesListFilter = () => (
   <Input data-test="input-component" type="text" onChange={() => {}} />

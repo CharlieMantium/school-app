@@ -31,6 +31,6 @@
       "required": "Pole wymagane!",
       "occupied": "Ta lekcja jest już zajęta!"
     },
-    "activityFormSelectDefault": "wybierz dzień"
+    "activityFormSelectDefault": "Wybierz dzień"
   }
 }

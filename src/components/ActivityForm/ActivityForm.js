@@ -9,8 +9,7 @@ import { Button } from 'styles/elements/Button';
 import { spacing } from 'styles/base';
 import activityPropTypeShape from 'prop-types/activity';
 
-import Input from '../Input';
-import Dropdown from '../Dropdown';
+import { Input, Dropdown } from '../elements';
 
 const SelectAndButtonWrapper = styled.div`
   display: flex;

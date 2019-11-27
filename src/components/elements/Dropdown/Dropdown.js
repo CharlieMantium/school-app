@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from 'react-dropdown';
-import { intlShape, injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import 'react-dropdown/style.css';
@@ -21,7 +21,8 @@ const StyledDropdown = styled(Dropdown)`
   }
 `;
 
-const DropdownList = ({ value, onChange, intl }) => {
+const DropdownList = ({ value, onChange }) => {
+  const intl = useIntl();
   const options = daysOfTheWeek.map(day => ({
     value: day,
     label: intl.formatMessage({ id: `weekDays.${day}`, defaultMessage: day }),
@@ -40,9 +41,8 @@ const DropdownList = ({ value, onChange, intl }) => {
 };
 
 DropdownList.propTypes = {
-  intl: PropTypes.shape(intlShape).isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default injectIntl(DropdownList);
+export default DropdownList;
