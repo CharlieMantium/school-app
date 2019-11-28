@@ -31,6 +31,9 @@
       "required": "Pole wymagane!",
       "occupied": "Ta lekcja jest już zajęta!"
     },
+    "input": {
+      "defaultPlaceholder": "Wprowadź text"
+    },
     "activityFormSelectDefault": "Wybierz dzień"
   }
 }

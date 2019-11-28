@@ -30,9 +30,9 @@ const ActivityDesc = styled.p`
 const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, room } }) => (
   <>
     <ActivityOrdinalWrapper>{`${activityOrdinal}.`}</ActivityOrdinalWrapper>
-    <FormattedMessage data-test="react-link" id="planView.activityName" defaultMessage={name}>
-      {value => <EditActivityLink to={EDIT_ACTIVITY_ROUTE(id)}>{value}</EditActivityLink>}
-    </FormattedMessage>
+    <EditActivityLink data-test="react-link" to={EDIT_ACTIVITY_ROUTE(id)}>
+      {name}
+    </EditActivityLink>
     <ActivityDesc>
       <FormattedMessage
         id="planView.activityDetails"

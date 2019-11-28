@@ -68,9 +68,3 @@ const Header = () => (
 );
 
 export default Header;
-
-// TODO: why do you need to wrap it with styled with empty block?
-// Karols comment: there was an imported component, wrapped in other 'styled' component,
-// but without anything in ``. Karols comment ends.
-// I think, that there is a lack of some rules in your eslint setup
-// for styled-comopnents (handle it by separate PR)

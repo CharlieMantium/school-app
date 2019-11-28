@@ -31,6 +31,9 @@
       "required": "Required!",
       "occupied": "This time slot is already occupied!"
     },
+    "input": {
+      "defaultPlaceholder": "Type text"
+    },
     "activityFormSelectDefault": "Pick a day"
   }
 }

@@ -6,7 +6,10 @@ export const validatePositive = input => {
   return Number(input) > 0;
 };
 
-export const validateFreeTimeSlot = (activity, currentActivities) =>
-  !currentActivities.some(
-    item => item.day === activity.day && item.activityOrdinal === activity.activityOrdinal,
-  );
+export const validateFreeTimeSlot = (
+  { day, activityOrdinal },
+  { editedActivityDay, editedActivityOrdinal },
+  currentActivities,
+) =>
+  (day === editedActivityDay && activityOrdinal === editedActivityOrdinal) ||
+  !currentActivities.some(item => item.day === day && item.activityOrdinal === activityOrdinal);
