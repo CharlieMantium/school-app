@@ -130,8 +130,5 @@ export default connect(
   mapDispatchToProps,
 )(EditActivityPage);
 
-// TODO: I recommend you to think about react-intl package.
-// This is not a priority, but it would be great knowledge for future ;)
-// spend some time for internatiolization in short future.
 // TODO: not for this pr, but can we change this function name to normal one ?
 // why not removeActivity?

@@ -36,9 +36,14 @@ const StyledInput = styled.input`
 const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
   <>
     <DescriptionsWrapper>
-      <Description>
-        <FormattedMessage id={`activity.${camelCase(placeholder)}`} defaultMessage={placeholder} />
-      </Description>
+      {placeholder && (
+        <Description>
+          <FormattedMessage
+            id={`activity.${camelCase(placeholder)}`}
+            defaultMessage={placeholder}
+          />
+        </Description>
+      )}
       {errorMsg && (
         <Description error>
           <FormattedMessage id={errorMsg} defaultMessage={errorMsg} data-test="error-message" />
@@ -46,7 +51,7 @@ const Input = ({ type, placeholder, value, onChange, onBlur, errorMsg }) => (
       )}
     </DescriptionsWrapper>
     <FormattedMessage
-      id={`activity.${camelCase(placeholder)}`}
+      id={placeholder ? `activity.${camelCase(placeholder)}` : 'form.input.defaultPlaceholder'}
       defaultMessage={placeholder}
       data-test="input"
     >

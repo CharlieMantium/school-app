@@ -46,6 +46,8 @@ export default class ActivityForm extends React.Component {
     super(props);
     this.state = {
       currentActivities: props.currentActivities,
+      editedActivityDay: props.activity.day,
+      editedActivityOrdinal: props.activity.activityOrdinal,
       activityOrdinal: props.activity.activityOrdinal,
       day: props.activity.day,
       name: props.activity.name,
@@ -91,31 +93,51 @@ export default class ActivityForm extends React.Component {
       roomError: '',
       teacherError: '',
     });
-    const { name, day, activityOrdinal, room, teacher, currentActivities } = this.state;
+    const {
+      name,
+      day,
+      activityOrdinal,
+      room,
+      teacher,
+      currentActivities,
+      editedActivityDay,
+      editedActivityOrdinal,
+    } = this.state;
     const errors = {};
-    const errorMsg = 'form.error.required';
+    const errorMsgRequired = 'form.error.required';
+    const errorMsgOccupied = 'form.error.occupied';
     if (
       !name ||
       !day ||
       !activityOrdinal ||
       !teacher ||
       !room ||
-      !validateFreeTimeSlot({ day, activityOrdinal }, currentActivities)
+      !validateFreeTimeSlot(
+        { day, activityOrdinal },
+        { editedActivityDay, editedActivityOrdinal },
+        currentActivities,
+      )
     ) {
       if (!name) {
-        errors.nameError = errorMsg;
+        errors.nameError = errorMsgRequired;
       }
       if (!activityOrdinal) {
-        errors.activityOrdinalError = errorMsg;
+        errors.activityOrdinalError = errorMsgRequired;
       }
       if (!room) {
-        errors.roomError = errorMsg;
+        errors.roomError = errorMsgRequired;
       }
       if (!teacher) {
-        errors.teacherError = errorMsg;
+        errors.teacherError = errorMsgRequired;
       }
-      if (!validateFreeTimeSlot({ day, activityOrdinal }, currentActivities)) {
-        errors.activityOrdinalError = 'form.error.occupied';
+      if (
+        !validateFreeTimeSlot(
+          { day, activityOrdinal },
+          { editedActivityDay, editedActivityOrdinal },
+          currentActivities,
+        )
+      ) {
+        errors.activityOrdinalError = errorMsgOccupied;
       }
       if (!_.isEmpty(errors)) {
         this.setState(errors);
