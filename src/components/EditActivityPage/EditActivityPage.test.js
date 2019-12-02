@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mountWithIntl } from 'tests/helper/intlEnzymeTestHelper';
 
 import testState from 'tests/fixtures/state';
 import testProps from 'tests/fixtures/props';
@@ -15,7 +15,7 @@ beforeEach(() => {
   onStartEditActivitySpy = jest.fn();
   onStartRemoveActivitySpy = jest.fn();
   historySpy = { push: jest.fn() };
-  wrapper = shallow(
+  wrapper = mountWithIntl(
     <EditActivityPageUnwrapped
       activity={testState.activities.items[1]}
       onStartEditActivity={onStartEditActivitySpy}
@@ -23,6 +23,7 @@ beforeEach(() => {
       history={historySpy}
       match={testProps.match}
     />,
+    'en',
   );
 });
 
