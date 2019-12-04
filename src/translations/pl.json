@@ -43,11 +43,11 @@
       "activityEdit": "Aktywność została zmieniona!"
     },
     "error": {
-      "activityAdd": "Coś poszło nie tak podczas dodawania aktywności. Error: {error}",
-      "activityRemove": "Coś poszło nie tak podczas usuwania aktywności. Error: {error}",
-      "activityEdit": "Coś poszło nie tak podczas edycji aktywności. Error: {error}",
-      "activityLoad": "Coś poszło nie tak podczas ładowania aktywności. Error: {error}",
-      "activitiesLoad": "Coś poszło nie tak podczas ładowania aktywności. Error: {error}"
+      "activityAdd": "Coś poszło nie tak podczas dodawania aktywności!",
+      "activityRemove": "Coś poszło nie tak podczas usuwania aktywności!",
+      "activityEdit": "Coś poszło nie tak podczas edycji aktywności!",
+      "activityLoad": "Coś poszło nie tak podczas ładowania aktywności!",
+      "activitiesLoad": "Coś poszło nie tak podczas ładowania aktywności!"
     }
   }
 }

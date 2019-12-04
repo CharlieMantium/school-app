@@ -35,7 +35,14 @@ const EditActivityPage = ({
 
   const activityId = get(editedActivity, 'id', id);
 
-  const intl = useIntl();
+  const useToast = () => {
+    const intl = useIntl();
+    const showErrorNotification = errorMsg => {
+      errorNotification(intl.formatMessage({ id: errorMsg, defaultMessage: 'Error!' }));
+    };
+    return { showErrorNotification };
+  };
+  const { showErrorNotification } = useToast();
 
   const editActivity = useCallback(
     async activitySubmited => {
@@ -43,12 +50,7 @@ const EditActivityPage = ({
         await onStartEditActivity(activityId, activitySubmited);
         history.push(ACTIVITY_PLAN_ROUTE);
       } catch (error) {
-        errorNotification(
-          intl.formatMessage(
-            { id: 'notification.error.activityEdit', defaultMessage: error },
-            { error },
-          ),
-        );
+        showErrorNotification('notification.error.activityEdit');
       }
     },
     [activityId],
@@ -59,12 +61,7 @@ const EditActivityPage = ({
       await onStartRemoveActivity(activityId);
       history.push(ACTIVITY_PLAN_ROUTE);
     } catch (error) {
-      errorNotification(
-        intl.formatMessage(
-          { id: 'notification.error.activityRemove', defaultMessage: error },
-          { error },
-        ),
-      );
+      showErrorNotification('notification.error.activityRemove');
     }
   }, [activityId]);
 
@@ -76,12 +73,7 @@ const EditActivityPage = ({
         const fetchedActivity = snapshot.val();
         setEditedActivity({ ...fetchedActivity, id: snapshot.key });
       } catch (error) {
-        errorNotification(
-          intl.formatMessage(
-            { id: 'notification.error.activityLoad', defaultMessage: error },
-            { error },
-          ),
-        );
+        showErrorNotification('notification.error.activityLoad');
       }
       setIsIdLoaded(true);
     })();

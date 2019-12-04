@@ -43,11 +43,11 @@
       "activityEdit": "Activity Edited!"
     },
     "error": {
-      "activityAdd": "Something went wrong during adding the Activity. Error: {error}",
-      "activityRemove": "Something went wrong during removing the Activity. Error: {error}",
-      "activityEdit": "Something went wrong during editing the Activity. Error: {error}",
-      "activityLoad": "Something went wrong during loading the Activities. Error: {error}",
-      "activitiesLoad": "Something went wrong during loading the Activity. Error: {error}"
+      "activityAdd": "Something went wrong during adding the Activity!",
+      "activityRemove": "Something went wrong during removing the Activity!",
+      "activityEdit": "Something went wrong during editing the Activity!",
+      "activityLoad": "Something went wrong during loading the Activity!",
+      "activitiesLoad": "Something went wrong during loading the Activities!"
     }
   }
 }
