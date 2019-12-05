@@ -35,5 +35,19 @@
       "defaultPlaceholder": "Type text"
     },
     "activityFormSelectDefault": "Pick a day"
+  },
+  "notification": {
+    "success": {
+      "activityAdd": "Activity Added!",
+      "activityRemove": "Activity Removed",
+      "activityEdit": "Activity Edited!"
+    },
+    "error": {
+      "activityAdd": "Something went wrong during adding the Activity!",
+      "activityRemove": "Something went wrong during removing the Activity!",
+      "activityEdit": "Something went wrong during editing the Activity!",
+      "activityLoad": "Something went wrong during loading the Activity!",
+      "activitiesLoad": "Something went wrong during loading the Activities!"
+    }
   }
 }

@@ -16,6 +16,7 @@ import { ActivityFormWrapper } from 'styles/elements/ActivityFormWrapper';
 import { Heading } from 'styles/elements/Heading';
 import { Button } from 'styles/elements/Button';
 import database from 'firebase/firebase';
+import { useToast } from 'hooks/useToast';
 
 import ActivityForm from '../ActivityForm';
 
@@ -34,30 +35,30 @@ const EditActivityPage = ({
 
   const activityId = get(editedActivity, 'id', id);
 
-  const asyncEditActivity = useCallback(
+  const { showErrorNotification } = useToast();
+
+  const editActivity = useCallback(
     async activitySubmited => {
       try {
         await onStartEditActivity(activityId, activitySubmited);
         history.push(ACTIVITY_PLAN_ROUTE);
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log(`Something went wrong durring activity editing: ${error}`);
+        showErrorNotification('notification.error.activityEdit');
       }
     },
     [activityId],
   );
 
-  const asyncRemoveActivity = useCallback(async () => {
+  const removeActivity = useCallback(async () => {
     try {
       await onStartRemoveActivity(activityId);
       history.push(ACTIVITY_PLAN_ROUTE);
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(`Something went wrong durring activity removal: ${error}`);
+      showErrorNotification('notification.error.activityRemove');
     }
   }, [activityId]);
 
-  const asyncSetActivity = () => {
+  const setActivity = () => {
     (async () => {
       setIsIdLoaded(false);
       try {
@@ -65,35 +66,34 @@ const EditActivityPage = ({
         const fetchedActivity = snapshot.val();
         setEditedActivity({ ...fetchedActivity, id: snapshot.key });
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log(`Something went wrong durring activity load: ${error}`);
+        showErrorNotification('notification.error.activityLoad');
       }
       setIsIdLoaded(true);
     })();
   };
 
-  useEffect(asyncSetActivity, [id]);
+  useEffect(setActivity, [id]);
 
   return (
     <ActivityFormWrapper>
       <Heading as="h1">
-        <FormattedMessage id="form.heading.editActivityHeading" />
+        <FormattedMessage id="form.heading.editActivityHeading" defaultMessage="Edit Activity" />
       </Heading>
       <Loader loaded={isIdLoaded} data-test="loader">
         <ActivityForm
           currentActivities={currentActivities}
           activity={editedActivity}
-          onSubmit={activitySubmited => asyncEditActivity(activitySubmited)}
+          onSubmit={activitySubmited => editActivity(activitySubmited)}
           data-test="form"
         />
         <Button
-          onClick={() => asyncRemoveActivity(activityId)}
+          onClick={() => removeActivity(activityId)}
           type="submit"
-          data-test="button-remove"
           remove
           toRight
+          data-test="button-remove"
         >
-          <FormattedMessage id="form.button.activityRemoveBtn" />
+          <FormattedMessage id="form.button.activityRemoveBtn" defaultMessage="Remove" />
         </Button>
       </Loader>
     </ActivityFormWrapper>

@@ -35,5 +35,19 @@
       "defaultPlaceholder": "Wprowadź text"
     },
     "activityFormSelectDefault": "Wybierz dzień"
+  },
+  "notification": {
+    "success": {
+      "activityAdd": "Aktywność dodana!",
+      "activityRemove": "Aktywność usunięta",
+      "activityEdit": "Aktywność została zmieniona!"
+    },
+    "error": {
+      "activityAdd": "Coś poszło nie tak podczas dodawania aktywności!",
+      "activityRemove": "Coś poszło nie tak podczas usuwania aktywności!",
+      "activityEdit": "Coś poszło nie tak podczas edycji aktywności!",
+      "activityLoad": "Coś poszło nie tak podczas ładowania aktywności!",
+      "activitiesLoad": "Coś poszło nie tak podczas ładowania aktywności!"
+    }
   }
 }

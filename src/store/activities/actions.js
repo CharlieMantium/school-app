@@ -1,6 +1,10 @@
 import database from 'firebase/firebase';
 
 import { generateActivitiesItemsPath } from 'helpers/paths';
+import {
+  generateSuccessNotification,
+  generateErrorNotification,
+} from 'helpers/notificationGenerators';
 
 import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
 
@@ -17,9 +21,10 @@ export const startAddActivity = (activity = {}) => async dispatch => {
         id,
         ...activity,
       }),
+      generateSuccessNotification('notification.success.activityAdd'),
     );
   } catch (error) {
-    return console.error(`Ops! ${error}`); // eslint-disable-line no-console
+    return generateErrorNotification('notification.error.activityAdd');
   }
 };
 
@@ -31,9 +36,12 @@ export const removeActivity = id => ({
 export const startRemoveActivity = id => async dispatch => {
   try {
     await database.ref(generateActivitiesItemsPath(id)).remove();
-    return dispatch(removeActivity(id));
+    return dispatch(
+      removeActivity(id),
+      generateSuccessNotification('notification.success.activityRemove'),
+    );
   } catch (error) {
-    return console.error(`Ops! ${error}`); // eslint-disable-line no-console
+    return generateErrorNotification('notification.error.activityRemove');
   }
 };
 
@@ -46,9 +54,12 @@ export const editActivity = (id, updates) => ({
 export const startEditActivity = (id, updates) => async dispatch => {
   try {
     await database.ref(generateActivitiesItemsPath(id)).update(updates);
-    return dispatch(editActivity(id, updates));
+    return dispatch(
+      editActivity(id, updates),
+      generateSuccessNotification('notification.success.activityEdit'),
+    );
   } catch (error) {
-    return console.error(`Ops! ${error}`); // eslint-disable-line no-console
+    return generateErrorNotification('notification.error.activityEdit');
   }
 };
 
@@ -66,6 +77,6 @@ export const startSetActivities = () => async dispatch => {
     });
     return dispatch(setActivities(activities));
   } catch (error) {
-    return console.error(`Ops! ${error}`); // eslint-disable-line no-console
+    return generateErrorNotification('notification.error.activitiesLoad');
   }
 };
