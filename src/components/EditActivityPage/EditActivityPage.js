@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
 import Loader from 'react-loader';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import { startEditActivity, startRemoveActivity } from 'store/activities/actions';
 import { getEditedActivity, getActivityItems } from 'store/activities/selectors';
@@ -16,7 +16,7 @@ import { ActivityFormWrapper } from 'styles/elements/ActivityFormWrapper';
 import { Heading } from 'styles/elements/Heading';
 import { Button } from 'styles/elements/Button';
 import database from 'firebase/firebase';
-import { errorNotification } from '../elements';
+import { useToast } from 'hooks/useToast';
 
 import ActivityForm from '../ActivityForm';
 
@@ -35,13 +35,6 @@ const EditActivityPage = ({
 
   const activityId = get(editedActivity, 'id', id);
 
-  const useToast = () => {
-    const intl = useIntl();
-    const showErrorNotification = errorMsg => {
-      errorNotification(intl.formatMessage({ id: errorMsg, defaultMessage: 'Error!' }));
-    };
-    return { showErrorNotification };
-  };
   const { showErrorNotification } = useToast();
 
   const editActivity = useCallback(
