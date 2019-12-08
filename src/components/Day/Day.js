@@ -40,7 +40,7 @@ const Day = ({ activities, weekDay }) => (
       )}
     </FormattedMessage>
 
-    {orderBy(activities, activity => activity.activityOrdinal).map(activity => (
+    {orderBy(activities, activity => Number(activity.activityOrdinal)).map(activity => (
       <ActivitiesListItem activity={activity} key={activity.id} data-test="activities-list-item" />
     ))}
   </DayWrapper>
@@ -55,4 +55,5 @@ Day.defaultProps = {
   activities: [],
 };
 
+export { Day as DayUnwrapped };
 export default Day;

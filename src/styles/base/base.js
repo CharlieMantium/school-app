@@ -2,7 +2,9 @@ export const colors = {
   black: '#000',
   darkGrey: '#838B8B',
   green: '#5AC18E',
+  pink: '#C15A8D',
   red: '#F42C04',
+  turquoise: '#5AC1C1',
   white: '#FFF',
 };
 

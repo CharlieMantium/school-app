@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
 import { colors, effects, fontSizes, spacing } from 'styles/base';
+import { setFilter } from 'store/activities/actions';
 
-import ActivitiesListFilter from '../ActivitiesListFilter';
+import { Input } from 'components/elements';
 
 const HeaderWrapper = styled.header`
   align-items: center;
@@ -53,18 +56,44 @@ const AddIcon = styled(DiffAdded)`
   }
 `;
 
-const Header = () => (
-  <HeaderWrapper>
-    <AppName to={ACTIVITY_PLAN_ROUTE} data-test="app-name">
-      School App
-    </AppName>
-    <ToolsWrapper>
-      <ActivitiesListFilter data-test="filter-component" />
-      <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
-        <AddIcon title="Add New Activity" />
-      </NavLink>
-    </ToolsWrapper>
-  </HeaderWrapper>
-);
+const Header = ({ onSetFilter }) => {
+  const [searchText, changeSearchText] = useState('');
+  const onInputValueChange = e => {
+    const inputValue = e.target.value;
+    changeSearchText(inputValue);
+    onSetFilter(inputValue);
+  };
 
-export default Header;
+  return (
+    <HeaderWrapper>
+      <AppName to={ACTIVITY_PLAN_ROUTE} data-test="app-name">
+        School App
+      </AppName>
+      <ToolsWrapper>
+        <Input
+          type="text"
+          value={searchText}
+          onChange={onInputValueChange}
+          data-test="filter-component"
+        />
+        <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
+          <AddIcon title="Add New Activity" />
+        </NavLink>
+      </ToolsWrapper>
+    </HeaderWrapper>
+  );
+};
+
+Header.propTypes = {
+  onSetFilter: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+  onSetFilter: setFilter,
+};
+
+export { Header as HeaderUnwrapped };
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Header);

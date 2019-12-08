@@ -6,7 +6,13 @@ import {
   generateErrorNotification,
 } from 'helpers/notificationGenerators';
 
-import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
+import {
+  ADD_ACTIVITY,
+  REMOVE_ACTIVITY,
+  EDIT_ACTIVITY,
+  SET_ACTIVITIES,
+  SET_FILTER,
+} from './actionTypes';
 
 export const addActivity = activity => ({
   type: ADD_ACTIVITY,
@@ -80,3 +86,8 @@ export const startSetActivities = () => async dispatch => {
     return generateErrorNotification('notification.error.activitiesLoad');
   }
 };
+
+export const setFilter = filterText => ({
+  type: SET_FILTER,
+  filterText,
+});
