@@ -29,7 +29,7 @@ const Footer = styled.footer`
 `;
 
 const BackgroundSrcLink = styled.a`
-  color: ${colors.white};
+  color: ${colors.secondary};
   margin: ${spacing.xsSize};
   text-decoration: none;
 

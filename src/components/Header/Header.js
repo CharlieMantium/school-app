@@ -22,17 +22,17 @@ const HeaderWrapper = styled.header`
 `;
 
 const AppName = styled(NavLink)`
-  color: ${colors.black};
+  color: ${colors.primary};
   font-family: Satisfy;
   font-size: ${fontSizes.xlFontSize};
   margin: ${spacing.xsSize} ${spacing.mSize};
   text-decoration: none;
-  text-shadow: ${effects.outline(colors.white)};
+  text-shadow: ${effects.outline(colors.secondary)};
   white-space: nowrap;
 
   &:hover {
-    color: ${colors.white};
-    text-shadow: ${effects.outline(colors.black)};
+    color: ${colors.secondary};
+    text-shadow: ${effects.outline(colors.primary)};
   }
 
   @media (min-width: ${spacing.desktopBreakpoint}) {
@@ -47,12 +47,12 @@ const ToolsWrapper = styled.div`
 `;
 
 const AddIcon = styled(DiffAdded)`
-  color: ${colors.white};
+  color: ${colors.secondary};
   height: 28px;
   margin: ${spacing.xlSize};
 
   &:hover {
-    color: ${colors.black};
+    color: ${colors.primary};
   }
 `;
 

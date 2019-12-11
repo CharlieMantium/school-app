@@ -17,11 +17,11 @@ const ActivityOrdinalWrapper = styled.p`
 `;
 
 const EditActivityLink = styled(Link)`
-  color: ${colors.green};
+  color: ${colors.activityName};
   cursor: pointer;
   font-size: ${fontSizes.lFontSize};
   text-decoration: none;
-  text-shadow: ${effects.outline(colors.black)};
+  text-shadow: ${effects.outline(colors.primary)};
   word-break: break-word;
 `;
 
@@ -31,8 +31,8 @@ const ActivityDesc = styled.p`
 `;
 
 const HighlightedSpan = styled.span`
-  color: ${props => props.isHighlighted && `${colors.pink}`};
-  background-color: ${props => props.isHighlighted && `${colors.turquoise}`};
+  color: ${props => props.isHighlighted && `${colors.highlightedFont}`};
+  background-color: ${props => props.isHighlighted && `${colors.highlightedBackground}`};
 `;
 
 const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, room }, filter }) => {

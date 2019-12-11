@@ -9,15 +9,15 @@ import { daysOfTheWeek } from 'constants/dates';
 import { colors, spacing } from 'styles/base';
 
 const StyledDropdown = styled(Dropdown)`
-  border: ${spacing.xsSize} solid ${colors.darkGrey};
+  border: ${spacing.xsSize} solid ${colors.borderUnactive};
   border-radius: ${spacing.sSize};
 
   &:focus {
-    border-color: ${colors.black};
+    border-color: ${colors.primary};
   }
 
   &:hover {
-    border-color: ${colors.green};
+    border-color: ${colors.activityName};
   }
 `;
 

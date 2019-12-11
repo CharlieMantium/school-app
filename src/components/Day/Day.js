@@ -10,7 +10,7 @@ import { colors, effects, spacing } from 'styles/base';
 import ActivitiesListItem from '../ActivitiesListItem';
 
 const DayWrapper = styled.div`
-  border: ${spacing.xsSize} solid ${colors.white};
+  border: ${spacing.xsSize} solid ${colors.secondary};
   border-radius: ${spacing.sSize};
   background: rgba(255, 255, 255, 0.8);
   margin: ${spacing.sSize};
@@ -25,7 +25,7 @@ const DayName = styled(FormattedMessage)`
   font-weight: bold;
   margin: ${spacing.sSize} auto;
   text-align: center;
-  text-shadow: ${effects.outline(colors.white)};
+  text-shadow: ${effects.outline(colors.secondary)};
   text-transform: uppercase;
   width: 70%;
 `;

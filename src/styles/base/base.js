@@ -1,11 +1,11 @@
 export const colors = {
-  black: '#000',
-  darkGrey: '#838B8B',
-  green: '#5AC18E',
-  pink: '#C15A8D',
-  red: '#F42C04',
-  turquoise: '#5AC1C1',
-  white: '#FFF',
+  primary: '#000',
+  secondary: '#FFF',
+  activityName: '#5AC18E',
+  borderUnactive: '#838B8B',
+  error: '#F42C04',
+  highlightedBackground: '#5AC1C1',
+  highlightedFont: '#C15A8D',
 };
 
 export const spacing = {

@@ -21,6 +21,8 @@ export const divideByFilteredString = (inputText, searchedText) => {
       tempString.toLowerCase().indexOf(searchedText.toLowerCase()) + searchedLength,
     );
   }
-  dividedTextArray.push({ str: tempString, isSearched: false });
+  if (tempString) {
+    dividedTextArray.push({ str: tempString, isSearched: false });
+  }
   return dividedTextArray;
 };
