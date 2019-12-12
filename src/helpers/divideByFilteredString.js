@@ -1,5 +1,7 @@
-export const divideByFilteredString = (inputText, searchedText) => {
+export const divideByFilteredString = (inputText, inputSearched) => {
+  if (inputSearched === null || inputSearched === undefined || inputSearched === '') return [];
   let tempString = inputText;
+  const searchedText = inputSearched.toString();
   const searchedLength = searchedText.length;
   const dividedTextArray = [];
   while (tempString.toLowerCase().indexOf(searchedText.toLowerCase()) > -1) {

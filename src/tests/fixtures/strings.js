@@ -1,12 +1,17 @@
 export const strings = [
   {
-    inputString: 'Marry had a little lamb.',
+    inputString: 'Mary had a little lamb.',
     searchedString: 'y',
     expectedResult: [
-      { str: 'Marr', isSearched: false },
+      { str: 'Mar', isSearched: false },
       { str: 'y', isSearched: true },
       { str: ' had a little lamb.', isSearched: false },
     ],
+  },
+  {
+    inputString: 'Mary had a little lamb.',
+    searchedString: '',
+    expectedResult: [],
   },
   {
     inputString: 'a',
@@ -50,5 +55,28 @@ export const strings = [
     inputString: 'abc',
     searchedString: 'abcd',
     expectedResult: [{ str: 'abc', isSearched: false }],
+  },
+  {
+    inputString: '1: Mathematics is the language of nature.',
+    searchedString: null,
+    expectedResult: [],
+  },
+  {
+    inputString: '1: Mathematics is the language of nature.',
+    searchedString: undefined,
+    expectedResult: [],
+  },
+  {
+    inputString: '1: Mathematics is the language of nature.',
+    searchedString: 1,
+    expectedResult: [
+      { str: '1', isSearched: true },
+      { str: ': Mathematics is the language of nature.', isSearched: false },
+    ],
+  },
+  {
+    inputString: '1: Mathematics is the language of nature.',
+    searchedString: { apples: 'and bananas', isTakeOverTheWorld: true, attempts: 101 },
+    expectedResult: [{ str: '1: Mathematics is the language of nature.', isSearched: false }],
   },
 ];
