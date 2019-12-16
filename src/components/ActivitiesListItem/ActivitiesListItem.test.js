@@ -4,13 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { mountWithIntl } from 'tests/helper/intlEnzymeTestHelper';
 import testState from 'tests/fixtures/state';
 
-import ActivitiesListItem from './ActivitiesListItem';
+import { ActivitiesListItemUnwrapped } from './ActivitiesListItem';
 
 describe('ActivitiesListItem', () => {
   it('should render ActivitiesListItem correctly', () => {
     const wrapper = mountWithIntl(
       <BrowserRouter>
-        <ActivitiesListItem activity={testState.activities.items[3]} />
+        <ActivitiesListItemUnwrapped activity={testState.activities.items[3]} />
       </BrowserRouter>,
       'en',
     );

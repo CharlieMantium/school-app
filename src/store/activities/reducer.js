@@ -1,4 +1,10 @@
-import { ADD_ACTIVITY, REMOVE_ACTIVITY, EDIT_ACTIVITY, SET_ACTIVITIES } from './actionTypes';
+import {
+  ADD_ACTIVITY,
+  REMOVE_ACTIVITY,
+  EDIT_ACTIVITY,
+  SET_ACTIVITIES,
+  SET_FILTER,
+} from './actionTypes';
 
 const activitiesReducerDefaultState = {
   activities: {
@@ -39,6 +45,11 @@ export default (state = activitiesReducerDefaultState, action) => {
         activities: {
           items: action.activities,
         },
+      };
+    case SET_FILTER:
+      return {
+        activities: state.activities,
+        filter: action.filterText,
       };
     default:
       return state;

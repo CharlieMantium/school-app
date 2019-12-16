@@ -12,24 +12,24 @@ const DescriptionsWrapper = styled.div`
 `;
 
 const Description = styled.p`
-  color: ${props => (props.error ? colors.red : colors.white)};
-  text-shadow: ${props => (props.error ? effects.outline(colors.black) : 'none')};
+  color: ${props => (props.error ? colors.error : colors.secondary)};
+  text-shadow: ${props => (props.error ? effects.outline(colors.primary) : 'none')};
   margin: ${spacing.mSize} ${spacing.sSize} 0 ${spacing.sSize};
 `;
 
 const StyledInput = styled.input`
-  border: ${spacing.xsSize} solid ${colors.darkGrey};
+  border: ${spacing.xsSize} solid ${colors.borderUnactive};
   border-radius: ${spacing.sSize};
   margin: auto;
   padding: ${spacing.xxsSize} ${spacing.sSize};
   width: 100%;
 
   &:focus {
-    border-color: ${colors.black};
+    border-color: ${colors.primary};
   }
 
   &:hover {
-    border-color: ${colors.green};
+    border-color: ${colors.activityName};
   }
 `;
 

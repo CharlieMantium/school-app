@@ -10,7 +10,7 @@ import { colors, effects, spacing } from 'styles/base';
 import ActivitiesListItem from '../ActivitiesListItem';
 
 const DayWrapper = styled.div`
-  border: ${spacing.xsSize} solid ${colors.white};
+  border: ${spacing.xsSize} solid ${colors.secondary};
   border-radius: ${spacing.sSize};
   background: rgba(255, 255, 255, 0.8);
   margin: ${spacing.sSize};
@@ -25,7 +25,7 @@ const DayName = styled(FormattedMessage)`
   font-weight: bold;
   margin: ${spacing.sSize} auto;
   text-align: center;
-  text-shadow: ${effects.outline(colors.white)};
+  text-shadow: ${effects.outline(colors.secondary)};
   text-transform: uppercase;
   width: 70%;
 `;
@@ -40,7 +40,7 @@ const Day = ({ activities, weekDay }) => (
       )}
     </FormattedMessage>
 
-    {orderBy(activities, activity => activity.activityOrdinal).map(activity => (
+    {orderBy(activities, activity => Number(activity.activityOrdinal)).map(activity => (
       <ActivitiesListItem activity={activity} key={activity.id} data-test="activities-list-item" />
     ))}
   </DayWrapper>
@@ -55,4 +55,5 @@ Day.defaultProps = {
   activities: [],
 };
 
+export { Day as DayUnwrapped };
 export default Day;

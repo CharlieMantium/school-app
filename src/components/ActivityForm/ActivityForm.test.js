@@ -36,7 +36,6 @@ describe('ActivityForm', () => {
   });
 
   it('should set errorMsg in inputs after invalid form submition', () => {
-    // const wrapper = shallowWithIntl(<ActivityForm onSubmit={() => {}} />);
     const wrapper = mountWithIntl(<ActivityForm onSubmit={() => {}} />, 'en');
     inputTypesArray.forEach(inputType => {
       expect(wrapper.find(`[data-test="input-component-${inputType}"]`).prop('errorMsg')).toBe('');
