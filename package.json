@@ -38,6 +38,7 @@
     "file-loader": "^4.2.0",
     "firebase": "^7.0.0",
     "flat": "^5.0.0",
+    "history": "^4.10.1",
     "jest": "^24.9.0",
     "live-server": "^1.2.1",
     "lodash": "^4.17.15",

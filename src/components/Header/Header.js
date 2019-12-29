@@ -8,8 +8,10 @@ import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
 import { colors, effects, fontSizes, spacing } from 'styles/base';
 import { setFilter } from 'store/activities/actions';
+import { startLogout } from 'store/auth';
 
 import { Input } from 'components/elements';
+import { Button } from 'styles/elements/Button';
 
 const HeaderWrapper = styled.header`
   align-items: center;
@@ -56,7 +58,7 @@ const AddIcon = styled(DiffAdded)`
   }
 `;
 
-const Header = ({ onSetFilter }) => {
+const Header = ({ onSetFilter, onStartLogout }) => {
   const [searchText, changeSearchText] = useState('');
   const onInputValueChange = e => {
     const inputValue = e.target.value;
@@ -79,6 +81,7 @@ const Header = ({ onSetFilter }) => {
         <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
           <AddIcon title="Add New Activity" />
         </NavLink>
+        <Button onClick={onStartLogout}>Logout</Button>
       </ToolsWrapper>
     </HeaderWrapper>
   );
@@ -86,11 +89,13 @@ const Header = ({ onSetFilter }) => {
 
 Header.propTypes = {
   onSetFilter: PropTypes.func.isRequired,
+  onStartLogout: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = {
+const mapDispatchToProps = dispatch => ({
   onSetFilter: setFilter,
-};
+  onStartLogout: () => dispatch(startLogout()),
+});
 
 export { Header as HeaderUnwrapped };
 export default connect(
