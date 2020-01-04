@@ -11,7 +11,7 @@ import AppRouter from 'router/AppRouter';
 import messagesPL from 'translations/pl.json';
 import messagesEN from 'translations/en.json';
 
-const store = configureStore();
+export const store = configureStore();
 
 const messages = {
   pl: flatten(messagesPL),

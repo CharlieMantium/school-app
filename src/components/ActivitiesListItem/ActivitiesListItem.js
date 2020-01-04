@@ -74,7 +74,7 @@ ActivitiesListItem.defaultProps = {
   filter: '',
 };
 
-const mapStateToProps = ({ filter }) => ({
+const mapStateToProps = ({ activities: { filter } }) => ({
   filter,
 });
 

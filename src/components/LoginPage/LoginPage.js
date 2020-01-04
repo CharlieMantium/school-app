@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { startLogin } from 'store/auth';
+import { startLogin } from 'store/auth/actions';
 import { Button } from 'styles/elements/Button';
 
 const LoginWrapper = styled.div``;

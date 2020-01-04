@@ -4,8 +4,9 @@ import 'normalize.css/normalize.css';
 
 import { history } from 'router/AppRouter';
 import { LOGIN_PAGE_ROUTE, ACTIVITY_PLAN_ROUTE } from 'constants/routes';
+import { login, logout } from 'store/auth/actions';
 
-import App from './components/App';
+import App, { store } from './components/App';
 import { firebase } from './firebase/firebase';
 
 let hasRendered = false;
@@ -18,11 +19,13 @@ const renderApp = () => {
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
+    store.dispatch(login(user.uid));
     renderApp();
     if (history.location.pathname === LOGIN_PAGE_ROUTE) {
       history.push(ACTIVITY_PLAN_ROUTE);
     }
   } else {
+    store.dispatch(logout());
     renderApp();
     history.push(LOGIN_PAGE_ROUTE);
   }

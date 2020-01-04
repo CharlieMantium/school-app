@@ -8,7 +8,7 @@ import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
 import { colors, effects, fontSizes, spacing } from 'styles/base';
 import { setFilter } from 'store/activities/actions';
-import { startLogout } from 'store/auth';
+import { startLogout } from 'store/auth/actions';
 
 import { Input } from 'components/elements';
 import { Button } from 'styles/elements/Button';
@@ -93,7 +93,7 @@ Header.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onSetFilter: setFilter,
+  onSetFilter: textValue => dispatch(setFilter(textValue)),
   onStartLogout: () => dispatch(startLogout()),
 });
 

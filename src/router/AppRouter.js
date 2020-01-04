@@ -5,9 +5,10 @@ import { createBrowserHistory as createHistory } from 'history';
 import LoginPage from '../components/LoginPage';
 import AddActivityPage from '../components/AddActivityPage';
 import EditActivityPage from '../components/EditActivityPage';
-import Header from '../components/Header';
 import PlanPage from '../components/PlanPage';
 import NotFoundPage from '../components/NotFoundPage';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 import {
   LOGIN_PAGE_ROUTE,
   ACTIVITY_PLAN_ROUTE,
@@ -20,12 +21,11 @@ export const history = createHistory();
 const AppRouter = () => (
   <Router history={history}>
     <>
-      <Header />
       <Switch>
-        <Route path={LOGIN_PAGE_ROUTE} component={LoginPage} exact />
-        <Route path={ACTIVITY_PLAN_ROUTE} component={PlanPage} />
-        <Route path={CREATE_ACTIVITY_ROUTE} component={AddActivityPage} />
-        <Route path={EDIT_ACTIVITY_ID_ROUTE} component={EditActivityPage} />
+        <PublicRoute path={LOGIN_PAGE_ROUTE} component={LoginPage} exact />
+        <PrivateRoute path={ACTIVITY_PLAN_ROUTE} component={PlanPage} />
+        <PrivateRoute path={CREATE_ACTIVITY_ROUTE} component={AddActivityPage} />
+        <PrivateRoute path={EDIT_ACTIVITY_ID_ROUTE} component={EditActivityPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>

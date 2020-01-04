@@ -29,6 +29,7 @@ const EditActivityPage = ({
   match: {
     params: { id },
   },
+  uid,
 }) => {
   const [isIdLoaded, setIsIdLoaded] = useState(false);
   const [editedActivity, setEditedActivity] = useState({ ...activity, id });
@@ -62,7 +63,7 @@ const EditActivityPage = ({
     (async () => {
       setIsIdLoaded(false);
       try {
-        const snapshot = await database.ref(generateActivitiesItemsPath(id)).once('value');
+        const snapshot = await database.ref(generateActivitiesItemsPath(uid, id)).once('value');
         const fetchedActivity = snapshot.val();
         setEditedActivity({ ...fetchedActivity, id: snapshot.key });
       } catch (error) {
@@ -107,6 +108,7 @@ EditActivityPage.propTypes = {
   match: PropTypes.shape(matchPropTypeShape).isRequired,
   onStartEditActivity: PropTypes.func.isRequired,
   onStartRemoveActivity: PropTypes.func.isRequired,
+  uid: PropTypes.string.isRequired,
 };
 
 EditActivityPage.defaultProps = {
@@ -117,6 +119,7 @@ EditActivityPage.defaultProps = {
 const mapStateToProps = (state, props) => ({
   activity: getEditedActivity(state, props),
   currentActivities: getActivityItems(state),
+  uid: state.auth.uid,
 });
 
 const mapDispatchToProps = {
