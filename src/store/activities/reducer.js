@@ -7,49 +7,44 @@ import {
 } from './actionTypes';
 
 const activitiesReducerDefaultState = {
-  activities: {
-    items: [],
-  },
+  items: [],
+  filterKey: '',
 };
 
 export default (state = activitiesReducerDefaultState, action) => {
   switch (action.type) {
     case ADD_ACTIVITY:
       return {
-        activities: {
-          items: [...state.activities.items, action.activity],
-        },
+        items: [...state.items, action.activity],
+        filterKey: state.filterKey,
       };
     case REMOVE_ACTIVITY:
       return {
-        activities: {
-          items: state.activities.items.filter(activity => activity.id !== action.id),
-        },
+        items: state.items.filter(activity => activity.id !== action.id),
+        filterKey: state.filterKey,
       };
     case EDIT_ACTIVITY:
       return {
-        activities: {
-          items: state.activities.items.map(activity => {
-            if (activity.id === action.id) {
-              return {
-                ...activity,
-                ...action.updates,
-              };
-            }
-            return activity;
-          }),
-        },
+        items: state.items.map(activity => {
+          if (activity.id === action.id) {
+            return {
+              ...activity,
+              ...action.updates,
+            };
+          }
+          return activity;
+        }),
+        filterKey: state.filterKey,
       };
     case SET_ACTIVITIES:
       return {
-        activities: {
-          items: action.activities,
-        },
+        items: action.activities,
+        filterKey: state.filterKey,
       };
     case SET_FILTER:
       return {
-        activities: state.activities,
-        filter: action.filterText,
+        items: state.items,
+        filterKey: action.filterText,
       };
     default:
       return state;

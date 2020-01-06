@@ -35,10 +35,13 @@ const HighlightedSpan = styled.span`
   background-color: ${props => props.isHighlighted && `${colors.highlightedBackground}`};
 `;
 
-const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, room }, filter }) => {
+const ActivitiesListItem = ({
+  activity: { name, activityOrdinal, teacher, id, room },
+  filterKey,
+}) => {
   const renderedValues = value => {
-    if (filter) {
-      return divideByFilteredString(value, filter).map(item => (
+    if (filterKey) {
+      return divideByFilteredString(value, filterKey).map(item => (
         <HighlightedSpan isHighlighted={item.isSearched} key={uuid4()}>
           {item.str}
         </HighlightedSpan>
@@ -66,16 +69,16 @@ const ActivitiesListItem = ({ activity: { name, activityOrdinal, teacher, id, ro
 
 ActivitiesListItem.propTypes = {
   activity: PropTypes.shape(activityPropTypeShape),
-  filter: PropTypes.string,
+  filterKey: PropTypes.string,
 };
 
 ActivitiesListItem.defaultProps = {
   activity: {},
-  filter: '',
+  filterKey: '',
 };
 
-const mapStateToProps = ({ filter }) => ({
-  filter,
+const mapStateToProps = ({ activities: { filterKey } }) => ({
+  filterKey,
 });
 
 export { ActivitiesListItem as ActivitiesListItemUnwrapped };

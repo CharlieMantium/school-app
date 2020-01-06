@@ -19,9 +19,10 @@ export const addActivity = activity => ({
   activity,
 });
 
-export const startAddActivity = (activity = {}) => async dispatch => {
+export const startAddActivity = (activity = {}) => async (dispatch, getState) => {
   try {
-    const { key: id } = await database.ref(generateActivitiesItemsPath()).push(activity);
+    const { uid } = getState().auth;
+    const { key: id } = await database.ref(generateActivitiesItemsPath(uid)).push(activity);
     return dispatch(
       addActivity({
         id,
@@ -39,9 +40,10 @@ export const removeActivity = id => ({
   id,
 });
 
-export const startRemoveActivity = id => async dispatch => {
+export const startRemoveActivity = id => async (dispatch, getState) => {
   try {
-    await database.ref(generateActivitiesItemsPath(id)).remove();
+    const { uid } = getState().auth;
+    await database.ref(generateActivitiesItemsPath(uid, id)).remove();
     return dispatch(
       removeActivity(id),
       generateSuccessNotification('notification.success.activityRemove'),
@@ -57,9 +59,10 @@ export const editActivity = (id, updates) => ({
   updates,
 });
 
-export const startEditActivity = (id, updates) => async dispatch => {
+export const startEditActivity = (id, updates) => async (dispatch, getState) => {
   try {
-    await database.ref(generateActivitiesItemsPath(id)).update(updates);
+    const { uid } = getState().auth;
+    await database.ref(generateActivitiesItemsPath(uid, id)).update(updates);
     return dispatch(
       editActivity(id, updates),
       generateSuccessNotification('notification.success.activityEdit'),
@@ -74,9 +77,10 @@ export const setActivities = activities => ({
   activities,
 });
 
-export const startSetActivities = () => async dispatch => {
+export const startSetActivities = () => async (dispatch, getState) => {
   try {
-    const snapshot = await database.ref(generateActivitiesItemsPath()).once('value');
+    const { uid } = getState().auth;
+    const snapshot = await database.ref(generateActivitiesItemsPath(uid)).once('value');
     const activities = [];
     snapshot.forEach(childSnapshot => {
       activities.push({ id: childSnapshot.key, ...childSnapshot.val() });

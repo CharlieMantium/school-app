@@ -2,6 +2,10 @@
   "planView": {
     "activityDetails": "Teacher: {teacher}, room: {room}"
   },
+  "button": {
+    "login": "Login",
+    "logout": "Logout"
+  },
   "activity": {
     "activityName": "Activity Name",
     "teacher": "Teacher",

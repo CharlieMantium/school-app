@@ -44,5 +44,7 @@ export default {
         teacher: 'Chopin',
       },
     ],
+    filterKey: '',
   },
+  auth: {},
 };

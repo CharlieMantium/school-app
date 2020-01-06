@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
+import { NavLink } from 'react-router-dom';
 import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
 import { colors, effects, fontSizes, spacing } from 'styles/base';
 import { setFilter } from 'store/activities/actions';
+import { startLogout } from 'store/auth/actions';
 
 import { Input } from 'components/elements';
+import { Button } from 'styles/elements/Button';
 
 const HeaderWrapper = styled.header`
   align-items: center;
@@ -56,7 +58,11 @@ const AddIcon = styled(DiffAdded)`
   }
 `;
 
-const Header = ({ onSetFilter }) => {
+const Header = () => {
+  const dispatch = useDispatch();
+  const onSetFilter = textValue => dispatch(setFilter(textValue));
+  const onStartLogout = () => dispatch(startLogout());
+
   const [searchText, changeSearchText] = useState('');
   const onInputValueChange = e => {
     const inputValue = e.target.value;
@@ -79,21 +85,12 @@ const Header = ({ onSetFilter }) => {
         <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
           <AddIcon title="Add New Activity" />
         </NavLink>
+        <Button onClick={onStartLogout} data-test="button-logout">
+          <FormattedMessage id="button.logout" defaultMessage="Logout" />
+        </Button>
       </ToolsWrapper>
     </HeaderWrapper>
   );
 };
 
-Header.propTypes = {
-  onSetFilter: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = {
-  onSetFilter: setFilter,
-};
-
-export { Header as HeaderUnwrapped };
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Header);
+export default Header;

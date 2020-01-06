@@ -1,4 +1,4 @@
-import testState from 'tests/fixtures/state';
+import testState from 'tests/fixtures/activitiesReducerTestState';
 import activity from 'tests/fixtures/activity';
 
 import activitiesReducer from './reducer';
@@ -9,9 +9,8 @@ describe('activities reducer', () => {
     const initAction = { type: '@@INIT' };
     const state = activitiesReducer(undefined, initAction);
     expect(state).toEqual({
-      activities: {
-        items: [],
-      },
+      items: [],
+      filterKey: '',
     });
   });
 
@@ -22,9 +21,8 @@ describe('activities reducer', () => {
     };
     const state = activitiesReducer(testState, action);
     expect(state).toEqual({
-      activities: {
-        items: [...testState.activities.items, activity],
-      },
+      items: [...testState.items, activity],
+      filterKey: '',
     });
   });
 
@@ -36,9 +34,8 @@ describe('activities reducer', () => {
     };
     const state = activitiesReducer(testState, action);
     expect(state).toEqual({
-      activities: {
-        items: [...testState.activities.items.filter(activityItem => activityItem.id !== id)],
-      },
+      items: [...testState.items.filter(activityItem => activityItem.id !== id)],
+      filterKey: '',
     });
   });
 
@@ -53,7 +50,7 @@ describe('activities reducer', () => {
   });
 
   it('should edit an activity', () => {
-    const { id } = testState.activities.items[1];
+    const { id } = testState.items[1];
     const name = 'playing video games';
     const action = {
       type: EDIT_ACTIVITY,
@@ -63,7 +60,7 @@ describe('activities reducer', () => {
       },
     };
     const state = activitiesReducer(testState, action);
-    expect(state.activities.items[1].name).toBe(name);
+    expect(state.items[1].name).toBe(name);
   });
 
   it('should not edit an activity if id not found', () => {
@@ -80,12 +77,12 @@ describe('activities reducer', () => {
     expect(state).toEqual(state);
   });
 
-  it('should set expenses', () => {
+  it('should set activities', () => {
     const action = {
       type: SET_ACTIVITIES,
-      activities: testState.activities.items,
+      activities: testState.items,
     };
     const state = activitiesReducer({}, action);
-    expect(state).toEqual(testState);
+    expect(state.items).toEqual(testState.items);
   });
 });

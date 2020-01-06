@@ -1,2 +1,2 @@
-export const generateActivitiesItemsPath = id =>
-  id ? `activities/items/${id}` : 'activities/items';
+export const generateActivitiesItemsPath = (uid, id) =>
+  id ? `users/${uid}/activities/items/${id}` : `users/${uid}/activities/items`;
