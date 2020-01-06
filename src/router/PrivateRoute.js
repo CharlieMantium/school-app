@@ -9,7 +9,7 @@ import { LOGIN_PAGE_ROUTE } from '../constants/routes';
 export const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => (
   <Route
     {...rest}
-    component={props => {
+    render={props => {
       if (isAuthenticated) {
         return (
           <>
@@ -29,7 +29,7 @@ PrivateRoute.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: !!state.auth.uid,
+  isAuthenticated: Boolean(state.auth.uid),
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

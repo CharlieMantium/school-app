@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
+import { NavLink } from 'react-router-dom';
 import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
 
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
@@ -58,7 +58,11 @@ const AddIcon = styled(DiffAdded)`
   }
 `;
 
-const Header = ({ onSetFilter, onStartLogout }) => {
+const Header = () => {
+  const dispatch = useDispatch();
+  const onSetFilter = textValue => dispatch(setFilter(textValue));
+  const onStartLogout = dispatch(startLogout);
+
   const [searchText, changeSearchText] = useState('');
   const onInputValueChange = e => {
     const inputValue = e.target.value;
@@ -81,24 +85,12 @@ const Header = ({ onSetFilter, onStartLogout }) => {
         <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
           <AddIcon title="Add New Activity" />
         </NavLink>
-        <Button onClick={onStartLogout}>Logout</Button>
+        <Button onClick={onStartLogout} data-test="button-logout">
+          <FormattedMessage id="button.logout" defaultMessage="Logout" />
+        </Button>
       </ToolsWrapper>
     </HeaderWrapper>
   );
 };
 
-Header.propTypes = {
-  onSetFilter: PropTypes.func.isRequired,
-  onStartLogout: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = dispatch => ({
-  onSetFilter: textValue => dispatch(setFilter(textValue)),
-  onStartLogout: () => dispatch(startLogout()),
-});
-
-export { Header as HeaderUnwrapped };
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Header);
+export default Header;

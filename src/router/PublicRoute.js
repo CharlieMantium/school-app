@@ -8,7 +8,7 @@ import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
 export const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => (
   <Route
     {...rest}
-    component={props => {
+    render={props => {
       if (isAuthenticated) {
         return <Redirect to={ACTIVITY_PLAN_ROUTE} />;
       }
@@ -23,7 +23,7 @@ PublicRoute.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: !!state.auth.uid,
+  isAuthenticated: Boolean(state.auth.uid),
 });
 
 export default connect(mapStateToProps)(PublicRoute);

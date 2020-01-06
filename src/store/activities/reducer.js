@@ -8,7 +8,7 @@ import {
 
 const activitiesReducerDefaultState = {
   items: [],
-  filter: '',
+  filterKey: '',
 };
 
 export default (state = activitiesReducerDefaultState, action) => {
@@ -16,12 +16,12 @@ export default (state = activitiesReducerDefaultState, action) => {
     case ADD_ACTIVITY:
       return {
         items: [...state.items, action.activity],
-        filter: state.filter,
+        filterKey: state.filterKey,
       };
     case REMOVE_ACTIVITY:
       return {
         items: state.items.filter(activity => activity.id !== action.id),
-        filter: state.filter,
+        filterKey: state.filterKey,
       };
     case EDIT_ACTIVITY:
       return {
@@ -34,17 +34,17 @@ export default (state = activitiesReducerDefaultState, action) => {
           }
           return activity;
         }),
-        filter: state.filter,
+        filterKey: state.filterKey,
       };
     case SET_ACTIVITIES:
       return {
         items: action.activities,
-        filter: state.filter,
+        filterKey: state.filterKey,
       };
     case SET_FILTER:
       return {
         items: state.items,
-        filter: action.filterText,
+        filterKey: action.filterText,
       };
     default:
       return state;

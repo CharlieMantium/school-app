@@ -43,5 +43,5 @@ export default {
       teacher: 'Chopin',
     },
   ],
-  filter: '',
+  filterKey: '',
 };

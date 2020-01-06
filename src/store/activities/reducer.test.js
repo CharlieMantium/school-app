@@ -10,7 +10,7 @@ describe('activities reducer', () => {
     const state = activitiesReducer(undefined, initAction);
     expect(state).toEqual({
       items: [],
-      filter: '',
+      filterKey: '',
     });
   });
 
@@ -22,7 +22,7 @@ describe('activities reducer', () => {
     const state = activitiesReducer(testState, action);
     expect(state).toEqual({
       items: [...testState.items, activity],
-      filter: '',
+      filterKey: '',
     });
   });
 
@@ -35,7 +35,7 @@ describe('activities reducer', () => {
     const state = activitiesReducer(testState, action);
     expect(state).toEqual({
       items: [...testState.items.filter(activityItem => activityItem.id !== id)],
-      filter: '',
+      filterKey: '',
     });
   });
 

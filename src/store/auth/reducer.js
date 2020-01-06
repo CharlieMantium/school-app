@@ -4,10 +4,14 @@ export default (state = {}, action) => {
   switch (action.type) {
     case LOGIN:
       return {
+        ...state,
         uid: action.uid,
       };
     case LOGOUT:
-      return {};
+      return {
+        ...state,
+        uid: '',
+      };
     default:
       return state;
   }

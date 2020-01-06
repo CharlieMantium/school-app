@@ -17,6 +17,6 @@ describe('authReducer', () => {
       type: LOGOUT,
     };
     const state = authReducer({ uid }, action);
-    expect(state).toEqual({});
+    expect(state).toEqual({ uid: '' });
   });
 });

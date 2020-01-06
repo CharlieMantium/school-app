@@ -1,29 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import { startLogin } from 'store/auth/actions';
 import { Button } from 'styles/elements/Button';
 
 const LoginWrapper = styled.div``;
 
-const LoginPage = ({ onStartLogin }) => (
-  <LoginWrapper>
-    <Button onClick={onStartLogin}>Login</Button>
-  </LoginWrapper>
-);
-
-LoginPage.propTypes = {
-  onStartLogin: PropTypes.func.isRequired,
+const LoginPage = () => {
+  const onStartLogin = useDispatch()(startLogin);
+  return (
+    <LoginWrapper>
+      <Button onClick={onStartLogin}>Login</Button>
+    </LoginWrapper>
+  );
 };
 
-const mapDispatchtoProps = dispatch => ({
-  onStartLogin: () => dispatch(startLogin()),
-});
-
-export { LoginPage as LoginPageUnwrapped };
-export default connect(
-  null,
-  mapDispatchtoProps,
-)(LoginPage);
+export default LoginPage;
