@@ -8,12 +8,9 @@ import { ACTIVITY_PLAN_ROUTE } from '../constants/routes';
 export const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props => {
-      if (isAuthenticated) {
-        return <Redirect to={ACTIVITY_PLAN_ROUTE} />;
-      }
-      return <Component {...props} />;
-    }}
+    render={props =>
+      isAuthenticated ? <Redirect to={ACTIVITY_PLAN_ROUTE} /> : <Component {...props} />
+    }
   />
 );
 

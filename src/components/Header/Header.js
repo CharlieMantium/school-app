@@ -61,7 +61,7 @@ const AddIcon = styled(DiffAdded)`
 const Header = () => {
   const dispatch = useDispatch();
   const onSetFilter = textValue => dispatch(setFilter(textValue));
-  const onStartLogout = dispatch(startLogout);
+  const onStartLogout = () => dispatch(startLogout());
 
   const [searchText, changeSearchText] = useState('');
   const onInputValueChange = e => {
