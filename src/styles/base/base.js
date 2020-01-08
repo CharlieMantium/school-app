@@ -15,6 +15,7 @@ export const spacing = {
   mSize: '10px',
   lSize: '15px',
   xlSize: '20px',
+  xxlSize: '50px',
   desktopBreakpoint: '680px',
   largeDesktopBreakpoint: '1000px',
 };
@@ -22,9 +23,10 @@ export const spacing = {
 export const fontSizes = {
   lFontSize: '1.1rem',
   xlFontSize: '3rem',
+  xxlFontSize: '5rem',
 };
 
 export const effects = {
-  outline: color => `-${spacing.xxsSize} 0 ${color}, 0 ${spacing.xxsSize} ${color}, ${spacing.xxsSize} 0 ${color},
-  0 -${spacing.xxsSize} ${color};`,
+  outline: (color, size) => `-${size} 0 ${color}, 0 ${size} ${color}, ${size} 0 ${color},
+  0 -${size} ${color};`,
 };

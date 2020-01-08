@@ -21,7 +21,7 @@ const EditActivityLink = styled(Link)`
   cursor: pointer;
   font-size: ${fontSizes.lFontSize};
   text-decoration: none;
-  text-shadow: ${effects.outline(colors.primary)};
+  text-shadow: ${effects.outline(colors.primary, spacing.xxsSize)};
   word-break: break-word;
 `;
 

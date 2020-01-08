@@ -13,7 +13,8 @@ const DescriptionsWrapper = styled.div`
 
 const Description = styled.p`
   color: ${props => (props.error ? colors.error : colors.secondary)};
-  text-shadow: ${props => (props.error ? effects.outline(colors.primary) : 'none')};
+  text-shadow: ${props =>
+    props.error ? effects.outline(colors.primary, spacing.xxsSize) : 'none'};
   margin: ${spacing.mSize} ${spacing.sSize} 0 ${spacing.sSize};
 `;
 

@@ -6,8 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { startAddActivity } from 'store/activities/actions';
 import { ACTIVITY_PLAN_ROUTE } from 'constants/routes';
 import historyPushPropTypeShape from 'prop-types/history';
-import { Heading } from 'styles/elements/Heading';
-import { ActivityFormWrapper } from 'styles/elements/ActivityFormWrapper';
+import { ActivityFormWrapper, Heading } from 'styles/elements';
 import activityPropTypeShape from 'prop-types/activity';
 import { getActivityItems } from 'store/activities/selectors';
 

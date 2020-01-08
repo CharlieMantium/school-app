@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
-import { DiffAdded } from 'styled-icons/octicons/DiffAdded';
+import { AddCircleOutline } from 'styled-icons/material/AddCircleOutline';
+import { LogOutCircle } from 'styled-icons/boxicons-regular/LogOutCircle';
 
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
 import { colors, effects, fontSizes, spacing } from 'styles/base';
@@ -11,7 +12,6 @@ import { setFilter } from 'store/activities/actions';
 import { startLogout } from 'store/auth/actions';
 
 import { Input } from 'components/elements';
-import { Button } from 'styles/elements/Button';
 
 const HeaderWrapper = styled.header`
   align-items: center;
@@ -29,12 +29,12 @@ const AppName = styled(NavLink)`
   font-size: ${fontSizes.xlFontSize};
   margin: ${spacing.xsSize} ${spacing.mSize};
   text-decoration: none;
-  text-shadow: ${effects.outline(colors.secondary)};
+  text-shadow: ${effects.outline(colors.secondary, spacing.xxsSize)};
   white-space: nowrap;
 
   &:hover {
     color: ${colors.secondary};
-    text-shadow: ${effects.outline(colors.primary)};
+    text-shadow: ${effects.outline(colors.primary, spacing.xxsSize)};
   }
 
   @media (min-width: ${spacing.desktopBreakpoint}) {
@@ -44,17 +44,35 @@ const AppName = styled(NavLink)`
 
 const ToolsWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 ${spacing.sSize};
 `;
 
-const AddIcon = styled(DiffAdded)`
+const AddIcon = styled(AddCircleOutline)`
   color: ${colors.secondary};
-  height: 28px;
-  margin: ${spacing.xlSize};
+  height: 26px;
 
   &:hover {
-    color: ${colors.primary};
+    color: ${colors.activityName};
+  }
+
+  @media (min-width: ${spacing.desktopBreakpoint}) {
+    margin: 0 ${spacing.sSize} 0 ${spacing.lSize};
+    height: 32px;
+  }
+`;
+
+const LogoutIcon = styled(LogOutCircle)`
+  color: ${colors.secondary};
+  height: 50px;
+
+  &:hover {
+    color: ${colors.activityName};
+  }
+
+  @media (min-width: ${spacing.desktopBreakpoint}) {
+    margin: 0 ${spacing.sSize};
   }
 `;
 
@@ -83,11 +101,15 @@ const Header = () => {
           data-test="filter-component"
         />
         <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
-          <AddIcon title="Add New Activity" />
+          <FormattedMessage id="button.add" defaultMessage="Add New Activity">
+            {formattedValue => <AddIcon title={formattedValue} />}
+          </FormattedMessage>
         </NavLink>
-        <Button onClick={onStartLogout} data-test="button-logout">
-          <FormattedMessage id="button.logout" defaultMessage="Logout" />
-        </Button>
+        <FormattedMessage id="button.logout" defaultMessage="Logout">
+          {formattedValue => (
+            <LogoutIcon onClick={onStartLogout} title={formattedValue} data-test="button-logout" />
+          )}
+        </FormattedMessage>
       </ToolsWrapper>
     </HeaderWrapper>
   );

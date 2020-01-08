@@ -4,7 +4,8 @@
   },
   "button": {
     "login": "Zaloguj",
-    "logout": "Wyloguj"
+    "logout": "Wyloguj",
+    "add": "Dodaj Nową Aktywność"
   },
   "activity": {
     "activityName": "Nazwa Aktywności",
@@ -36,7 +37,7 @@
       "occupied": "Ta lekcja jest już zajęta!"
     },
     "input": {
-      "defaultPlaceholder": "Wprowadź text"
+      "defaultPlaceholder": "Szukaj..."
     },
     "activityFormSelectDefault": "Wybierz dzień"
   },
