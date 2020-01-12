@@ -12,9 +12,7 @@ import activityPropTypeShape from 'prop-types/activity';
 import historyPushPropTypeShape from 'prop-types/history';
 import matchPropTypeShape from 'prop-types/matchShape';
 import { generateActivitiesItemsPath } from 'helpers/paths';
-import { ActivityFormWrapper } from 'styles/elements/ActivityFormWrapper';
-import { Heading } from 'styles/elements/Heading';
-import { Button } from 'styles/elements/Button';
+import { ActivityFormWrapper, Button, Heading } from 'styles/elements';
 import database from 'firebase/firebase';
 import { useToast } from 'hooks/useToast';
 

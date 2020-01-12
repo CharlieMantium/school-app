@@ -25,7 +25,7 @@ const DayName = styled(FormattedMessage)`
   font-weight: bold;
   margin: ${spacing.sSize} auto;
   text-align: center;
-  text-shadow: ${effects.outline(colors.secondary)};
+  text-shadow: ${effects.outline(colors.secondary, spacing.xxsSize)};
   text-transform: uppercase;
   width: 70%;
 `;

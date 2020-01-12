@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
 import { validatePositive, validateDot, validateFreeTimeSlot } from 'helpers/validators';
-import { Button } from 'styles/elements/Button';
+import { Button } from 'styles/elements';
 import { spacing } from 'styles/base';
 import activityPropTypeShape from 'prop-types/activity';
 
