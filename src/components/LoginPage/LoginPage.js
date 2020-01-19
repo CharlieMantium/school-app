@@ -13,9 +13,11 @@ const LoginWrapper = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+
   &::before {
     content: '';
   }
+
   @media (min-width: ${spacing.desktopBreakpoint}) {
     justify-content: center;
   }
@@ -31,6 +33,7 @@ const LoginButton = styled(Button)`
   opacity: 0.8;
   height: ${spacing.xxlSize};
   width: 90%;
+
   @media (min-width: ${spacing.desktopBreakpoint}) {
     margin-top: ${spacing.xlSize};
     width: 20%;

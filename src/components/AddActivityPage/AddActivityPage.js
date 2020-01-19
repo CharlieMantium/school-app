@@ -46,7 +46,4 @@ const mapDispatchToProps = {
 };
 
 export { AddActivityPage as AddActivityPageUnwrapped };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(AddActivityPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AddActivityPage);

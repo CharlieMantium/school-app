@@ -15,6 +15,7 @@ const DayWrapper = styled.div`
   background: rgba(255, 255, 255, 0.8);
   margin: ${spacing.sSize};
   padding: ${spacing.sSize};
+
   @media (min-width: ${spacing.desktopBreakpoint}) {
     width: 14.2%;
   }
