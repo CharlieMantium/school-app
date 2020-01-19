@@ -126,10 +126,7 @@ const mapDispatchToProps = {
 };
 
 export { EditActivityPage as EditActivityPageUnwrapped };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(EditActivityPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditActivityPage);
 
 // TODO: not for this pr, but can we change this function name to normal one ?
 // why not removeActivity?

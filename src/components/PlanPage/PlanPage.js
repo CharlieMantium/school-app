@@ -36,7 +36,4 @@ const mapDispatchToProps = {
 };
 
 export { PlanPage as PlanPageUnwrapped };
-export default connect(
-  null,
-  mapDispatchToProps,
-)(PlanPage);
+export default connect(null, mapDispatchToProps)(PlanPage);

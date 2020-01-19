@@ -21,7 +21,10 @@ export const strings = [
   {
     inputString: 'aa',
     searchedString: 'a',
-    expectedResult: [{ str: 'a', isSearched: true }, { str: 'a', isSearched: true }],
+    expectedResult: [
+      { str: 'a', isSearched: true },
+      { str: 'a', isSearched: true },
+    ],
   },
   {
     inputString: 'a;aa;a',

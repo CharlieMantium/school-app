@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -12,7 +11,6 @@ if (process.env.NODE_ENV === 'test') {
 
 module.exports = {
   entry: './src/index.js',
-  mode: 'development',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
@@ -25,8 +23,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.css$/,
+        use: ['style-loader', { loader: 'css-loader', options: { sourceMap: true } }],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
@@ -35,7 +33,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new StyleLintPlugin(),
     new LodashModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
@@ -50,9 +47,4 @@ module.exports = {
       'process.env.FIREBASE_MEASUREMENT_ID': JSON.stringify(process.env.FIREBASE_MEASUREMENT_ID),
     }),
   ],
-  devtool: 'cheap-module-eval-source-map',
-  devServer: {
-    contentBase: path.join(__dirname, 'public'),
-    historyApiFallback: true,
-  },
 };

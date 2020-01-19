@@ -68,7 +68,6 @@ describe('ActivityForm', () => {
 
   it('should call onSubmit prop for valid form submition', () => {
     const onSubmitSpy = jest.fn();
-    // const wrapper = shallowWithIntl(
     const wrapper = mountWithIntl(
       <ActivityForm activity={testState.activities.items[1]} onSubmit={onSubmitSpy} />,
       'en',
