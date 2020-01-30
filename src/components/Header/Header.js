@@ -99,7 +99,7 @@ const Header = () => {
     onSetFilter(inputValue);
   };
 
-  const { pathname: location } = useLocation();
+  const { pathname } = useLocation();
 
   return (
     <HeaderWrapper>
@@ -107,7 +107,7 @@ const Header = () => {
         School App
       </AppName>
       <ToolsWrapper>
-        {location === ACTIVITY_PLAN_ROUTE ? (
+        {pathname === ACTIVITY_PLAN_ROUTE ? (
           <>
             <Input
               type="text"
