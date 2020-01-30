@@ -22,6 +22,7 @@ const DayWrapper = styled.div`
 `;
 
 const DayName = styled(FormattedMessage)`
+  overflow-wrap: break-word;
   border-bottom: ${spacing.xxsSize} solid currentColor;
   font-weight: bold;
   margin: ${spacing.sSize} auto;

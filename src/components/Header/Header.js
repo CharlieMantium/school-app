@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { AddCircleOutline } from 'styled-icons/material/AddCircleOutline';
 import { LogOutCircle } from 'styled-icons/boxicons-regular/LogOutCircle';
+import { CancelCircle } from 'styled-icons/icomoon/CancelCircle';
 
 import { ACTIVITY_PLAN_ROUTE, CREATE_ACTIVITY_ROUTE } from 'constants/routes';
 import { colors, effects, fontSizes, spacing } from 'styles/base';
@@ -16,11 +17,7 @@ import { Input } from 'components/elements';
 const HeaderWrapper = styled.header`
   align-items: center;
   display: flex;
-  justify-content: space-around;
-
-  @media (min-width: ${spacing.desktopBreakpoint}) {
-    justify-content: space-between;
-  }
+  justify-content: space-between;
 `;
 
 const AppName = styled(NavLink)`
@@ -76,6 +73,20 @@ const LogoutIcon = styled(LogOutCircle)`
   }
 `;
 
+const BackIcon = styled(CancelCircle)`
+  color: ${colors.secondary};
+  height: 21px;
+  margin-right: ${spacing.lSize};
+
+  &:hover {
+    color: ${colors.activityName};
+  }
+
+  @media (min-width: ${spacing.desktopBreakpoint}) {
+    height: 27px;
+  }
+`;
+
 const Header = () => {
   const dispatch = useDispatch();
   const onSetFilter = textValue => dispatch(setFilter(textValue));
@@ -88,28 +99,44 @@ const Header = () => {
     onSetFilter(inputValue);
   };
 
+  const { pathname } = useLocation();
+
   return (
     <HeaderWrapper>
       <AppName to={ACTIVITY_PLAN_ROUTE} data-test="app-name">
         School App
       </AppName>
       <ToolsWrapper>
-        <Input
-          type="text"
-          value={searchText}
-          onChange={onInputValueChange}
-          data-test="filter-component"
-        />
-        <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
-          <FormattedMessage id="button.add" defaultMessage="Add New Activity">
-            {formattedValue => <AddIcon title={formattedValue} />}
-          </FormattedMessage>
-        </NavLink>
-        <FormattedMessage id="button.logout" defaultMessage="Logout">
-          {formattedValue => (
-            <LogoutIcon onClick={onStartLogout} title={formattedValue} data-test="button-logout" />
-          )}
-        </FormattedMessage>
+        {pathname === ACTIVITY_PLAN_ROUTE ? (
+          <>
+            <Input
+              type="text"
+              value={searchText}
+              onChange={onInputValueChange}
+              data-test="filter-component"
+            />
+            <NavLink to={CREATE_ACTIVITY_ROUTE} data-test="react-navlink">
+              <FormattedMessage id="button.add" defaultMessage="Add New Activity">
+                {formattedValue => <AddIcon title={formattedValue} />}
+              </FormattedMessage>
+            </NavLink>
+            <FormattedMessage id="button.logout" defaultMessage="Logout">
+              {formattedValue => (
+                <LogoutIcon
+                  onClick={onStartLogout}
+                  title={formattedValue}
+                  data-test="button-logout"
+                />
+              )}
+            </FormattedMessage>
+          </>
+        ) : (
+          <NavLink to={ACTIVITY_PLAN_ROUTE} data-test="react-navlink">
+            <FormattedMessage id="button.back" defaultMessage="Cancel">
+              {formattedValue => <BackIcon title={formattedValue} />}
+            </FormattedMessage>
+          </NavLink>
+        )}
       </ToolsWrapper>
     </HeaderWrapper>
   );

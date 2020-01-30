@@ -5,7 +5,8 @@
   "button": {
     "login": "Login",
     "logout": "Logout",
-    "add": "Add New Activity"
+    "add": "Add New Activity",
+    "back": "Cancel"
   },
   "activity": {
     "activityName": "Activity Name",

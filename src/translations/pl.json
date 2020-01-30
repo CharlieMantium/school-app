@@ -5,7 +5,8 @@
   "button": {
     "login": "Zaloguj",
     "logout": "Wyloguj",
-    "add": "Dodaj Nową Aktywność"
+    "add": "Dodaj Nową Aktywność",
+    "back": "Wróć"
   },
   "activity": {
     "activityName": "Nazwa Aktywności",

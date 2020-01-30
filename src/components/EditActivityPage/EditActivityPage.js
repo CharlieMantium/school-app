@@ -80,6 +80,7 @@ const EditActivityPage = ({
       </Heading>
       <Loader loaded={isIdLoaded} data-test="loader">
         <ActivityForm
+          isEditing
           currentActivities={currentActivities}
           activity={editedActivity}
           onSubmit={activitySubmited => editActivity(activitySubmited)}
