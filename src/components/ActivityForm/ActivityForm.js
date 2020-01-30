@@ -29,6 +29,7 @@ export default class ActivityForm extends React.Component {
     }),
     onSubmit: PropTypes.func.isRequired,
     currentActivities: PropTypes.arrayOf(PropTypes.shape(activityPropTypeShape)),
+    isEditing: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -40,6 +41,7 @@ export default class ActivityForm extends React.Component {
       teacher: '',
     },
     currentActivities: [],
+    isEditing: false,
   };
 
   constructor(props) {
@@ -57,6 +59,7 @@ export default class ActivityForm extends React.Component {
       nameError: '',
       roomError: '',
       teacherError: '',
+      isEditing: props.isEditing,
     };
   }
 
@@ -164,6 +167,7 @@ export default class ActivityForm extends React.Component {
       nameError,
       roomError,
       teacherError,
+      isEditing,
     } = this.state;
     return (
       <form onSubmit={this.onSubmit} data-test="form">
@@ -213,8 +217,8 @@ export default class ActivityForm extends React.Component {
           />
           <Button type="submit" data-test="button-submit">
             <FormattedMessage
-              id={name ? 'form.button.activityFormBtnEdit' : 'form.button.activityFormBtnAdd'}
-              defaultMessage={name ? 'Edit Activity' : 'Add Activity'}
+              id={isEditing ? 'form.button.activityFormBtnEdit' : 'form.button.activityFormBtnAdd'}
+              defaultMessage={isEditing ? 'Edit Activity' : 'Add Activity'}
             />
           </Button>
         </SelectAndButtonWrapper>
