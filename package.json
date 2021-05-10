@@ -46,7 +46,7 @@
     "history": "^4.10.1",
     "jest": "^24.9.0",
     "live-server": "^1.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "lodash-webpack-plugin": "^0.11.5",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
